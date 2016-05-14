@@ -1,0 +1,39 @@
+# Design constrains intended for Nexys 4 DDR
+
+net "Clk_100M" loc = E3 | IOSTANDARD = LVCMOS33;
+net "Clk_100M" period = 10 ns high 5 ns;
+// U13 K2 T14 P14 J14 T9 J18 J17
+#net "SegmentDrivers<3>" loc = J14 | IOSTANDARD = LVCMOS33 | TIG;
+#net "SegmentDrivers<2>" loc = T9 | IOSTANDARD = LVCMOS33 | TIG;
+#net "SegmentDrivers<1>" loc = J18 | IOSTANDARD = LVCMOS33 | TIG;
+#net "SegmentDrivers<0>" loc = J17 | IOSTANDARD = LVCMOS33 | TIG;
+
+// H15 L18 T11 P15 K13 K16 R10 T10
+#net "SevenSegment<7>" loc = H15 | IOSTANDARD = LVCMOS33 | TIG;
+#net "SevenSegment<6>" loc = L18 | IOSTANDARD = LVCMOS33 | TIG;
+#net "SevenSegment<5>" loc = T11 | IOSTANDARD = LVCMOS33 | TIG;
+#net "SevenSegment<4>" loc = P15 | IOSTANDARD = LVCMOS33 | TIG;
+#net "SevenSegment<3>" loc = K13 | IOSTANDARD = LVCMOS33 | TIG;
+#net "SevenSegment<2>" loc = K16 | IOSTANDARD = LVCMOS33 | TIG;
+#net "SevenSegment<1>" loc = R10 | IOSTANDARD = LVCMOS33 | TIG;
+#net "SevenSegment<0>" loc = T10 | IOSTANDARD = LVCMOS33 | TIG;
+#
+#net "SlideButtons<7>" loc = R13 | IOSTANDARD = LVCMOS33 | TIG;
+#net "SlideButtons<6>" loc = U18 | IOSTANDARD = LVCMOS33 | TIG;
+#net "SlideButtons<5>" loc = T18 | IOSTANDARD = LVCMOS33 | TIG;
+#net "SlideButtons<4>" loc = R17 | IOSTANDARD = LVCMOS33 | TIG;
+#net "SlideButtons<3>" loc = R15 | IOSTANDARD = LVCMOS33 | TIG;
+#net "SlideButtons<2>" loc = M13 | IOSTANDARD = LVCMOS33 | TIG;
+#net "SlideButtons<1>" loc = L16 | IOSTANDARD = LVCMOS33 | TIG;
+#net "SlideButtons<0>" loc = J15 | IOSTANDARD = LVCMOS33 | TIG;
+#
+#net "LEDs<5>" loc = V17 | IOSTANDARD = LVCMOS33 | TIG;
+#net "LEDs<4>" loc = R18 | IOSTANDARD = LVCMOS33 | TIG;
+#net "LEDs<3>" loc = N14 | IOSTANDARD = LVCMOS33 | TIG;
+#net "LEDs<2>" loc = J13 | IOSTANDARD = LVCMOS33 | TIG;
+#net "LEDs<1>" loc = K15 | IOSTANDARD = LVCMOS33 | TIG;
+#net "LEDs<0>" loc = H17 | IOSTANDARD = LVCMOS33 | TIG;
+#
+#net "resetBtn" loc      = P18 | IOSTANDARD = LVCMOS33 | TIG;
+#net "minuteBtn" loc = M17 | IOSTANDARD = LVCMOS33 | TIG;	// minutes button 
+#net "hourBtn" loc   = P17 | IOSTANDARD = LVCMOS33 | TIG;	// hour button 
