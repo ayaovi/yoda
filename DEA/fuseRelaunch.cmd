@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "/home/bluelabuser/temp/yoda/DEA/UART_Receiver_isim_beh.exe" -prj "/home/bluelabuser/temp/yoda/DEA/UART_Receiver_beh.prj" "work.UART_Receiver" "work.glbl" 

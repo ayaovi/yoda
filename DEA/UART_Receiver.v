@@ -24,11 +24,11 @@ module UART_Receiver #(
 	parameter N    = 5,
 	parameter Full = 5'd29 // Clk / BAUD - 1
 )(
-	input Reset,
 	input Clk,
-
+	input Reset,
+	
 	output reg [7:0]Data,
-	output reg      Ready,
+	output reg      Ready,	// 'low' means busy, and 'high' mean free.
 	input           Ack,
 
 	input 			 Rx
@@ -53,11 +53,12 @@ localparam Done      = 2'b10;
 reg tReset;
 
 always @(posedge Clk) begin
-	tRx    <= Rx;
-	tAck   <= Ack;
-	tReset <= Reset;
+	tRx    <= Rx;		// synchronise.
+	tAck   <= Ack;		// synchronise.
+	tReset <= Reset;	// synchronise.
 
 	if(tReset) begin
+		// if Reset the reinitialise everything.
 		Data    <= 0;
 		Ready   <= 0;
 		NewData <= 0;
@@ -68,18 +69,19 @@ always @(posedge Clk) begin
 		//------------------------------------------------------------------------------
 
 	end else begin
-		if(Ready & tAck) Ready <= 1'b0;
+		if(Ready & tAck) Ready <= 1'b0;	// set to 'low' to indicate busy.
 
 		case(State)
 			Idle: begin
+				// if there is nothing on the Rx line.
 				if(~tRx) begin
 					Count <= {1'b0, Full[N-1:1]};
-					State <= StartBit;
+					State <= StartBit;	// successfully received startbit.
 				end
-
+				// if successfully received 8-bits of data.
 				if(NewData & ~tAck && ~Ready) begin 
 					Data    <= Temp;
-					Ready   <= 1'b1;
+					Ready   <= 1'b1;	// set to 'high' to indicate free.
 					NewData <= 1'b0;
 				end
 			end

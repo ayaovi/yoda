@@ -2,6 +2,10 @@
 
 net "Clk_100M" loc = E3 | IOSTANDARD = LVCMOS33;
 net "Clk_100M" period = 10 ns high 5 ns;
+
+net "Rx" loc = C4 | IOSTANDARD = LVCMOS33 | TIG;
+#net "Tx" loc = D4 | IOSTANDARD = LVCMOS33 | TIG;
+
 // U13 K2 T14 P14 J14 T9 J18 J17
 #net "SegmentDrivers<3>" loc = J14 | IOSTANDARD = LVCMOS33 | TIG;
 #net "SegmentDrivers<2>" loc = T9 | IOSTANDARD = LVCMOS33 | TIG;
@@ -27,13 +31,15 @@ net "Clk_100M" period = 10 ns high 5 ns;
 #net "SlideButtons<1>" loc = L16 | IOSTANDARD = LVCMOS33 | TIG;
 #net "SlideButtons<0>" loc = J15 | IOSTANDARD = LVCMOS33 | TIG;
 #
-#net "LEDs<5>" loc = V17 | IOSTANDARD = LVCMOS33 | TIG;
-#net "LEDs<4>" loc = R18 | IOSTANDARD = LVCMOS33 | TIG;
-#net "LEDs<3>" loc = N14 | IOSTANDARD = LVCMOS33 | TIG;
-#net "LEDs<2>" loc = J13 | IOSTANDARD = LVCMOS33 | TIG;
-#net "LEDs<1>" loc = K15 | IOSTANDARD = LVCMOS33 | TIG;
-#net "LEDs<0>" loc = H17 | IOSTANDARD = LVCMOS33 | TIG;
-#
-#net "resetBtn" loc      = P18 | IOSTANDARD = LVCMOS33 | TIG;
+net "LEDs<7>" loc = U16 | IOSTANDARD = LVCMOS33 | TIG;
+net "LEDs<6>" loc = U17 | IOSTANDARD = LVCMOS33 | TIG;
+net "LEDs<5>" loc = V17 | IOSTANDARD = LVCMOS33 | TIG;
+net "LEDs<4>" loc = R18 | IOSTANDARD = LVCMOS33 | TIG;
+net "LEDs<3>" loc = N14 | IOSTANDARD = LVCMOS33 | TIG;
+net "LEDs<2>" loc = J13 | IOSTANDARD = LVCMOS33 | TIG;
+net "LEDs<1>" loc = K15 | IOSTANDARD = LVCMOS33 | TIG;
+net "LEDs<0>" loc = H17 | IOSTANDARD = LVCMOS33 | TIG;
+
+net "Reset" loc      = P18 | IOSTANDARD = LVCMOS33 | TIG;
 #net "minuteBtn" loc = M17 | IOSTANDARD = LVCMOS33 | TIG;	// minutes button 
 #net "hourBtn" loc   = P17 | IOSTANDARD = LVCMOS33 | TIG;	// hour button 

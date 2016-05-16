@@ -18,13 +18,14 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
+
 module UART_Sender #(
 	parameter N    = 5,
 	parameter Full = 5'd29 // Clk / BAUD - 1
 )(
-	input Reset,
 	input Clk,
-
+	input Reset,
+	
 	input [7:0]Data,
 	input      Send,
 	output reg Busy,
