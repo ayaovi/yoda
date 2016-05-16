@@ -29,6 +29,9 @@ module DEA(
 	);
 	
 reg 		  prevBusyState;
+wire 		  softReset;
+reg 		  softResetReg;
+assign 	  softReset = softResetReg;
 wire		  Ready;		// so we can read it from submodules.
 wire 		  Ack;
 wire  [7:0]Data;
@@ -37,19 +40,21 @@ reg   [6:0]charCount;
 reg  		  tracer;
 initial    tracer 		 = 1'b0;
 initial    prevBusyState = 1'b0;
+initial    softResetReg  = 1'b0;
 
 always @(posedge Clk_100M) begin
 	if (prevBusyState == 1'b1 && Ready == 1'b1) begin
 		//	tracer     = 1'b1;
 		userData[99 - charCount]  <= Data;
 		charCount <= charCount + 1'b1;
-		// assign Ready = 1'b0;
+		softResetReg <= 1'b1;
+		
 	end
 	prevBusyState <= !Ready;
 end
 
 //	UART_Sender sender(Clk_100M, );
-	UART_Receiver #(14, 14'd9999) receiver(Clk_100M, Reset, Data, Ready, Ack, Rx);
+	UART_Receiver #(14, 14'd9999) receiver(Clk_100M, Reset, Data, Ready, Ack, softRest, Rx);
 
 always @(*) begin 
 //	LEDs <= 8'b10101010;

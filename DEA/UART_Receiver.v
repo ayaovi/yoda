@@ -30,7 +30,7 @@ module UART_Receiver #(
 	output reg [7:0]Data,
 	output reg      Ready,	// 'low' means busy, and 'high' mean free.
 	input           Ack,
-
+	input 			 softReset,
 	input 			 Rx
 );
 //------------------------------------------------------------------------------
@@ -51,13 +51,15 @@ localparam Done      = 2'b10;
 //------------------------------------------------------------------------------
 
 reg tReset;
+//reg tSoftReset;
 
 always @(posedge Clk) begin
 	tRx    <= Rx;		// synchronise.
 	tAck   <= Ack;		// synchronise.
 	tReset <= Reset;	// synchronise.
+	// tSoftReset <= softReset;	// synchronise.
 
-	if(tReset) begin
+	if(tReset | softReset) begin
 		// if Reset the reinitialise everything.
 		Data    <= 0;
 		Ready   <= 0;

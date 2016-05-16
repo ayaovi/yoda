@@ -28,19 +28,19 @@ INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on
 Timing constraint: NET "Clk_100M_BUFGP/IBUFG" PERIOD = 10 ns HIGH 5 ns;
 For more information, see Period Analysis in the Timing Closure User Guide (UG612).
 
- 896 paths analyzed, 236 endpoints analyzed, 0 failing endpoints
+ 842 paths analyzed, 229 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
- Minimum period is   3.572ns.
+ Minimum period is   3.294ns.
 --------------------------------------------------------------------------------
 
-Paths for end point receiver/Temp_4 (SLICE_X9Y95.CE), 17 paths
+Paths for end point receiver/Temp_4 (SLICE_X9Y92.CE), 17 paths
 --------------------------------------------------------------------------------
-Slack (setup path):     6.428ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               receiver/Count_4 (FF)
+Slack (setup path):     6.706ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               receiver/Count_13 (FF)
   Destination:          receiver/Temp_4 (FF)
   Requirement:          10.000ns
-  Data Path Delay:      3.463ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.074ns (1.156 - 1.230)
+  Data Path Delay:      3.180ns (Levels of Logic = 3)
+  Clock Path Skew:      -0.079ns (1.156 - 1.235)
   Source Clock:         Clk_100M_BUFGP rising at 0.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -51,35 +51,35 @@ Slack (setup path):     6.428ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: receiver/Count_4 to receiver/Temp_4
+  Maximum Data Path at Slow Process Corner: receiver/Count_13 to receiver/Temp_4
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X15Y115.AQ     Tcko                  0.341   receiver/Count<7>
-                                                       receiver/Count_4
-    SLICE_X28Y116.B1     net (fanout=3)        0.824   receiver/Count<4>
-    SLICE_X28Y116.B      Tilo                  0.097   receiver/Count<13>
-                                                       receiver/out1
-    SLICE_X15Y116.B2     net (fanout=3)        0.623   receiver/out
-    SLICE_X15Y116.B      Tilo                  0.097   receiver/Count<10>
+    SLICE_X28Y102.DQ     Tcko                  0.341   receiver/Count<13>
+                                                       receiver/Count_13
+    SLICE_X31Y99.A1      net (fanout=3)        0.741   receiver/Count<13>
+    SLICE_X31Y99.A       Tilo                  0.097   receiver/out1
+                                                       receiver/out2
+    SLICE_X28Y101.B2     net (fanout=3)        0.730   receiver/out1
+    SLICE_X28Y101.B      Tilo                  0.097   receiver/Count<10>
                                                        receiver/out3
-    SLICE_X12Y103.A6     net (fanout=17)       0.603   receiver/n0023
-    SLICE_X12Y103.A      Tilo                  0.097   receiver/Ready
-                                                       receiver/_n0123_inv1
-    SLICE_X9Y95.CE       net (fanout=2)        0.631   receiver/_n0123_inv
-    SLICE_X9Y95.CLK      Tceck                 0.150   receiver/Temp<7>
+    SLICE_X14Y99.A6      net (fanout=17)       0.400   receiver/n0023
+    SLICE_X14Y99.A       Tilo                  0.097   receiver/_n0122_inv
+                                                       receiver/_n0122_inv1
+    SLICE_X9Y92.CE       net (fanout=2)        0.527   receiver/_n0122_inv
+    SLICE_X9Y92.CLK      Tceck                 0.150   receiver/Temp<7>
                                                        receiver/Temp_4
     -------------------------------------------------  ---------------------------
-    Total                                      3.463ns (0.782ns logic, 2.681ns route)
-                                                       (22.6% logic, 77.4% route)
+    Total                                      3.180ns (0.782ns logic, 2.398ns route)
+                                                       (24.6% logic, 75.4% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     6.528ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               receiver/Count_6 (FF)
+Slack (setup path):     6.862ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               receiver/Count_0 (FF)
   Destination:          receiver/Temp_4 (FF)
   Requirement:          10.000ns
-  Data Path Delay:      3.363ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.074ns (1.156 - 1.230)
+  Data Path Delay:      3.063ns (Levels of Logic = 3)
+  Clock Path Skew:      -0.040ns (0.581 - 0.621)
   Source Clock:         Clk_100M_BUFGP rising at 0.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -90,35 +90,35 @@ Slack (setup path):     6.528ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: receiver/Count_6 to receiver/Temp_4
+  Maximum Data Path at Slow Process Corner: receiver/Count_0 to receiver/Temp_4
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X15Y115.CQ     Tcko                  0.341   receiver/Count<7>
-                                                       receiver/Count_6
-    SLICE_X28Y116.B2     net (fanout=3)        0.724   receiver/Count<6>
-    SLICE_X28Y116.B      Tilo                  0.097   receiver/Count<13>
-                                                       receiver/out1
-    SLICE_X15Y116.B2     net (fanout=3)        0.623   receiver/out
-    SLICE_X15Y116.B      Tilo                  0.097   receiver/Count<10>
+    SLICE_X28Y99.AQ      Tcko                  0.341   receiver/Count<3>
+                                                       receiver/Count_0
+    SLICE_X31Y99.A2      net (fanout=3)        0.624   receiver/Count<0>
+    SLICE_X31Y99.A       Tilo                  0.097   receiver/out1
+                                                       receiver/out2
+    SLICE_X28Y101.B2     net (fanout=3)        0.730   receiver/out1
+    SLICE_X28Y101.B      Tilo                  0.097   receiver/Count<10>
                                                        receiver/out3
-    SLICE_X12Y103.A6     net (fanout=17)       0.603   receiver/n0023
-    SLICE_X12Y103.A      Tilo                  0.097   receiver/Ready
-                                                       receiver/_n0123_inv1
-    SLICE_X9Y95.CE       net (fanout=2)        0.631   receiver/_n0123_inv
-    SLICE_X9Y95.CLK      Tceck                 0.150   receiver/Temp<7>
+    SLICE_X14Y99.A6      net (fanout=17)       0.400   receiver/n0023
+    SLICE_X14Y99.A       Tilo                  0.097   receiver/_n0122_inv
+                                                       receiver/_n0122_inv1
+    SLICE_X9Y92.CE       net (fanout=2)        0.527   receiver/_n0122_inv
+    SLICE_X9Y92.CLK      Tceck                 0.150   receiver/Temp<7>
                                                        receiver/Temp_4
     -------------------------------------------------  ---------------------------
-    Total                                      3.363ns (0.782ns logic, 2.581ns route)
-                                                       (23.3% logic, 76.7% route)
+    Total                                      3.063ns (0.782ns logic, 2.281ns route)
+                                                       (25.5% logic, 74.5% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     6.674ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               receiver/Count_12 (FF)
+Slack (setup path):     6.877ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               receiver/Count_3 (FF)
   Destination:          receiver/Temp_4 (FF)
   Requirement:          10.000ns
-  Data Path Delay:      3.221ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.070ns (1.156 - 1.226)
+  Data Path Delay:      3.048ns (Levels of Logic = 3)
+  Clock Path Skew:      -0.040ns (0.581 - 0.621)
   Source Clock:         Clk_100M_BUFGP rising at 0.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -129,38 +129,38 @@ Slack (setup path):     6.674ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: receiver/Count_12 to receiver/Temp_4
+  Maximum Data Path at Slow Process Corner: receiver/Count_3 to receiver/Temp_4
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X28Y116.CQ     Tcko                  0.341   receiver/Count<13>
-                                                       receiver/Count_12
-    SLICE_X15Y114.A1     net (fanout=3)        0.739   receiver/Count<12>
-    SLICE_X15Y114.A      Tilo                  0.097   receiver/out1
+    SLICE_X28Y99.DQ      Tcko                  0.341   receiver/Count<3>
+                                                       receiver/Count_3
+    SLICE_X31Y99.A3      net (fanout=3)        0.609   receiver/Count<3>
+    SLICE_X31Y99.A       Tilo                  0.097   receiver/out1
                                                        receiver/out2
-    SLICE_X15Y116.B3     net (fanout=3)        0.466   receiver/out1
-    SLICE_X15Y116.B      Tilo                  0.097   receiver/Count<10>
+    SLICE_X28Y101.B2     net (fanout=3)        0.730   receiver/out1
+    SLICE_X28Y101.B      Tilo                  0.097   receiver/Count<10>
                                                        receiver/out3
-    SLICE_X12Y103.A6     net (fanout=17)       0.603   receiver/n0023
-    SLICE_X12Y103.A      Tilo                  0.097   receiver/Ready
-                                                       receiver/_n0123_inv1
-    SLICE_X9Y95.CE       net (fanout=2)        0.631   receiver/_n0123_inv
-    SLICE_X9Y95.CLK      Tceck                 0.150   receiver/Temp<7>
+    SLICE_X14Y99.A6      net (fanout=17)       0.400   receiver/n0023
+    SLICE_X14Y99.A       Tilo                  0.097   receiver/_n0122_inv
+                                                       receiver/_n0122_inv1
+    SLICE_X9Y92.CE       net (fanout=2)        0.527   receiver/_n0122_inv
+    SLICE_X9Y92.CLK      Tceck                 0.150   receiver/Temp<7>
                                                        receiver/Temp_4
     -------------------------------------------------  ---------------------------
-    Total                                      3.221ns (0.782ns logic, 2.439ns route)
-                                                       (24.3% logic, 75.7% route)
+    Total                                      3.048ns (0.782ns logic, 2.266ns route)
+                                                       (25.7% logic, 74.3% route)
 
 --------------------------------------------------------------------------------
 
-Paths for end point receiver/Temp_5 (SLICE_X9Y95.CE), 17 paths
+Paths for end point receiver/Temp_5 (SLICE_X9Y92.CE), 17 paths
 --------------------------------------------------------------------------------
-Slack (setup path):     6.428ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               receiver/Count_4 (FF)
+Slack (setup path):     6.706ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               receiver/Count_13 (FF)
   Destination:          receiver/Temp_5 (FF)
   Requirement:          10.000ns
-  Data Path Delay:      3.463ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.074ns (1.156 - 1.230)
+  Data Path Delay:      3.180ns (Levels of Logic = 3)
+  Clock Path Skew:      -0.079ns (1.156 - 1.235)
   Source Clock:         Clk_100M_BUFGP rising at 0.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -171,116 +171,35 @@ Slack (setup path):     6.428ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: receiver/Count_4 to receiver/Temp_5
+  Maximum Data Path at Slow Process Corner: receiver/Count_13 to receiver/Temp_5
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X15Y115.AQ     Tcko                  0.341   receiver/Count<7>
-                                                       receiver/Count_4
-    SLICE_X28Y116.B1     net (fanout=3)        0.824   receiver/Count<4>
-    SLICE_X28Y116.B      Tilo                  0.097   receiver/Count<13>
-                                                       receiver/out1
-    SLICE_X15Y116.B2     net (fanout=3)        0.623   receiver/out
-    SLICE_X15Y116.B      Tilo                  0.097   receiver/Count<10>
-                                                       receiver/out3
-    SLICE_X12Y103.A6     net (fanout=17)       0.603   receiver/n0023
-    SLICE_X12Y103.A      Tilo                  0.097   receiver/Ready
-                                                       receiver/_n0123_inv1
-    SLICE_X9Y95.CE       net (fanout=2)        0.631   receiver/_n0123_inv
-    SLICE_X9Y95.CLK      Tceck                 0.150   receiver/Temp<7>
-                                                       receiver/Temp_5
-    -------------------------------------------------  ---------------------------
-    Total                                      3.463ns (0.782ns logic, 2.681ns route)
-                                                       (22.6% logic, 77.4% route)
-
---------------------------------------------------------------------------------
-Slack (setup path):     6.528ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               receiver/Count_6 (FF)
-  Destination:          receiver/Temp_5 (FF)
-  Requirement:          10.000ns
-  Data Path Delay:      3.363ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.074ns (1.156 - 1.230)
-  Source Clock:         Clk_100M_BUFGP rising at 0.000ns
-  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
-  Clock Uncertainty:    0.035ns
-
-  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Total Input Jitter (TIJ):   0.000ns
-    Discrete Jitter (DJ):       0.000ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: receiver/Count_6 to receiver/Temp_5
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X15Y115.CQ     Tcko                  0.341   receiver/Count<7>
-                                                       receiver/Count_6
-    SLICE_X28Y116.B2     net (fanout=3)        0.724   receiver/Count<6>
-    SLICE_X28Y116.B      Tilo                  0.097   receiver/Count<13>
-                                                       receiver/out1
-    SLICE_X15Y116.B2     net (fanout=3)        0.623   receiver/out
-    SLICE_X15Y116.B      Tilo                  0.097   receiver/Count<10>
-                                                       receiver/out3
-    SLICE_X12Y103.A6     net (fanout=17)       0.603   receiver/n0023
-    SLICE_X12Y103.A      Tilo                  0.097   receiver/Ready
-                                                       receiver/_n0123_inv1
-    SLICE_X9Y95.CE       net (fanout=2)        0.631   receiver/_n0123_inv
-    SLICE_X9Y95.CLK      Tceck                 0.150   receiver/Temp<7>
-                                                       receiver/Temp_5
-    -------------------------------------------------  ---------------------------
-    Total                                      3.363ns (0.782ns logic, 2.581ns route)
-                                                       (23.3% logic, 76.7% route)
-
---------------------------------------------------------------------------------
-Slack (setup path):     6.674ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               receiver/Count_12 (FF)
-  Destination:          receiver/Temp_5 (FF)
-  Requirement:          10.000ns
-  Data Path Delay:      3.221ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.070ns (1.156 - 1.226)
-  Source Clock:         Clk_100M_BUFGP rising at 0.000ns
-  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
-  Clock Uncertainty:    0.035ns
-
-  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Total Input Jitter (TIJ):   0.000ns
-    Discrete Jitter (DJ):       0.000ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: receiver/Count_12 to receiver/Temp_5
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X28Y116.CQ     Tcko                  0.341   receiver/Count<13>
-                                                       receiver/Count_12
-    SLICE_X15Y114.A1     net (fanout=3)        0.739   receiver/Count<12>
-    SLICE_X15Y114.A      Tilo                  0.097   receiver/out1
+    SLICE_X28Y102.DQ     Tcko                  0.341   receiver/Count<13>
+                                                       receiver/Count_13
+    SLICE_X31Y99.A1      net (fanout=3)        0.741   receiver/Count<13>
+    SLICE_X31Y99.A       Tilo                  0.097   receiver/out1
                                                        receiver/out2
-    SLICE_X15Y116.B3     net (fanout=3)        0.466   receiver/out1
-    SLICE_X15Y116.B      Tilo                  0.097   receiver/Count<10>
+    SLICE_X28Y101.B2     net (fanout=3)        0.730   receiver/out1
+    SLICE_X28Y101.B      Tilo                  0.097   receiver/Count<10>
                                                        receiver/out3
-    SLICE_X12Y103.A6     net (fanout=17)       0.603   receiver/n0023
-    SLICE_X12Y103.A      Tilo                  0.097   receiver/Ready
-                                                       receiver/_n0123_inv1
-    SLICE_X9Y95.CE       net (fanout=2)        0.631   receiver/_n0123_inv
-    SLICE_X9Y95.CLK      Tceck                 0.150   receiver/Temp<7>
+    SLICE_X14Y99.A6      net (fanout=17)       0.400   receiver/n0023
+    SLICE_X14Y99.A       Tilo                  0.097   receiver/_n0122_inv
+                                                       receiver/_n0122_inv1
+    SLICE_X9Y92.CE       net (fanout=2)        0.527   receiver/_n0122_inv
+    SLICE_X9Y92.CLK      Tceck                 0.150   receiver/Temp<7>
                                                        receiver/Temp_5
     -------------------------------------------------  ---------------------------
-    Total                                      3.221ns (0.782ns logic, 2.439ns route)
-                                                       (24.3% logic, 75.7% route)
+    Total                                      3.180ns (0.782ns logic, 2.398ns route)
+                                                       (24.6% logic, 75.4% route)
 
 --------------------------------------------------------------------------------
-
-Paths for end point receiver/Temp_6 (SLICE_X9Y95.CE), 17 paths
---------------------------------------------------------------------------------
-Slack (setup path):     6.428ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               receiver/Count_4 (FF)
-  Destination:          receiver/Temp_6 (FF)
+Slack (setup path):     6.862ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               receiver/Count_0 (FF)
+  Destination:          receiver/Temp_5 (FF)
   Requirement:          10.000ns
-  Data Path Delay:      3.463ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.074ns (1.156 - 1.230)
+  Data Path Delay:      3.063ns (Levels of Logic = 3)
+  Clock Path Skew:      -0.040ns (0.581 - 0.621)
   Source Clock:         Clk_100M_BUFGP rising at 0.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -291,192 +210,334 @@ Slack (setup path):     6.428ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: receiver/Count_4 to receiver/Temp_6
+  Maximum Data Path at Slow Process Corner: receiver/Count_0 to receiver/Temp_5
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X15Y115.AQ     Tcko                  0.341   receiver/Count<7>
-                                                       receiver/Count_4
-    SLICE_X28Y116.B1     net (fanout=3)        0.824   receiver/Count<4>
-    SLICE_X28Y116.B      Tilo                  0.097   receiver/Count<13>
-                                                       receiver/out1
-    SLICE_X15Y116.B2     net (fanout=3)        0.623   receiver/out
-    SLICE_X15Y116.B      Tilo                  0.097   receiver/Count<10>
-                                                       receiver/out3
-    SLICE_X12Y103.A6     net (fanout=17)       0.603   receiver/n0023
-    SLICE_X12Y103.A      Tilo                  0.097   receiver/Ready
-                                                       receiver/_n0123_inv1
-    SLICE_X9Y95.CE       net (fanout=2)        0.631   receiver/_n0123_inv
-    SLICE_X9Y95.CLK      Tceck                 0.150   receiver/Temp<7>
-                                                       receiver/Temp_6
-    -------------------------------------------------  ---------------------------
-    Total                                      3.463ns (0.782ns logic, 2.681ns route)
-                                                       (22.6% logic, 77.4% route)
-
---------------------------------------------------------------------------------
-Slack (setup path):     6.528ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               receiver/Count_6 (FF)
-  Destination:          receiver/Temp_6 (FF)
-  Requirement:          10.000ns
-  Data Path Delay:      3.363ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.074ns (1.156 - 1.230)
-  Source Clock:         Clk_100M_BUFGP rising at 0.000ns
-  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
-  Clock Uncertainty:    0.035ns
-
-  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Total Input Jitter (TIJ):   0.000ns
-    Discrete Jitter (DJ):       0.000ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: receiver/Count_6 to receiver/Temp_6
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X15Y115.CQ     Tcko                  0.341   receiver/Count<7>
-                                                       receiver/Count_6
-    SLICE_X28Y116.B2     net (fanout=3)        0.724   receiver/Count<6>
-    SLICE_X28Y116.B      Tilo                  0.097   receiver/Count<13>
-                                                       receiver/out1
-    SLICE_X15Y116.B2     net (fanout=3)        0.623   receiver/out
-    SLICE_X15Y116.B      Tilo                  0.097   receiver/Count<10>
-                                                       receiver/out3
-    SLICE_X12Y103.A6     net (fanout=17)       0.603   receiver/n0023
-    SLICE_X12Y103.A      Tilo                  0.097   receiver/Ready
-                                                       receiver/_n0123_inv1
-    SLICE_X9Y95.CE       net (fanout=2)        0.631   receiver/_n0123_inv
-    SLICE_X9Y95.CLK      Tceck                 0.150   receiver/Temp<7>
-                                                       receiver/Temp_6
-    -------------------------------------------------  ---------------------------
-    Total                                      3.363ns (0.782ns logic, 2.581ns route)
-                                                       (23.3% logic, 76.7% route)
-
---------------------------------------------------------------------------------
-Slack (setup path):     6.674ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               receiver/Count_12 (FF)
-  Destination:          receiver/Temp_6 (FF)
-  Requirement:          10.000ns
-  Data Path Delay:      3.221ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.070ns (1.156 - 1.226)
-  Source Clock:         Clk_100M_BUFGP rising at 0.000ns
-  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
-  Clock Uncertainty:    0.035ns
-
-  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Total Input Jitter (TIJ):   0.000ns
-    Discrete Jitter (DJ):       0.000ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: receiver/Count_12 to receiver/Temp_6
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X28Y116.CQ     Tcko                  0.341   receiver/Count<13>
-                                                       receiver/Count_12
-    SLICE_X15Y114.A1     net (fanout=3)        0.739   receiver/Count<12>
-    SLICE_X15Y114.A      Tilo                  0.097   receiver/out1
+    SLICE_X28Y99.AQ      Tcko                  0.341   receiver/Count<3>
+                                                       receiver/Count_0
+    SLICE_X31Y99.A2      net (fanout=3)        0.624   receiver/Count<0>
+    SLICE_X31Y99.A       Tilo                  0.097   receiver/out1
                                                        receiver/out2
-    SLICE_X15Y116.B3     net (fanout=3)        0.466   receiver/out1
-    SLICE_X15Y116.B      Tilo                  0.097   receiver/Count<10>
+    SLICE_X28Y101.B2     net (fanout=3)        0.730   receiver/out1
+    SLICE_X28Y101.B      Tilo                  0.097   receiver/Count<10>
                                                        receiver/out3
-    SLICE_X12Y103.A6     net (fanout=17)       0.603   receiver/n0023
-    SLICE_X12Y103.A      Tilo                  0.097   receiver/Ready
-                                                       receiver/_n0123_inv1
-    SLICE_X9Y95.CE       net (fanout=2)        0.631   receiver/_n0123_inv
-    SLICE_X9Y95.CLK      Tceck                 0.150   receiver/Temp<7>
+    SLICE_X14Y99.A6      net (fanout=17)       0.400   receiver/n0023
+    SLICE_X14Y99.A       Tilo                  0.097   receiver/_n0122_inv
+                                                       receiver/_n0122_inv1
+    SLICE_X9Y92.CE       net (fanout=2)        0.527   receiver/_n0122_inv
+    SLICE_X9Y92.CLK      Tceck                 0.150   receiver/Temp<7>
+                                                       receiver/Temp_5
+    -------------------------------------------------  ---------------------------
+    Total                                      3.063ns (0.782ns logic, 2.281ns route)
+                                                       (25.5% logic, 74.5% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     6.877ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               receiver/Count_3 (FF)
+  Destination:          receiver/Temp_5 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      3.048ns (Levels of Logic = 3)
+  Clock Path Skew:      -0.040ns (0.581 - 0.621)
+  Source Clock:         Clk_100M_BUFGP rising at 0.000ns
+  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: receiver/Count_3 to receiver/Temp_5
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X28Y99.DQ      Tcko                  0.341   receiver/Count<3>
+                                                       receiver/Count_3
+    SLICE_X31Y99.A3      net (fanout=3)        0.609   receiver/Count<3>
+    SLICE_X31Y99.A       Tilo                  0.097   receiver/out1
+                                                       receiver/out2
+    SLICE_X28Y101.B2     net (fanout=3)        0.730   receiver/out1
+    SLICE_X28Y101.B      Tilo                  0.097   receiver/Count<10>
+                                                       receiver/out3
+    SLICE_X14Y99.A6      net (fanout=17)       0.400   receiver/n0023
+    SLICE_X14Y99.A       Tilo                  0.097   receiver/_n0122_inv
+                                                       receiver/_n0122_inv1
+    SLICE_X9Y92.CE       net (fanout=2)        0.527   receiver/_n0122_inv
+    SLICE_X9Y92.CLK      Tceck                 0.150   receiver/Temp<7>
+                                                       receiver/Temp_5
+    -------------------------------------------------  ---------------------------
+    Total                                      3.048ns (0.782ns logic, 2.266ns route)
+                                                       (25.7% logic, 74.3% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point receiver/Temp_6 (SLICE_X9Y92.CE), 17 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     6.706ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               receiver/Count_13 (FF)
+  Destination:          receiver/Temp_6 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      3.180ns (Levels of Logic = 3)
+  Clock Path Skew:      -0.079ns (1.156 - 1.235)
+  Source Clock:         Clk_100M_BUFGP rising at 0.000ns
+  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: receiver/Count_13 to receiver/Temp_6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X28Y102.DQ     Tcko                  0.341   receiver/Count<13>
+                                                       receiver/Count_13
+    SLICE_X31Y99.A1      net (fanout=3)        0.741   receiver/Count<13>
+    SLICE_X31Y99.A       Tilo                  0.097   receiver/out1
+                                                       receiver/out2
+    SLICE_X28Y101.B2     net (fanout=3)        0.730   receiver/out1
+    SLICE_X28Y101.B      Tilo                  0.097   receiver/Count<10>
+                                                       receiver/out3
+    SLICE_X14Y99.A6      net (fanout=17)       0.400   receiver/n0023
+    SLICE_X14Y99.A       Tilo                  0.097   receiver/_n0122_inv
+                                                       receiver/_n0122_inv1
+    SLICE_X9Y92.CE       net (fanout=2)        0.527   receiver/_n0122_inv
+    SLICE_X9Y92.CLK      Tceck                 0.150   receiver/Temp<7>
                                                        receiver/Temp_6
     -------------------------------------------------  ---------------------------
-    Total                                      3.221ns (0.782ns logic, 2.439ns route)
-                                                       (24.3% logic, 75.7% route)
+    Total                                      3.180ns (0.782ns logic, 2.398ns route)
+                                                       (24.6% logic, 75.4% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     6.862ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               receiver/Count_0 (FF)
+  Destination:          receiver/Temp_6 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      3.063ns (Levels of Logic = 3)
+  Clock Path Skew:      -0.040ns (0.581 - 0.621)
+  Source Clock:         Clk_100M_BUFGP rising at 0.000ns
+  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: receiver/Count_0 to receiver/Temp_6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X28Y99.AQ      Tcko                  0.341   receiver/Count<3>
+                                                       receiver/Count_0
+    SLICE_X31Y99.A2      net (fanout=3)        0.624   receiver/Count<0>
+    SLICE_X31Y99.A       Tilo                  0.097   receiver/out1
+                                                       receiver/out2
+    SLICE_X28Y101.B2     net (fanout=3)        0.730   receiver/out1
+    SLICE_X28Y101.B      Tilo                  0.097   receiver/Count<10>
+                                                       receiver/out3
+    SLICE_X14Y99.A6      net (fanout=17)       0.400   receiver/n0023
+    SLICE_X14Y99.A       Tilo                  0.097   receiver/_n0122_inv
+                                                       receiver/_n0122_inv1
+    SLICE_X9Y92.CE       net (fanout=2)        0.527   receiver/_n0122_inv
+    SLICE_X9Y92.CLK      Tceck                 0.150   receiver/Temp<7>
+                                                       receiver/Temp_6
+    -------------------------------------------------  ---------------------------
+    Total                                      3.063ns (0.782ns logic, 2.281ns route)
+                                                       (25.5% logic, 74.5% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     6.877ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               receiver/Count_3 (FF)
+  Destination:          receiver/Temp_6 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      3.048ns (Levels of Logic = 3)
+  Clock Path Skew:      -0.040ns (0.581 - 0.621)
+  Source Clock:         Clk_100M_BUFGP rising at 0.000ns
+  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: receiver/Count_3 to receiver/Temp_6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X28Y99.DQ      Tcko                  0.341   receiver/Count<3>
+                                                       receiver/Count_3
+    SLICE_X31Y99.A3      net (fanout=3)        0.609   receiver/Count<3>
+    SLICE_X31Y99.A       Tilo                  0.097   receiver/out1
+                                                       receiver/out2
+    SLICE_X28Y101.B2     net (fanout=3)        0.730   receiver/out1
+    SLICE_X28Y101.B      Tilo                  0.097   receiver/Count<10>
+                                                       receiver/out3
+    SLICE_X14Y99.A6      net (fanout=17)       0.400   receiver/n0023
+    SLICE_X14Y99.A       Tilo                  0.097   receiver/_n0122_inv
+                                                       receiver/_n0122_inv1
+    SLICE_X9Y92.CE       net (fanout=2)        0.527   receiver/_n0122_inv
+    SLICE_X9Y92.CLK      Tceck                 0.150   receiver/Temp<7>
+                                                       receiver/Temp_6
+    -------------------------------------------------  ---------------------------
+    Total                                      3.048ns (0.782ns logic, 2.266ns route)
+                                                       (25.7% logic, 74.3% route)
 
 --------------------------------------------------------------------------------
 
 Hold Paths: NET "Clk_100M_BUFGP/IBUFG" PERIOD = 10 ns HIGH 5 ns;
 --------------------------------------------------------------------------------
 
-Paths for end point charCount_6 (SLICE_X1Y92.A6), 1 path
+Paths for end point prevBusyState (SLICE_X11Y93.A5), 1 path
 --------------------------------------------------------------------------------
-Slack (hold path):      0.166ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               charCount_3 (FF)
-  Destination:          charCount_6 (FF)
+Slack (hold path):      0.152ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               receiver/Ready (FF)
+  Destination:          prevBusyState (FF)
   Requirement:          0.000ns
-  Data Path Delay:      0.179ns (Levels of Logic = 1)
-  Clock Path Skew:      0.013ns (0.071 - 0.058)
+  Data Path Delay:      0.428ns (Levels of Logic = 1)
+  Clock Path Skew:      0.276ns (0.845 - 0.569)
   Source Clock:         Clk_100M_BUFGP rising at 10.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.000ns
 
-  Minimum Data Path at Fast Process Corner: charCount_3 to charCount_6
+  Minimum Data Path at Fast Process Corner: receiver/Ready to prevBusyState
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X0Y92.CQ       Tcko                  0.141   charCount<5>
-                                                       charCount_3
-    SLICE_X1Y92.A6       net (fanout=4)        0.084   charCount<3>
-    SLICE_X1Y92.CLK      Tah         (-Th)     0.046   charCount<2>
-                                                       Mcount_charCount_xor<6>11
-                                                       charCount_6
+    SLICE_X14Y100.AQ     Tcko                  0.164   receiver/Ready
+                                                       receiver/Ready
+    SLICE_X11Y93.A5      net (fanout=4)        0.310   receiver/Ready
+    SLICE_X11Y93.CLK     Tah         (-Th)     0.046   prevBusyState
+                                                       Ready_INV_17_o1_INV_0
+                                                       prevBusyState
     -------------------------------------------------  ---------------------------
-    Total                                      0.179ns (0.095ns logic, 0.084ns route)
-                                                       (53.1% logic, 46.9% route)
+    Total                                      0.428ns (0.118ns logic, 0.310ns route)
+                                                       (27.6% logic, 72.4% route)
 
 --------------------------------------------------------------------------------
 
-Paths for end point charCount_5 (SLICE_X0Y92.D6), 1 path
+Paths for end point receiver/Temp_7 (SLICE_X9Y92.DX), 1 path
 --------------------------------------------------------------------------------
-Slack (hold path):      0.172ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               charCount_2 (FF)
-  Destination:          charCount_5 (FF)
+Slack (hold path):      0.202ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               receiver/tRx (FF)
+  Destination:          receiver/Temp_7 (FF)
   Requirement:          0.000ns
-  Data Path Delay:      0.185ns (Levels of Logic = 1)
-  Clock Path Skew:      0.013ns (0.071 - 0.058)
+  Data Path Delay:      0.481ns (Levels of Logic = 0)
+  Clock Path Skew:      0.279ns (0.844 - 0.565)
   Source Clock:         Clk_100M_BUFGP rising at 10.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.000ns
 
-  Minimum Data Path at Fast Process Corner: charCount_2 to charCount_5
+  Minimum Data Path at Fast Process Corner: receiver/tRx to receiver/Temp_7
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X1Y92.BQ       Tcko                  0.141   charCount<2>
-                                                       charCount_2
-    SLICE_X0Y92.D6       net (fanout=4)        0.091   charCount<2>
-    SLICE_X0Y92.CLK      Tah         (-Th)     0.047   charCount<5>
-                                                       Mcount_charCount_xor<5>11
-                                                       charCount_5
+    SLICE_X30Y102.AQ     Tcko                  0.164   receiver/tRx
+                                                       receiver/tRx
+    SLICE_X9Y92.DX       net (fanout=3)        0.389   receiver/tRx
+    SLICE_X9Y92.CLK      Tckdi       (-Th)     0.072   receiver/Temp<7>
+                                                       receiver/Temp_7
     -------------------------------------------------  ---------------------------
-    Total                                      0.185ns (0.094ns logic, 0.091ns route)
-                                                       (50.8% logic, 49.2% route)
+    Total                                      0.481ns (0.092ns logic, 0.389ns route)
+                                                       (19.1% logic, 80.9% route)
 
 --------------------------------------------------------------------------------
 
-Paths for end point charCount_2 (SLICE_X1Y92.B5), 1 path
+Paths for end point receiver/Count_2 (SLICE_X28Y99.C6), 14 paths
 --------------------------------------------------------------------------------
-Slack (hold path):      0.190ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               charCount_0 (FF)
-  Destination:          charCount_2 (FF)
+Slack (hold path):      0.207ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               receiver/Count_11 (FF)
+  Destination:          receiver/Count_2 (FF)
   Requirement:          0.000ns
-  Data Path Delay:      0.203ns (Levels of Logic = 1)
-  Clock Path Skew:      0.013ns (0.071 - 0.058)
+  Data Path Delay:      0.483ns (Levels of Logic = 2)
+  Clock Path Skew:      0.276ns (0.842 - 0.566)
   Source Clock:         Clk_100M_BUFGP rising at 10.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.000ns
 
-  Minimum Data Path at Fast Process Corner: charCount_0 to charCount_2
+  Minimum Data Path at Fast Process Corner: receiver/Count_11 to receiver/Count_2
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X0Y92.AQ       Tcko                  0.141   charCount<5>
-                                                       charCount_0
-    SLICE_X1Y92.B5       net (fanout=5)        0.117   charCount<0>
-    SLICE_X1Y92.CLK      Tah         (-Th)     0.055   charCount<2>
-                                                       Mcount_charCount_xor<2>11
-                                                       charCount_2
+    SLICE_X28Y102.AQ     Tcko                  0.141   receiver/Count<13>
+                                                       receiver/Count_11
+    SLICE_X28Y101.B6     net (fanout=4)        0.142   receiver/Count<11>
+    SLICE_X28Y101.B      Tilo                  0.045   receiver/Count<10>
+                                                       receiver/out3
+    SLICE_X28Y99.C6      net (fanout=17)       0.202   receiver/n0023
+    SLICE_X28Y99.CLK     Tah         (-Th)     0.047   receiver/Count<3>
+                                                       receiver/Mcount_Count_eqn_21
+                                                       receiver/Count_2
     -------------------------------------------------  ---------------------------
-    Total                                      0.203ns (0.086ns logic, 0.117ns route)
-                                                       (42.4% logic, 57.6% route)
+    Total                                      0.483ns (0.139ns logic, 0.344ns route)
+                                                       (28.8% logic, 71.2% route)
+
+--------------------------------------------------------------------------------
+Slack (hold path):      0.322ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               receiver/Count_10 (FF)
+  Destination:          receiver/Count_2 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.598ns (Levels of Logic = 2)
+  Clock Path Skew:      0.276ns (0.842 - 0.566)
+  Source Clock:         Clk_100M_BUFGP rising at 10.000ns
+  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path at Fast Process Corner: receiver/Count_10 to receiver/Count_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X28Y101.DQ     Tcko                  0.141   receiver/Count<10>
+                                                       receiver/Count_10
+    SLICE_X28Y101.B3     net (fanout=5)        0.257   receiver/Count<10>
+    SLICE_X28Y101.B      Tilo                  0.045   receiver/Count<10>
+                                                       receiver/out3
+    SLICE_X28Y99.C6      net (fanout=17)       0.202   receiver/n0023
+    SLICE_X28Y99.CLK     Tah         (-Th)     0.047   receiver/Count<3>
+                                                       receiver/Mcount_Count_eqn_21
+                                                       receiver/Count_2
+    -------------------------------------------------  ---------------------------
+    Total                                      0.598ns (0.139ns logic, 0.459ns route)
+                                                       (23.2% logic, 76.8% route)
+
+--------------------------------------------------------------------------------
+Slack (hold path):      0.495ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               receiver/Count_4 (FF)
+  Destination:          receiver/Count_2 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.771ns (Levels of Logic = 3)
+  Clock Path Skew:      0.276ns (0.842 - 0.566)
+  Source Clock:         Clk_100M_BUFGP rising at 10.000ns
+  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path at Fast Process Corner: receiver/Count_4 to receiver/Count_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X28Y100.AQ     Tcko                  0.141   receiver/Count<7>
+                                                       receiver/Count_4
+    SLICE_X28Y102.B5     net (fanout=3)        0.178   receiver/Count<4>
+    SLICE_X28Y102.B      Tilo                  0.045   receiver/Count<13>
+                                                       receiver/out1
+    SLICE_X28Y101.B4     net (fanout=3)        0.207   receiver/out
+    SLICE_X28Y101.B      Tilo                  0.045   receiver/Count<10>
+                                                       receiver/out3
+    SLICE_X28Y99.C6      net (fanout=17)       0.202   receiver/n0023
+    SLICE_X28Y99.CLK     Tah         (-Th)     0.047   receiver/Count<3>
+                                                       receiver/Mcount_Count_eqn_21
+                                                       receiver/Count_2
+    -------------------------------------------------  ---------------------------
+    Total                                      0.771ns (0.184ns logic, 0.587ns route)
+                                                       (23.9% logic, 76.1% route)
 
 --------------------------------------------------------------------------------
 
@@ -496,7 +557,7 @@ Slack: 9.000ns (period - (min low pulse limit / (low pulse / period)))
   Low pulse limit: 0.500ns (Tcl)
   Physical resource: receiver/tReset/CLK
   Logical resource: receiver/tReset/CK
-  Location pin: SLICE_X1Y86.CLK
+  Location pin: SLICE_X1Y81.CLK
   Clock network: Clk_100M_BUFGP
 --------------------------------------------------------------------------------
 Slack: 9.000ns (period - (min high pulse limit / (high pulse / period)))
@@ -505,7 +566,7 @@ Slack: 9.000ns (period - (min high pulse limit / (high pulse / period)))
   High pulse limit: 0.500ns (Tch)
   Physical resource: receiver/tReset/CLK
   Logical resource: receiver/tReset/CK
-  Location pin: SLICE_X1Y86.CLK
+  Location pin: SLICE_X1Y81.CLK
   Clock network: Clk_100M_BUFGP
 --------------------------------------------------------------------------------
 
@@ -522,7 +583,7 @@ Clock to Setup on destination clock Clk_100M
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-Clk_100M       |    3.572|         |         |         |
+Clk_100M       |    3.294|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
@@ -531,16 +592,16 @@ Timing summary:
 
 Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
 
-Constraints cover 896 paths, 0 nets, and 266 connections
+Constraints cover 842 paths, 0 nets, and 249 connections
 
 Design statistics:
-   Minimum period:   3.572ns{1}   (Maximum frequency: 279.955MHz)
+   Minimum period:   3.294ns{1}   (Maximum frequency: 303.582MHz)
 
 
 ------------------------------------Footnotes-----------------------------------
 1)  The minimum period statistic assumes all single cycle delays.
 
-Analysis completed Mon May 16 21:45:46 2016 
+Analysis completed Mon May 16 23:23:19 2016 
 --------------------------------------------------------------------------------
 
 Trace Settings:
