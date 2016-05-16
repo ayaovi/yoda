@@ -63,11 +63,10 @@ always @(posedge Clk) begin
 		Ready   <= 0;
 		NewData <= 0;
 
-		Count <= 0;
-
-		State <= Idle;
+		Count   <= 0;
+		State   <= Idle;
 		//------------------------------------------------------------------------------
-
+		
 	end else begin
 		if(Ready & tAck) Ready <= 1'b0;	// set to 'low' to indicate busy.
 
@@ -83,6 +82,7 @@ always @(posedge Clk) begin
 					Data    <= Temp;
 					Ready   <= 1'b1;	// set to 'high' to indicate free.
 					NewData <= 1'b0;
+					//Count <= 0;
 				end
 			end
 //------------------------------------------------------------------------------

@@ -28,30 +28,32 @@ module DEA(
 	output reg [7:0]LEDs
 	);
 	
-reg prevBusyState;
-wire Ready;		// so we can read it from submodules.
-wire Ack;
-wire [7:0]Data;
-reg  [7:0]userData;
-reg  tracer;
-initial tracer = 1'b0;
-initial prevBusyState = 1'b0;
+reg 		  prevBusyState;
+wire		  Ready;		// so we can read it from submodules.
+wire 		  Ack;
+wire  [7:0]Data;
+reg   [7:0]userData[0:99];
+reg   [6:0]charCount;
+reg  		  tracer;
+initial    tracer 		 = 1'b0;
+initial    prevBusyState = 1'b0;
 
 always @(posedge Clk_100M) begin
 	if (prevBusyState == 1'b1 && Ready == 1'b1) begin
-		tracer = 1'b1;
-		userData <= Data;
-//		prevBusyState <= !Ready;
+		//	tracer     = 1'b1;
+		userData[99 - charCount]  <= Data;
+		charCount <= charCount + 1'b1;
+		// assign Ready = 1'b0;
 	end
 	prevBusyState <= !Ready;
 end
 
 //	UART_Sender sender(Clk_100M, );
-	UART_Receiver #(14, 14'd10417) receiver(Clk_100M, Reset, Data, Ready, Ack, Rx);
+	UART_Receiver #(14, 14'd9999) receiver(Clk_100M, Reset, Data, Ready, Ack, Rx);
 
 always @(*) begin 
 //	LEDs <= 8'b10101010;
-	LEDs <= Data;
+	LEDs <= userData[97];
 //	LEDs <= tracer;
 end
 
