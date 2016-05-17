@@ -41,41 +41,62 @@ wire  [7:0]Rx_Data;
 
 reg   [7:0]userData[0:99];
 reg   [6:0]charCount;
-//reg  		  tracer;	// solely for debugging
-
 reg   [6:0]currentCharIndex;
 
 reg 		  prevCharBtnPreviousState;
 reg 		  nextCharBtnPreviousState;
-
 wire 		  prevCharBtnNextState;
 wire 		  nextCharBtnNextState;
 
-//initial    tracer 		    = 1'b0;
 initial    prevBusyState    = 1'b0;
-//initial    Rx_Ack 		    = 1'b0;
-//initial    currentCharIndex = 1'b0;
-//initial    softResetReg  = 1'b0;
 
+// Echo the received character
 always @(posedge Clk_100M) begin
 	if(Reset) begin
-		//currentCharIndex <= 1'b0;
+		currentCharIndex <= 1'b0;
 		Rx_Ack  <= 1'b0;
 		//Tx_Data <= 0;
 		//Tx_Send <= 0;
 	end else begin
 		if (prevBusyState & Rx_Ready) begin
-			//	tracer     = 1'b1;
 			userData[99 - charCount]  <= Rx_Data;
 			charCount 					  <= charCount + 1'b1;
 			Rx_Ack  						  <= 1'b1;
-			// softResetReg <= 1'b1;
 		end else if(~Rx_Ready) begin
 			Rx_Ack <= 1'b0;
 		end
 		prevBusyState <= !Rx_Ready;
+		
+		// if btn P17 pressed move/shift left
+		if (prevCharBtnPreviousState == 1'b0 && prevCharBtnNextState == 1'b1) begin
+			prevCharBtnPreviousState <= prevCharBtnNextState;
+			
+			if (currentCharIndex == 0)
+				currentCharIndex <= charCount - 1'b1;
+			else
+				currentCharIndex <= currentCharIndex - 1'b1;
+		end 
+		else
+			prevCharBtnPreviousState <= prevCharBtnNextState;
+		
+		// if btn M17 pressed move/shift right
+		if (nextCharBtnPreviousState == 1'b0 && nextCharBtnNextState == 1'b1) begin
+			nextCharBtnPreviousState <= nextCharBtnNextState;
+			
+			if (currentCharIndex == charCount - 1)
+				currentCharIndex <= 1'b0;
+			else
+				currentCharIndex <= currentCharIndex + 1'b1;
+		end 
+		else
+			nextCharBtnPreviousState <= nextCharBtnNextState;
+		
+
+//		currentCharIndex <= currentCharIndex % charCount;
+				
 	end
 end
+//------------------------------------------------------------------------------
 
 //	UART_Sender #(14, 14'd9999) sender(
 //		Clk_100M, 
@@ -107,34 +128,13 @@ Debounce debounceNextBtn(
 	nextCharBtnNextState
 );
 
-always @(*) begin 
-//	LEDs <= 8'b10101010;
-	if(Reset) begin
-		currentCharIndex <= 1'b0;
-	end else begin
-		if (prevCharBtnPreviousState == 1'b0 && prevCharBtnNextState == 1'b1) begin
-			prevCharBtnPreviousState <= prevCharBtnNextState;
-			currentCharIndex <= currentCharIndex - 1'b1;
-		end else begin
-			prevCharBtnPreviousState <= prevCharBtnNextState;
-		end
-		
-		if (nextCharBtnPreviousState == 1'b0 && nextCharBtnNextState == 1'b1) begin
-			nextCharBtnPreviousState <= nextCharBtnNextState;
-			currentCharIndex <= currentCharIndex + 1'b1;
-		end else begin
-			nextCharBtnPreviousState <= nextCharBtnNextState;
-		end
-		
-		currentCharIndex <= currentCharIndex % charCount;
-	end
+always @(*) begin
+	// displays characters on the LEDs. Characters are shifted using btn P17 and M17
+	// going from left to right and right to left respectively.
+	
+//	LEDs <= currentCharIndex;
 	LEDs <= userData[99-currentCharIndex];
-//	LEDs <= tracer;
+//	LEDs <= userData[97];
 end
 
 endmodule
-
-
-
-
-//if(data == "r") ...

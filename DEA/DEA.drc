@@ -1,21 +1,17 @@
 Release 14.7 Drc P.20131013 (lin64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Tue May 17 13:08:08 2016
+Tue May 17 17:23:59 2016
 
 drc -z DEA.ncd DEA.pcf
 
-WARNING:PhysDesignRules:367 - The signal <nextCharBtn_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <prevCharBtn_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <Mram_userData2_RAMD_O> is incomplete.
    The signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <Mram_userData4_RAMD_O> is incomplete.
    The signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <Mram_userData5_RAMD_O> is incomplete.
-   The signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <Mram_userData1_RAMD_O> is incomplete.
    The signal does not drive any load pins in the design.
-DRC detected 0 errors and 6 warnings.  Please see the previously displayed
+WARNING:PhysDesignRules:367 - The signal <Mram_userData5_RAMD_O> is incomplete.
+   The signal does not drive any load pins in the design.
+DRC detected 0 errors and 4 warnings.  Please see the previously displayed
 individual error or warning messages for more details.

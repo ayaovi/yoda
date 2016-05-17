@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Tue May 17 13:07:25 2016
+// Written by: Map P.20131013 on Tue May 17 17:23:17 2016
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -26,9 +26,9 @@ PIN LEDs_2_OBUF_pins<1> = BEL "LEDs_2_OBUF" PINNAME OUT;
 PIN LEDs_1_OBUF_pins<1> = BEL "LEDs_1_OBUF" PINNAME OUT;
 PIN LEDs_0_OBUF_pins<1> = BEL "LEDs_0_OBUF" PINNAME OUT;
 PIN Reset_pins<0> = BEL "Reset" PINNAME PAD;
-PIN Rx_pins<0> = BEL "Rx" PINNAME PAD;
 PIN prevCharBtn_pins<0> = BEL "prevCharBtn" PINNAME PAD;
 PIN nextCharBtn_pins<0> = BEL "nextCharBtn" PINNAME PAD;
+PIN Rx_pins<0> = BEL "Rx" PINNAME PAD;
 PIN "LEDs_7_OBUF_pins<1>" TIG;
 PIN "LEDs_6_OBUF_pins<1>" TIG;
 PIN "LEDs_5_OBUF_pins<1>" TIG;
@@ -38,8 +38,8 @@ PIN "LEDs_2_OBUF_pins<1>" TIG;
 PIN "LEDs_1_OBUF_pins<1>" TIG;
 PIN "LEDs_0_OBUF_pins<1>" TIG;
 PIN "Reset_pins<0>" TIG;
-PIN "Rx_pins<0>" TIG;
 PIN "prevCharBtn_pins<0>" TIG;
 PIN "nextCharBtn_pins<0>" TIG;
+PIN "Rx_pins<0>" TIG;
 SCHEMATIC END;
 

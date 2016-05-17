@@ -28,19 +28,19 @@ INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on
 Timing constraint: NET "Clk_100M_BUFGP/IBUFG" PERIOD = 10 ns HIGH 5 ns;
 For more information, see Period Analysis in the Timing Closure User Guide (UG612).
 
- 1361 paths analyzed, 399 endpoints analyzed, 0 failing endpoints
+ 2910 paths analyzed, 642 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
- Minimum period is   5.394ns.
+ Minimum period is   3.557ns.
 --------------------------------------------------------------------------------
 
-Paths for end point Mram_userData1_RAMC (SLICE_X10Y98.CI), 1 path
+Paths for end point currentCharIndex_5 (SLICE_X11Y85.B1), 20 paths
 --------------------------------------------------------------------------------
-Slack (setup path):     4.606ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               receiver/Data_2 (FF)
-  Destination:          Mram_userData1_RAMC (RAM)
+Slack (setup path):     6.443ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               debounceNextBtn/NextState (FF)
+  Destination:          currentCharIndex_5 (FF)
   Requirement:          10.000ns
-  Data Path Delay:      5.278ns (Levels of Logic = 0)
-  Clock Path Skew:      -0.081ns (1.157 - 1.238)
+  Data Path Delay:      3.425ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.097ns (0.577 - 0.674)
   Source Clock:         Clk_100M_BUFGP rising at 0.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -51,29 +51,36 @@ Slack (setup path):     4.606ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: receiver/Data_2 to Mram_userData1_RAMC
+  Maximum Data Path at Slow Process Corner: debounceNextBtn/NextState to currentCharIndex_5
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X14Y101.CQ     Tcko                  0.393   receiver/Data<3>
-                                                       receiver/Data_2
-    SLICE_X10Y98.CI      net (fanout=2)        4.639   receiver/Data<2>
-    SLICE_X10Y98.CLK     Tds                   0.246   Mram_userData1_RAMD_O
-                                                       Mram_userData1_RAMC
+    SLICE_X3Y81.AQ       Tcko                  0.341   debounceNextBtn/NextState
+                                                       debounceNextBtn/NextState
+    SLICE_X11Y83.C1      net (fanout=21)       0.983   debounceNextBtn/NextState
+    SLICE_X11Y83.C       Tilo                  0.097   prevCharBtnPreviousState
+                                                       nextCharBtnPreviousState_nextCharBtnNextState_AND_3_o1
+    SLICE_X10Y84.B3      net (fanout=2)        0.465   nextCharBtnPreviousState_nextCharBtnNextState_AND_3_o
+    SLICE_X10Y84.B       Tilo                  0.097   N57
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_A111
+    SLICE_X9Y85.B3       net (fanout=9)        0.660   Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_A11
+    SLICE_X9Y85.B        Tilo                  0.097   N43
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_lut<4>1
+    SLICE_X11Y85.B1      net (fanout=3)        0.620   Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_lut<4>
+    SLICE_X11Y85.CLK     Tas                   0.065   currentCharIndex<6>
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_xor<5>11
+                                                       currentCharIndex_5
     -------------------------------------------------  ---------------------------
-    Total                                      5.278ns (0.639ns logic, 4.639ns route)
-                                                       (12.1% logic, 87.9% route)
+    Total                                      3.425ns (0.697ns logic, 2.728ns route)
+                                                       (20.4% logic, 79.6% route)
 
 --------------------------------------------------------------------------------
-
-Paths for end point receiver/Temp_0 (SLICE_X15Y101.CE), 18 paths
---------------------------------------------------------------------------------
-Slack (setup path):     6.395ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               receiver/Count_7 (FF)
-  Destination:          receiver/Temp_0 (FF)
+Slack (setup path):     6.536ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               nextCharBtnPreviousState (FF)
+  Destination:          currentCharIndex_5 (FF)
   Requirement:          10.000ns
-  Data Path Delay:      3.535ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.035ns (0.581 - 0.616)
+  Data Path Delay:      3.389ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.040ns (0.577 - 0.617)
   Source Clock:         Clk_100M_BUFGP rising at 0.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -84,35 +91,36 @@ Slack (setup path):     6.395ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: receiver/Count_7 to receiver/Temp_0
+  Maximum Data Path at Slow Process Corner: nextCharBtnPreviousState to currentCharIndex_5
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X39Y106.DQ     Tcko                  0.341   receiver/Count<7>
-                                                       receiver/Count_7
-    SLICE_X39Y107.A1     net (fanout=3)        0.612   receiver/Count<7>
-    SLICE_X39Y107.A      Tilo                  0.097   receiver/out
-                                                       receiver/out1
-    SLICE_X39Y105.D1     net (fanout=2)        0.609   receiver/out
-    SLICE_X39Y105.D      Tilo                  0.097   receiver/Count<11>
-                                                       receiver/out3
-    SLICE_X32Y103.B1     net (fanout=17)       0.880   receiver/n0024
-    SLICE_X32Y103.BMUX   Tilo                  0.251   receiver/Ready
-                                                       receiver/_n0119_inv1
-    SLICE_X15Y101.CE     net (fanout=2)        0.498   receiver/_n0119_inv
-    SLICE_X15Y101.CLK    Tceck                 0.150   receiver/Temp<3>
-                                                       receiver/Temp_0
+    SLICE_X12Y85.BQ      Tcko                  0.393   nextCharBtnPreviousState
+                                                       nextCharBtnPreviousState
+    SLICE_X11Y83.C2      net (fanout=19)       0.895   nextCharBtnPreviousState
+    SLICE_X11Y83.C       Tilo                  0.097   prevCharBtnPreviousState
+                                                       nextCharBtnPreviousState_nextCharBtnNextState_AND_3_o1
+    SLICE_X10Y84.B3      net (fanout=2)        0.465   nextCharBtnPreviousState_nextCharBtnNextState_AND_3_o
+    SLICE_X10Y84.B       Tilo                  0.097   N57
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_A111
+    SLICE_X9Y85.B3       net (fanout=9)        0.660   Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_A11
+    SLICE_X9Y85.B        Tilo                  0.097   N43
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_lut<4>1
+    SLICE_X11Y85.B1      net (fanout=3)        0.620   Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_lut<4>
+    SLICE_X11Y85.CLK     Tas                   0.065   currentCharIndex<6>
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_xor<5>11
+                                                       currentCharIndex_5
     -------------------------------------------------  ---------------------------
-    Total                                      3.535ns (0.936ns logic, 2.599ns route)
-                                                       (26.5% logic, 73.5% route)
+    Total                                      3.389ns (0.749ns logic, 2.640ns route)
+                                                       (22.1% logic, 77.9% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     6.401ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               receiver/Count_5 (FF)
-  Destination:          receiver/Temp_0 (FF)
+Slack (setup path):     6.696ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               currentCharIndex_0 (FF)
+  Destination:          currentCharIndex_5 (FF)
   Requirement:          10.000ns
-  Data Path Delay:      3.529ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.035ns (0.581 - 0.616)
+  Data Path Delay:      3.247ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.022ns (0.107 - 0.129)
   Source Clock:         Clk_100M_BUFGP rising at 0.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -123,35 +131,39 @@ Slack (setup path):     6.401ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: receiver/Count_5 to receiver/Temp_0
+  Maximum Data Path at Slow Process Corner: currentCharIndex_0 to currentCharIndex_5
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X39Y106.BQ     Tcko                  0.341   receiver/Count<7>
-                                                       receiver/Count_5
-    SLICE_X39Y107.A2     net (fanout=3)        0.606   receiver/Count<5>
-    SLICE_X39Y107.A      Tilo                  0.097   receiver/out
-                                                       receiver/out1
-    SLICE_X39Y105.D1     net (fanout=2)        0.609   receiver/out
-    SLICE_X39Y105.D      Tilo                  0.097   receiver/Count<11>
-                                                       receiver/out3
-    SLICE_X32Y103.B1     net (fanout=17)       0.880   receiver/n0024
-    SLICE_X32Y103.BMUX   Tilo                  0.251   receiver/Ready
-                                                       receiver/_n0119_inv1
-    SLICE_X15Y101.CE     net (fanout=2)        0.498   receiver/_n0119_inv
-    SLICE_X15Y101.CLK    Tceck                 0.150   receiver/Temp<3>
-                                                       receiver/Temp_0
+    SLICE_X10Y83.AQ      Tcko                  0.393   currentCharIndex<2>
+                                                       currentCharIndex_0
+    SLICE_X11Y84.D1      net (fanout=11)       0.633   currentCharIndex<0>
+    SLICE_X11Y84.D       Tilo                  0.097   currentCharIndex<4>
+                                                       GND_1_o_GND_1_o_equal_8_o<6>_SW1
+    SLICE_X10Y84.B2      net (fanout=1)        0.585   N47
+    SLICE_X10Y84.B       Tilo                  0.097   N57
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_A111
+    SLICE_X9Y85.B3       net (fanout=9)        0.660   Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_A11
+    SLICE_X9Y85.B        Tilo                  0.097   N43
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_lut<4>1
+    SLICE_X11Y85.B1      net (fanout=3)        0.620   Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_lut<4>
+    SLICE_X11Y85.CLK     Tas                   0.065   currentCharIndex<6>
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_xor<5>11
+                                                       currentCharIndex_5
     -------------------------------------------------  ---------------------------
-    Total                                      3.529ns (0.936ns logic, 2.593ns route)
-                                                       (26.5% logic, 73.5% route)
+    Total                                      3.247ns (0.749ns logic, 2.498ns route)
+                                                       (23.1% logic, 76.9% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     6.535ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               receiver/Count_8 (FF)
-  Destination:          receiver/Temp_0 (FF)
+
+Paths for end point currentCharIndex_6 (SLICE_X11Y85.C5), 64 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     6.479ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               debounceNextBtn/NextState (FF)
+  Destination:          currentCharIndex_6 (FF)
   Requirement:          10.000ns
-  Data Path Delay:      3.394ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.036ns (0.581 - 0.617)
+  Data Path Delay:      3.389ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.097ns (0.577 - 0.674)
   Source Clock:         Clk_100M_BUFGP rising at 0.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -162,38 +174,39 @@ Slack (setup path):     6.535ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: receiver/Count_8 to receiver/Temp_0
+  Maximum Data Path at Slow Process Corner: debounceNextBtn/NextState to currentCharIndex_6
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X39Y105.AQ     Tcko                  0.341   receiver/Count<11>
-                                                       receiver/Count_8
-    SLICE_X39Y107.A3     net (fanout=3)        0.471   receiver/Count<8>
-    SLICE_X39Y107.A      Tilo                  0.097   receiver/out
-                                                       receiver/out1
-    SLICE_X39Y105.D1     net (fanout=2)        0.609   receiver/out
-    SLICE_X39Y105.D      Tilo                  0.097   receiver/Count<11>
-                                                       receiver/out3
-    SLICE_X32Y103.B1     net (fanout=17)       0.880   receiver/n0024
-    SLICE_X32Y103.BMUX   Tilo                  0.251   receiver/Ready
-                                                       receiver/_n0119_inv1
-    SLICE_X15Y101.CE     net (fanout=2)        0.498   receiver/_n0119_inv
-    SLICE_X15Y101.CLK    Tceck                 0.150   receiver/Temp<3>
-                                                       receiver/Temp_0
+    SLICE_X3Y81.AQ       Tcko                  0.341   debounceNextBtn/NextState
+                                                       debounceNextBtn/NextState
+    SLICE_X11Y83.C1      net (fanout=21)       0.983   debounceNextBtn/NextState
+    SLICE_X11Y83.C       Tilo                  0.097   prevCharBtnPreviousState
+                                                       nextCharBtnPreviousState_nextCharBtnNextState_AND_3_o1
+    SLICE_X10Y84.B3      net (fanout=2)        0.465   nextCharBtnPreviousState_nextCharBtnNextState_AND_3_o
+    SLICE_X10Y84.B       Tilo                  0.097   N57
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_A111
+    SLICE_X11Y84.C3      net (fanout=9)        0.546   Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_A11
+    SLICE_X11Y84.C       Tilo                  0.097   currentCharIndex<4>
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_cy<2>11
+    SLICE_X11Y85.D4      net (fanout=4)        0.427   Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_cy<2>1
+    SLICE_X11Y85.D       Tilo                  0.097   currentCharIndex<6>
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_xor<6>11_SW0
+    SLICE_X11Y85.C5      net (fanout=1)        0.174   N59
+    SLICE_X11Y85.CLK     Tas                   0.065   currentCharIndex<6>
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_xor<6>11
+                                                       currentCharIndex_6
     -------------------------------------------------  ---------------------------
-    Total                                      3.394ns (0.936ns logic, 2.458ns route)
-                                                       (27.6% logic, 72.4% route)
+    Total                                      3.389ns (0.794ns logic, 2.595ns route)
+                                                       (23.4% logic, 76.6% route)
 
 --------------------------------------------------------------------------------
-
-Paths for end point receiver/Temp_1 (SLICE_X15Y101.CE), 18 paths
---------------------------------------------------------------------------------
-Slack (setup path):     6.395ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               receiver/Count_7 (FF)
-  Destination:          receiver/Temp_1 (FF)
+Slack (setup path):     6.488ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               debounceNextBtn/NextState (FF)
+  Destination:          currentCharIndex_6 (FF)
   Requirement:          10.000ns
-  Data Path Delay:      3.535ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.035ns (0.581 - 0.616)
+  Data Path Delay:      3.380ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.097ns (0.577 - 0.674)
   Source Clock:         Clk_100M_BUFGP rising at 0.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -204,35 +217,39 @@ Slack (setup path):     6.395ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: receiver/Count_7 to receiver/Temp_1
+  Maximum Data Path at Slow Process Corner: debounceNextBtn/NextState to currentCharIndex_6
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X39Y106.DQ     Tcko                  0.341   receiver/Count<7>
-                                                       receiver/Count_7
-    SLICE_X39Y107.A1     net (fanout=3)        0.612   receiver/Count<7>
-    SLICE_X39Y107.A      Tilo                  0.097   receiver/out
-                                                       receiver/out1
-    SLICE_X39Y105.D1     net (fanout=2)        0.609   receiver/out
-    SLICE_X39Y105.D      Tilo                  0.097   receiver/Count<11>
-                                                       receiver/out3
-    SLICE_X32Y103.B1     net (fanout=17)       0.880   receiver/n0024
-    SLICE_X32Y103.BMUX   Tilo                  0.251   receiver/Ready
-                                                       receiver/_n0119_inv1
-    SLICE_X15Y101.CE     net (fanout=2)        0.498   receiver/_n0119_inv
-    SLICE_X15Y101.CLK    Tceck                 0.150   receiver/Temp<3>
-                                                       receiver/Temp_1
+    SLICE_X3Y81.AQ       Tcko                  0.341   debounceNextBtn/NextState
+                                                       debounceNextBtn/NextState
+    SLICE_X11Y83.C1      net (fanout=21)       0.983   debounceNextBtn/NextState
+    SLICE_X11Y83.C       Tilo                  0.097   prevCharBtnPreviousState
+                                                       nextCharBtnPreviousState_nextCharBtnNextState_AND_3_o1
+    SLICE_X10Y84.B3      net (fanout=2)        0.465   nextCharBtnPreviousState_nextCharBtnNextState_AND_3_o
+    SLICE_X10Y84.B       Tilo                  0.097   N57
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_A111
+    SLICE_X10Y84.A4      net (fanout=9)        0.345   Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_A11
+    SLICE_X10Y84.A       Tilo                  0.097   N57
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_lut<3>1
+    SLICE_X11Y85.D1      net (fanout=4)        0.619   Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_lut<3>
+    SLICE_X11Y85.D       Tilo                  0.097   currentCharIndex<6>
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_xor<6>11_SW0
+    SLICE_X11Y85.C5      net (fanout=1)        0.174   N59
+    SLICE_X11Y85.CLK     Tas                   0.065   currentCharIndex<6>
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_xor<6>11
+                                                       currentCharIndex_6
     -------------------------------------------------  ---------------------------
-    Total                                      3.535ns (0.936ns logic, 2.599ns route)
-                                                       (26.5% logic, 73.5% route)
+    Total                                      3.380ns (0.794ns logic, 2.586ns route)
+                                                       (23.5% logic, 76.5% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     6.401ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               receiver/Count_5 (FF)
-  Destination:          receiver/Temp_1 (FF)
+Slack (setup path):     6.572ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               nextCharBtnPreviousState (FF)
+  Destination:          currentCharIndex_6 (FF)
   Requirement:          10.000ns
-  Data Path Delay:      3.529ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.035ns (0.581 - 0.616)
+  Data Path Delay:      3.353ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.040ns (0.577 - 0.617)
   Source Clock:         Clk_100M_BUFGP rising at 0.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -243,35 +260,42 @@ Slack (setup path):     6.401ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: receiver/Count_5 to receiver/Temp_1
+  Maximum Data Path at Slow Process Corner: nextCharBtnPreviousState to currentCharIndex_6
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X39Y106.BQ     Tcko                  0.341   receiver/Count<7>
-                                                       receiver/Count_5
-    SLICE_X39Y107.A2     net (fanout=3)        0.606   receiver/Count<5>
-    SLICE_X39Y107.A      Tilo                  0.097   receiver/out
-                                                       receiver/out1
-    SLICE_X39Y105.D1     net (fanout=2)        0.609   receiver/out
-    SLICE_X39Y105.D      Tilo                  0.097   receiver/Count<11>
-                                                       receiver/out3
-    SLICE_X32Y103.B1     net (fanout=17)       0.880   receiver/n0024
-    SLICE_X32Y103.BMUX   Tilo                  0.251   receiver/Ready
-                                                       receiver/_n0119_inv1
-    SLICE_X15Y101.CE     net (fanout=2)        0.498   receiver/_n0119_inv
-    SLICE_X15Y101.CLK    Tceck                 0.150   receiver/Temp<3>
-                                                       receiver/Temp_1
+    SLICE_X12Y85.BQ      Tcko                  0.393   nextCharBtnPreviousState
+                                                       nextCharBtnPreviousState
+    SLICE_X11Y83.C2      net (fanout=19)       0.895   nextCharBtnPreviousState
+    SLICE_X11Y83.C       Tilo                  0.097   prevCharBtnPreviousState
+                                                       nextCharBtnPreviousState_nextCharBtnNextState_AND_3_o1
+    SLICE_X10Y84.B3      net (fanout=2)        0.465   nextCharBtnPreviousState_nextCharBtnNextState_AND_3_o
+    SLICE_X10Y84.B       Tilo                  0.097   N57
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_A111
+    SLICE_X11Y84.C3      net (fanout=9)        0.546   Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_A11
+    SLICE_X11Y84.C       Tilo                  0.097   currentCharIndex<4>
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_cy<2>11
+    SLICE_X11Y85.D4      net (fanout=4)        0.427   Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_cy<2>1
+    SLICE_X11Y85.D       Tilo                  0.097   currentCharIndex<6>
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_xor<6>11_SW0
+    SLICE_X11Y85.C5      net (fanout=1)        0.174   N59
+    SLICE_X11Y85.CLK     Tas                   0.065   currentCharIndex<6>
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_xor<6>11
+                                                       currentCharIndex_6
     -------------------------------------------------  ---------------------------
-    Total                                      3.529ns (0.936ns logic, 2.593ns route)
-                                                       (26.5% logic, 73.5% route)
+    Total                                      3.353ns (0.846ns logic, 2.507ns route)
+                                                       (25.2% logic, 74.8% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     6.535ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               receiver/Count_8 (FF)
-  Destination:          receiver/Temp_1 (FF)
+
+Paths for end point currentCharIndex_2 (SLICE_X10Y83.D2), 20 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     6.540ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               debounceNextBtn/NextState (FF)
+  Destination:          currentCharIndex_2 (FF)
   Requirement:          10.000ns
-  Data Path Delay:      3.394ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.036ns (0.581 - 0.617)
+  Data Path Delay:      3.327ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.098ns (0.576 - 0.674)
   Source Clock:         Clk_100M_BUFGP rising at 0.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -282,111 +306,194 @@ Slack (setup path):     6.535ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: receiver/Count_8 to receiver/Temp_1
+  Maximum Data Path at Slow Process Corner: debounceNextBtn/NextState to currentCharIndex_2
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X39Y105.AQ     Tcko                  0.341   receiver/Count<11>
-                                                       receiver/Count_8
-    SLICE_X39Y107.A3     net (fanout=3)        0.471   receiver/Count<8>
-    SLICE_X39Y107.A      Tilo                  0.097   receiver/out
-                                                       receiver/out1
-    SLICE_X39Y105.D1     net (fanout=2)        0.609   receiver/out
-    SLICE_X39Y105.D      Tilo                  0.097   receiver/Count<11>
-                                                       receiver/out3
-    SLICE_X32Y103.B1     net (fanout=17)       0.880   receiver/n0024
-    SLICE_X32Y103.BMUX   Tilo                  0.251   receiver/Ready
-                                                       receiver/_n0119_inv1
-    SLICE_X15Y101.CE     net (fanout=2)        0.498   receiver/_n0119_inv
-    SLICE_X15Y101.CLK    Tceck                 0.150   receiver/Temp<3>
-                                                       receiver/Temp_1
+    SLICE_X3Y81.AQ       Tcko                  0.341   debounceNextBtn/NextState
+                                                       debounceNextBtn/NextState
+    SLICE_X11Y83.C1      net (fanout=21)       0.983   debounceNextBtn/NextState
+    SLICE_X11Y83.C       Tilo                  0.097   prevCharBtnPreviousState
+                                                       nextCharBtnPreviousState_nextCharBtnNextState_AND_3_o1
+    SLICE_X10Y84.B3      net (fanout=2)        0.465   nextCharBtnPreviousState_nextCharBtnNextState_AND_3_o
+    SLICE_X10Y84.B       Tilo                  0.097   N57
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_A111
+    SLICE_X11Y83.A1      net (fanout=9)        0.627   Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_A11
+    SLICE_X11Y83.A       Tilo                  0.097   prevCharBtnPreviousState
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_A21
+    SLICE_X10Y83.D2      net (fanout=1)        0.593   Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_A<1>
+    SLICE_X10Y83.CLK     Tas                   0.027   currentCharIndex<2>
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_xor<2>11
+                                                       currentCharIndex_2
     -------------------------------------------------  ---------------------------
-    Total                                      3.394ns (0.936ns logic, 2.458ns route)
-                                                       (27.6% logic, 72.4% route)
+    Total                                      3.327ns (0.659ns logic, 2.668ns route)
+                                                       (19.8% logic, 80.2% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     6.633ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               nextCharBtnPreviousState (FF)
+  Destination:          currentCharIndex_2 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      3.291ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.041ns (0.576 - 0.617)
+  Source Clock:         Clk_100M_BUFGP rising at 0.000ns
+  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: nextCharBtnPreviousState to currentCharIndex_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X12Y85.BQ      Tcko                  0.393   nextCharBtnPreviousState
+                                                       nextCharBtnPreviousState
+    SLICE_X11Y83.C2      net (fanout=19)       0.895   nextCharBtnPreviousState
+    SLICE_X11Y83.C       Tilo                  0.097   prevCharBtnPreviousState
+                                                       nextCharBtnPreviousState_nextCharBtnNextState_AND_3_o1
+    SLICE_X10Y84.B3      net (fanout=2)        0.465   nextCharBtnPreviousState_nextCharBtnNextState_AND_3_o
+    SLICE_X10Y84.B       Tilo                  0.097   N57
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_A111
+    SLICE_X11Y83.A1      net (fanout=9)        0.627   Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_A11
+    SLICE_X11Y83.A       Tilo                  0.097   prevCharBtnPreviousState
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_A21
+    SLICE_X10Y83.D2      net (fanout=1)        0.593   Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_A<1>
+    SLICE_X10Y83.CLK     Tas                   0.027   currentCharIndex<2>
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_xor<2>11
+                                                       currentCharIndex_2
+    -------------------------------------------------  ---------------------------
+    Total                                      3.291ns (0.711ns logic, 2.580ns route)
+                                                       (21.6% logic, 78.4% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     6.816ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               currentCharIndex_0 (FF)
+  Destination:          currentCharIndex_2 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      3.149ns (Levels of Logic = 4)
+  Clock Path Skew:      0.000ns
+  Source Clock:         Clk_100M_BUFGP rising at 0.000ns
+  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: currentCharIndex_0 to currentCharIndex_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X10Y83.AQ      Tcko                  0.393   currentCharIndex<2>
+                                                       currentCharIndex_0
+    SLICE_X11Y84.D1      net (fanout=11)       0.633   currentCharIndex<0>
+    SLICE_X11Y84.D       Tilo                  0.097   currentCharIndex<4>
+                                                       GND_1_o_GND_1_o_equal_8_o<6>_SW1
+    SLICE_X10Y84.B2      net (fanout=1)        0.585   N47
+    SLICE_X10Y84.B       Tilo                  0.097   N57
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_A111
+    SLICE_X11Y83.A1      net (fanout=9)        0.627   Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_A11
+    SLICE_X11Y83.A       Tilo                  0.097   prevCharBtnPreviousState
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_A21
+    SLICE_X10Y83.D2      net (fanout=1)        0.593   Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_A<1>
+    SLICE_X10Y83.CLK     Tas                   0.027   currentCharIndex<2>
+                                                       Mmux_currentCharIndex[6]_currentCharIndex[6]_mux_18_OUT_rs_xor<2>11
+                                                       currentCharIndex_2
+    -------------------------------------------------  ---------------------------
+    Total                                      3.149ns (0.711ns logic, 2.438ns route)
+                                                       (22.6% logic, 77.4% route)
 
 --------------------------------------------------------------------------------
 
 Hold Paths: NET "Clk_100M_BUFGP/IBUFG" PERIOD = 10 ns HIGH 5 ns;
 --------------------------------------------------------------------------------
 
-Paths for end point Mram_userData4_RAMA (SLICE_X8Y98.AI), 1 path
+Paths for end point Mram_userData1_RAMC (SLICE_X12Y88.CI), 1 path
 --------------------------------------------------------------------------------
-Slack (hold path):      0.019ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               receiver/Data_0 (FF)
-  Destination:          Mram_userData4_RAMA (RAM)
+Slack (hold path):      0.109ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               receiver/Data_2 (FF)
+  Destination:          Mram_userData1_RAMC (RAM)
   Requirement:          0.000ns
-  Data Path Delay:      0.296ns (Levels of Logic = 0)
-  Clock Path Skew:      0.277ns (0.846 - 0.569)
+  Data Path Delay:      0.125ns (Levels of Logic = 0)
+  Clock Path Skew:      0.016ns (0.085 - 0.069)
   Source Clock:         Clk_100M_BUFGP rising at 10.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.000ns
 
-  Minimum Data Path at Fast Process Corner: receiver/Data_0 to Mram_userData4_RAMA
+  Minimum Data Path at Fast Process Corner: receiver/Data_2 to Mram_userData1_RAMC
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X14Y101.AQ     Tcko                  0.164   receiver/Data<3>
-                                                       receiver/Data_0
-    SLICE_X8Y98.AI       net (fanout=2)        0.279   receiver/Data<0>
-    SLICE_X8Y98.CLK      Tdh         (-Th)     0.147   Mram_userData4_RAMD_O
-                                                       Mram_userData4_RAMA
+    SLICE_X14Y89.CQ      Tcko                  0.164   receiver/Data<3>
+                                                       receiver/Data_2
+    SLICE_X12Y88.CI      net (fanout=2)        0.105   receiver/Data<2>
+    SLICE_X12Y88.CLK     Tdh         (-Th)     0.144   Mram_userData1_RAMD_O
+                                                       Mram_userData1_RAMC
     -------------------------------------------------  ---------------------------
-    Total                                      0.296ns (0.017ns logic, 0.279ns route)
-                                                       (5.7% logic, 94.3% route)
+    Total                                      0.125ns (0.020ns logic, 0.105ns route)
+                                                       (16.0% logic, 84.0% route)
 
 --------------------------------------------------------------------------------
 
-Paths for end point Mram_userData4_RAMB (SLICE_X8Y98.BI), 1 path
+Paths for end point receiver/BitCount_2 (SLICE_X43Y101.C6), 1 path
 --------------------------------------------------------------------------------
-Slack (hold path):      0.020ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               receiver/Data_1 (FF)
-  Destination:          Mram_userData4_RAMB (RAM)
+Slack (hold path):      0.130ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               receiver/State_FSM_FFd2 (FF)
+  Destination:          receiver/BitCount_2 (FF)
   Requirement:          0.000ns
-  Data Path Delay:      0.297ns (Levels of Logic = 0)
-  Clock Path Skew:      0.277ns (0.846 - 0.569)
+  Data Path Delay:      0.394ns (Levels of Logic = 1)
+  Clock Path Skew:      0.264ns (0.832 - 0.568)
   Source Clock:         Clk_100M_BUFGP rising at 10.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.000ns
 
-  Minimum Data Path at Fast Process Corner: receiver/Data_1 to Mram_userData4_RAMB
+  Minimum Data Path at Fast Process Corner: receiver/State_FSM_FFd2 to receiver/BitCount_2
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X14Y101.BQ     Tcko                  0.164   receiver/Data<3>
-                                                       receiver/Data_1
-    SLICE_X8Y98.BI       net (fanout=2)        0.279   receiver/Data<1>
-    SLICE_X8Y98.CLK      Tdh         (-Th)     0.146   Mram_userData4_RAMD_O
-                                                       Mram_userData4_RAMB
+    SLICE_X39Y97.BQ      Tcko                  0.141   receiver/State_FSM_FFd2
+                                                       receiver/State_FSM_FFd2
+    SLICE_X43Y101.C6     net (fanout=11)       0.300   receiver/State_FSM_FFd2
+    SLICE_X43Y101.CLK    Tah         (-Th)     0.047   receiver/BitCount<2>
+                                                       receiver/State[1]_GND_2_o_select_23_OUT<2>1
+                                                       receiver/BitCount_2
     -------------------------------------------------  ---------------------------
-    Total                                      0.297ns (0.018ns logic, 0.279ns route)
-                                                       (6.1% logic, 93.9% route)
+    Total                                      0.394ns (0.094ns logic, 0.300ns route)
+                                                       (23.9% logic, 76.1% route)
 
 --------------------------------------------------------------------------------
 
-Paths for end point Mram_userData31/DP (SLICE_X8Y95.D3), 1 path
+Paths for end point receiver/BitCount_2 (SLICE_X43Y101.C4), 1 path
 --------------------------------------------------------------------------------
-Slack (hold path):      0.021ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               charCount_2 (FF)
-  Destination:          Mram_userData31/DP (RAM)
+Slack (hold path):      0.145ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               receiver/State_FSM_FFd1 (FF)
+  Destination:          receiver/BitCount_2 (FF)
   Requirement:          0.000ns
-  Data Path Delay:      0.297ns (Levels of Logic = 0)
-  Clock Path Skew:      0.276ns (0.845 - 0.569)
+  Data Path Delay:      0.409ns (Levels of Logic = 1)
+  Clock Path Skew:      0.264ns (0.832 - 0.568)
   Source Clock:         Clk_100M_BUFGP rising at 10.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.000ns
 
-  Minimum Data Path at Fast Process Corner: charCount_2 to Mram_userData31/DP
+  Minimum Data Path at Fast Process Corner: receiver/State_FSM_FFd1 to receiver/BitCount_2
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X11Y101.CQ     Tcko                  0.141   charCount<2>
-                                                       charCount_2
-    SLICE_X8Y95.D3       net (fanout=27)       0.410   charCount<2>
-    SLICE_X8Y95.CLK      Tah         (-Th)     0.254   N19
-                                                       Mram_userData31/DP
+    SLICE_X39Y97.AQ      Tcko                  0.141   receiver/State_FSM_FFd2
+                                                       receiver/State_FSM_FFd1
+    SLICE_X43Y101.C4     net (fanout=11)       0.315   receiver/State_FSM_FFd1
+    SLICE_X43Y101.CLK    Tah         (-Th)     0.047   receiver/BitCount<2>
+                                                       receiver/State[1]_GND_2_o_select_23_OUT<2>1
+                                                       receiver/BitCount_2
     -------------------------------------------------  ---------------------------
-    Total                                      0.297ns (-0.113ns logic, 0.410ns route)
-                                                       (-38.0% logic, 138.0% route)
+    Total                                      0.409ns (0.094ns logic, 0.315ns route)
+                                                       (23.0% logic, 77.0% route)
 
 --------------------------------------------------------------------------------
 
@@ -396,27 +503,27 @@ Slack: 7.900ns (period - (min low pulse limit / (low pulse / period)))
   Period: 10.000ns
   Low pulse: 5.000ns
   Low pulse limit: 1.050ns (Tmpw)
-  Physical resource: N19/CLK
-  Logical resource: Mram_userData31/DP/CLK
-  Location pin: SLICE_X8Y95.CLK
+  Physical resource: Mram_userData2_RAMD_O/CLK
+  Logical resource: Mram_userData2_RAMA/CLK
+  Location pin: SLICE_X12Y84.CLK
   Clock network: Clk_100M_BUFGP
 --------------------------------------------------------------------------------
 Slack: 7.900ns (period - (min high pulse limit / (high pulse / period)))
   Period: 10.000ns
   High pulse: 5.000ns
   High pulse limit: 1.050ns (Tmpw)
-  Physical resource: N19/CLK
-  Logical resource: Mram_userData31/DP/CLK
-  Location pin: SLICE_X8Y95.CLK
+  Physical resource: Mram_userData2_RAMD_O/CLK
+  Logical resource: Mram_userData2_RAMA/CLK
+  Location pin: SLICE_X12Y84.CLK
   Clock network: Clk_100M_BUFGP
 --------------------------------------------------------------------------------
 Slack: 7.900ns (period - (min low pulse limit / (low pulse / period)))
   Period: 10.000ns
   Low pulse: 5.000ns
   Low pulse limit: 1.050ns (Tmpw)
-  Physical resource: N19/CLK
-  Logical resource: Mram_userData32/DP/CLK
-  Location pin: SLICE_X8Y95.CLK
+  Physical resource: Mram_userData2_RAMD_O/CLK
+  Logical resource: Mram_userData2_RAMB/CLK
+  Location pin: SLICE_X12Y84.CLK
   Clock network: Clk_100M_BUFGP
 --------------------------------------------------------------------------------
 
@@ -433,7 +540,7 @@ Clock to Setup on destination clock Clk_100M
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-Clk_100M       |    5.394|         |         |         |
+Clk_100M       |    3.557|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
@@ -442,23 +549,23 @@ Timing summary:
 
 Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
 
-Constraints cover 1361 paths, 0 nets, and 331 connections
+Constraints cover 2910 paths, 0 nets, and 682 connections
 
 Design statistics:
-   Minimum period:   5.394ns{1}   (Maximum frequency: 185.391MHz)
+   Minimum period:   3.557ns{1}   (Maximum frequency: 281.136MHz)
 
 
 ------------------------------------Footnotes-----------------------------------
 1)  The minimum period statistic assumes all single cycle delays.
 
-Analysis completed Tue May 17 13:07:59 2016 
+Analysis completed Tue May 17 17:23:51 2016 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 773 MB
+Peak Memory Usage: 774 MB
 
 
 
