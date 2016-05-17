@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total CPU time to Xst completion: 0.05 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total CPU time to Xst completion: 0.05 secs
  
 --> 
 Reading design: DEA.prj
@@ -110,6 +110,8 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 Analyzing Verilog file "/home/bluelabuser/temp/yoda/DEA/UART_Receiver.v" into library work
 Parsing module <UART_Receiver>.
+Analyzing Verilog file "/home/bluelabuser/temp/yoda/DEA/Debounce.v" into library work
+Parsing module <Debounce>.
 Analyzing Verilog file "/home/bluelabuser/temp/yoda/DEA/DEA.v" into library work
 Parsing module <DEA>.
 
@@ -118,11 +120,12 @@ Parsing module <DEA>.
 =========================================================================
 
 Elaborating module <DEA>.
-WARNING:HDLCompiler:1127 - "/home/bluelabuser/temp/yoda/DEA/DEA.v" Line 34: Assignment to softReset ignored, since the identifier is never used
 
 Elaborating module <UART_Receiver(N=14,Full=14'b10011100001111)>.
-WARNING:HDLCompiler:634 - "/home/bluelabuser/temp/yoda/DEA/DEA.v" Line 36: Net <Ack> does not have a driver.
-WARNING:HDLCompiler:634 - "/home/bluelabuser/temp/yoda/DEA/DEA.v" Line 57: Net <softRest> does not have a driver.
+
+Elaborating module <Debounce>.
+WARNING:Xst:2972 - "/home/bluelabuser/temp/yoda/DEA/DEA.v" line 98. All outputs of instance <debouncePrevBtn> of block <Debounce> are unconnected in block <DEA>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/bluelabuser/temp/yoda/DEA/DEA.v" line 104. All outputs of instance <debounceNextBtn> of block <Debounce> are unconnected in block <DEA>. Underlying logic will be removed.
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -130,25 +133,37 @@ WARNING:HDLCompiler:634 - "/home/bluelabuser/temp/yoda/DEA/DEA.v" Line 57: Net <
 
 Synthesizing Unit <DEA>.
     Related source file is "/home/bluelabuser/temp/yoda/DEA/DEA.v".
-WARNING:Xst:653 - Signal <Ack> is used but never assigned. This sourceless signal will be automatically connected to value GND.
-WARNING:Xst:653 - Signal <softRest> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+INFO:Xst:3210 - "/home/bluelabuser/temp/yoda/DEA/DEA.v" line 98: Output port <NextState> of the instance <debouncePrevBtn> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/bluelabuser/temp/yoda/DEA/DEA.v" line 104: Output port <NextState> of the instance <debounceNextBtn> is unconnected or connected to loadless signal.
+WARNING:Xst:3035 - Index value(s) does not match array range for signal <userData>, simulation mismatch.
+    Found 100x8-bit dual-port RAM <Mram_userData> for signal <userData>.
     Found 7-bit register for signal <charCount>.
     Found 1-bit register for signal <prevBusyState>.
-    Found 800-bit register for signal <n0217[799:0]>.
-    Found 8-bit subtractor for signal <GND_1_o_GND_1_o_sub_4_OUT> created at line 48.
-    Found 7-bit adder for signal <charCount[6]_GND_1_o_add_106_OUT> created at line 49.
-    Found 32-bit comparator lessequal for signal <n0004> created at line 48
+    Found 1-bit register for signal <Rx_Ack>.
+    Found 7-bit adder for signal <charCount[6]_GND_1_o_add_3_OUT> created at line 70.
+    Found 7-bit subtractor for signal <GND_1_o_GND_1_o_sub_2_OUT<6:0>> created at line 69.
+    Found 7-bit subtractor for signal <GND_1_o_GND_1_o_sub_17_OUT<6:0>> created at line 130.
+WARNING:Xst:737 - Found 1-bit latch for signal <LEDs<7>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <LEDs<6>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <LEDs<5>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <LEDs<4>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <LEDs<3>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <LEDs<2>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <LEDs<1>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <LEDs<0>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
     Summary:
-	inferred   2 Adder/Subtractor(s).
-	inferred 808 D-type flip-flop(s).
-	inferred   1 Comparator(s).
-	inferred 100 Multiplexer(s).
+	inferred   1 RAM(s).
+	inferred   3 Adder/Subtractor(s).
+	inferred   9 D-type flip-flop(s).
+	inferred   8 Latch(s).
+	inferred   2 Multiplexer(s).
 Unit <DEA> synthesized.
 
 Synthesizing Unit <UART_Receiver>.
     Related source file is "/home/bluelabuser/temp/yoda/DEA/UART_Receiver.v".
         N = 14
         Full = 14'b10011100001111
+    Found 1-bit register for signal <tAck>.
     Found 1-bit register for signal <tReset>.
     Found 8-bit register for signal <Data>.
     Found 1-bit register for signal <Ready>.
@@ -165,44 +180,93 @@ Synthesizing Unit <UART_Receiver>.
     | Inputs             | 6                                              |
     | Outputs            | 4                                              |
     | Clock              | Clk (rising_edge)                              |
-    | Reset              | tReset (positive)                              |
+    | Reset              | tReset_Ack_OR_1_o (positive)                   |
     | Reset type         | synchronous                                    |
     | Reset State        | 00                                             |
     | Encoding           | auto                                           |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-    Found 14-bit subtractor for signal <Count[13]_GND_2_o_sub_26_OUT> created at line 127.
-    Found 3-bit adder for signal <BitCount[2]_GND_2_o_add_17_OUT> created at line 121.
-    WARNING:Xst:2404 -  FFs/Latches <tAck<0:0>> (without init value) have a constant value of 0 in block <UART_Receiver>.
+    Found 14-bit subtractor for signal <Count[13]_GND_2_o_sub_27_OUT> created at line 128.
+    Found 3-bit adder for signal <BitCount[2]_GND_2_o_add_18_OUT> created at line 122.
     Summary:
 	inferred   2 Adder/Subtractor(s).
-	inferred  37 D-type flip-flop(s).
-	inferred   5 Multiplexer(s).
+	inferred  38 D-type flip-flop(s).
+	inferred   6 Multiplexer(s).
 	inferred   1 Finite State Machine(s).
 Unit <UART_Receiver> synthesized.
+
+Synthesizing Unit <mod_7u_7u>.
+    Related source file is "".
+    Found 14-bit adder for signal <n0236> created at line 0.
+    Found 14-bit adder for signal <GND_4_o_b[6]_add_1_OUT> created at line 0.
+    Found 13-bit adder for signal <n0240> created at line 0.
+    Found 13-bit adder for signal <GND_4_o_b[6]_add_3_OUT> created at line 0.
+    Found 12-bit adder for signal <n0244> created at line 0.
+    Found 12-bit adder for signal <GND_4_o_b[6]_add_5_OUT> created at line 0.
+    Found 11-bit adder for signal <n0248> created at line 0.
+    Found 11-bit adder for signal <GND_4_o_b[6]_add_7_OUT> created at line 0.
+    Found 10-bit adder for signal <n0252> created at line 0.
+    Found 10-bit adder for signal <GND_4_o_b[6]_add_9_OUT> created at line 0.
+    Found 9-bit adder for signal <n0256> created at line 0.
+    Found 9-bit adder for signal <GND_4_o_b[6]_add_11_OUT> created at line 0.
+    Found 8-bit adder for signal <n0260> created at line 0.
+    Found 8-bit adder for signal <GND_4_o_b[6]_add_13_OUT> created at line 0.
+    Found 7-bit adder for signal <n0264> created at line 0.
+    Found 7-bit adder for signal <a[6]_b[6]_add_15_OUT[6:0]> created at line 0.
+    Found 14-bit comparator lessequal for signal <BUS_0001> created at line 0
+    Found 13-bit comparator lessequal for signal <BUS_0002> created at line 0
+    Found 12-bit comparator lessequal for signal <BUS_0003> created at line 0
+    Found 11-bit comparator lessequal for signal <BUS_0004> created at line 0
+    Found 10-bit comparator lessequal for signal <BUS_0005> created at line 0
+    Found 9-bit comparator lessequal for signal <BUS_0006> created at line 0
+    Found 8-bit comparator lessequal for signal <BUS_0007> created at line 0
+    Found 7-bit comparator lessequal for signal <BUS_0008> created at line 0
+    Summary:
+	inferred  16 Adder/Subtractor(s).
+	inferred   8 Comparator(s).
+	inferred  44 Multiplexer(s).
+Unit <mod_7u_7u> synthesized.
 
 =========================================================================
 HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 4
+# RAMs                                                 : 1
+ 100x8-bit dual-port RAM                               : 1
+# Adders/Subtractors                                   : 21
+ 10-bit adder                                          : 2
+ 11-bit adder                                          : 2
+ 12-bit adder                                          : 2
+ 13-bit adder                                          : 2
+ 14-bit adder                                          : 2
  14-bit subtractor                                     : 1
  3-bit adder                                           : 1
- 7-bit adder                                           : 1
- 8-bit subtractor                                      : 1
-# Registers                                            : 11
- 1-bit register                                        : 5
+ 7-bit adder                                           : 3
+ 7-bit subtractor                                      : 2
+ 8-bit adder                                           : 2
+ 9-bit adder                                           : 2
+# Registers                                            : 12
+ 1-bit register                                        : 7
  14-bit register                                       : 1
  3-bit register                                        : 1
  7-bit register                                        : 1
  8-bit register                                        : 2
- 800-bit register                                      : 1
-# Comparators                                          : 1
- 32-bit comparator lessequal                           : 1
-# Multiplexers                                         : 105
- 14-bit 2-to-1 multiplexer                             : 4
+# Latches                                              : 8
+ 1-bit latch                                           : 8
+# Comparators                                          : 8
+ 10-bit comparator lessequal                           : 1
+ 11-bit comparator lessequal                           : 1
+ 12-bit comparator lessequal                           : 1
+ 13-bit comparator lessequal                           : 1
+ 14-bit comparator lessequal                           : 1
+ 7-bit comparator lessequal                            : 1
+ 8-bit comparator lessequal                            : 1
+ 9-bit comparator lessequal                            : 1
+# Multiplexers                                         : 52
+ 1-bit 2-to-1 multiplexer                              : 43
+ 14-bit 2-to-1 multiplexer                             : 5
  3-bit 2-to-1 multiplexer                              : 1
- 8-bit 2-to-1 multiplexer                              : 100
+ 7-bit 2-to-1 multiplexer                              : 3
 # FSMs                                                 : 1
 
 =========================================================================
@@ -214,822 +278,57 @@ Macro Statistics
 
 Synthesizing (advanced) Unit <DEA>.
 The following registers are absorbed into counter <charCount>: 1 register on signal <charCount>.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_userData> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 100-word x 8-bit                    |          |
+    |     clkA           | connected to signal <Clk_100M>      | rise     |
+    |     weA            | connected to internal node          | high     |
+    |     addrA          | connected to signal <GND_1_o_GND_1_o_sub_2_OUT> |          |
+    |     diA            | connected to signal <Rx_Data>       |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 100-word x 8-bit                    |          |
+    |     addrB          | connected to signal <GND_1_o_GND_1_o_sub_17_OUT> |          |
+    |     doB            | connected to internal node          |          |
+    -----------------------------------------------------------------------
 Unit <DEA> synthesized (advanced).
 
 Synthesizing (advanced) Unit <UART_Receiver>.
 The following registers are absorbed into counter <Count>: 1 register on signal <Count>.
 Unit <UART_Receiver> synthesized (advanced).
-WARNING:Xst:2677 - Node <userData_99_0> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_1> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_2> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_3> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_4> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_5> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_6> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_7> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_8> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_9> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_10> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_11> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_12> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_13> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_14> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_15> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_24> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_25> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_26> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_27> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_28> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_29> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_30> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_31> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_32> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_33> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_34> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_35> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_36> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_37> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_38> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_39> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_40> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_41> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_42> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_43> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_44> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_45> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_46> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_47> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_48> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_49> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_50> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_51> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_52> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_53> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_54> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_55> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_56> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_57> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_58> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_59> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_60> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_61> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_62> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_63> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_64> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_65> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_66> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_67> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_68> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_69> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_70> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_71> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_72> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_73> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_74> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_75> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_76> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_77> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_78> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_79> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_80> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_81> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_82> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_83> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_84> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_85> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_86> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_87> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_88> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_89> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_90> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_91> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_92> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_93> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_94> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_95> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_96> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_97> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_98> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_99> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_100> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_101> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_102> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_103> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_104> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_105> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_106> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_107> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_108> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_109> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_110> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_111> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_112> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_113> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_114> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_115> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_116> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_117> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_118> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_119> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_120> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_121> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_122> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_123> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_124> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_125> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_126> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_127> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_128> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_129> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_130> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_131> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_132> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_133> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_134> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_135> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_136> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_137> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_138> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_139> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_140> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_141> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_142> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_143> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_144> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_145> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_146> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_147> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_148> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_149> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_150> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_151> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_152> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_153> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_154> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_155> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_156> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_157> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_158> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_159> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_160> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_161> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_162> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_163> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_164> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_165> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_166> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_167> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_168> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_169> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_170> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_171> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_172> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_173> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_174> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_175> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_176> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_177> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_178> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_179> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_180> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_181> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_182> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_183> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_184> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_185> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_186> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_187> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_188> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_189> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_190> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_191> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_192> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_193> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_194> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_195> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_196> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_197> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_198> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_199> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_200> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_201> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_202> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_203> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_204> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_205> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_206> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_207> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_208> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_209> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_210> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_211> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_212> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_213> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_214> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_215> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_216> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_217> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_218> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_219> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_220> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_221> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_222> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_223> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_224> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_225> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_226> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_227> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_228> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_229> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_230> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_231> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_232> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_233> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_234> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_235> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_236> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_237> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_238> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_239> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_240> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_241> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_242> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_243> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_244> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_245> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_246> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_247> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_248> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_249> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_250> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_251> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_252> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_253> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_254> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_255> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_256> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_257> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_258> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_259> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_260> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_261> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_262> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_263> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_264> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_265> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_266> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_267> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_268> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_269> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_270> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_271> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_272> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_273> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_274> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_275> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_276> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_277> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_278> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_279> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_280> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_281> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_282> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_283> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_284> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_285> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_286> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_287> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_288> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_289> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_290> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_291> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_292> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_293> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_294> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_295> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_296> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_297> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_298> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_299> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_300> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_301> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_302> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_303> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_304> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_305> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_306> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_307> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_308> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_309> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_310> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_311> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_312> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_313> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_314> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_315> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_316> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_317> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_318> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_319> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_320> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_321> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_322> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_323> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_324> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_325> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_326> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_327> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_328> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_329> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_330> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_331> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_332> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_333> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_334> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_335> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_336> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_337> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_338> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_339> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_340> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_341> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_342> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_343> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_344> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_345> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_346> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_347> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_348> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_349> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_350> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_351> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_352> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_353> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_354> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_355> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_356> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_357> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_358> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_359> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_360> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_361> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_362> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_363> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_364> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_365> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_366> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_367> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_368> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_369> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_370> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_371> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_372> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_373> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_374> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_375> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_376> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_377> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_378> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_379> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_380> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_381> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_382> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_383> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_384> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_385> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_386> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_387> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_388> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_389> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_390> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_391> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_392> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_393> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_394> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_395> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_396> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_397> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_398> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_399> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_400> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_401> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_402> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_403> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_404> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_405> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_406> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_407> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_408> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_409> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_410> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_411> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_412> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_413> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_414> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_415> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_416> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_417> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_418> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_419> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_420> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_421> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_422> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_423> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_424> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_425> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_426> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_427> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_428> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_429> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_430> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_431> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_432> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_433> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_434> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_435> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_436> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_437> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_438> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_439> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_440> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_441> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_442> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_443> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_444> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_445> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_446> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_447> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_448> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_449> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_450> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_451> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_452> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_453> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_454> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_455> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_456> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_457> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_458> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_459> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_460> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_461> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_462> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_463> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_464> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_465> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_466> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_467> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_468> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_469> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_470> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_471> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_472> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_473> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_474> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_475> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_476> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_477> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_478> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_479> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_480> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_481> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_482> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_483> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_484> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_485> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_486> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_487> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_488> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_489> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_490> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_491> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_492> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_493> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_494> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_495> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_496> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_497> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_498> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_499> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_500> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_501> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_502> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_503> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_504> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_505> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_506> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_507> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_508> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_509> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_510> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_511> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_512> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_513> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_514> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_515> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_516> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_517> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_518> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_519> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_520> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_521> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_522> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_523> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_524> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_525> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_526> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_527> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_528> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_529> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_530> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_531> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_532> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_533> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_534> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_535> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_536> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_537> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_538> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_539> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_540> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_541> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_542> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_543> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_544> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_545> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_546> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_547> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_548> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_549> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_550> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_551> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_552> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_553> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_554> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_555> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_556> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_557> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_558> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_559> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_560> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_561> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_562> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_563> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_564> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_565> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_566> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_567> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_568> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_569> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_570> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_571> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_572> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_573> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_574> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_575> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_576> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_577> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_578> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_579> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_580> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_581> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_582> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_583> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_584> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_585> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_586> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_587> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_588> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_589> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_590> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_591> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_592> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_593> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_594> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_595> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_596> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_597> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_598> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_599> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_600> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_601> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_602> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_603> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_604> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_605> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_606> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_607> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_608> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_609> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_610> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_611> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_612> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_613> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_614> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_615> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_616> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_617> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_618> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_619> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_620> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_621> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_622> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_623> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_624> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_625> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_626> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_627> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_628> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_629> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_630> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_631> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_632> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_633> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_634> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_635> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_636> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_637> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_638> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_639> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_640> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_641> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_642> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_643> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_644> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_645> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_646> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_647> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_648> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_649> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_650> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_651> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_652> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_653> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_654> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_655> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_656> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_657> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_658> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_659> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_660> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_661> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_662> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_663> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_664> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_665> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_666> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_667> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_668> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_669> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_670> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_671> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_672> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_673> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_674> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_675> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_676> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_677> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_678> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_679> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_680> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_681> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_682> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_683> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_684> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_685> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_686> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_687> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_688> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_689> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_690> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_691> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_692> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_693> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_694> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_695> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_696> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_697> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_698> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_699> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_700> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_701> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_702> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_703> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_704> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_705> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_706> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_707> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_708> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_709> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_710> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_711> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_712> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_713> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_714> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_715> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_716> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_717> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_718> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_719> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_720> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_721> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_722> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_723> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_724> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_725> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_726> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_727> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_728> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_729> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_730> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_731> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_732> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_733> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_734> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_735> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_736> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_737> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_738> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_739> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_740> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_741> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_742> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_743> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_744> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_745> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_746> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_747> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_748> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_749> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_750> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_751> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_752> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_753> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_754> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_755> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_756> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_757> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_758> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_759> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_760> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_761> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_762> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_763> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_764> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_765> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_766> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_767> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_768> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_769> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_770> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_771> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_772> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_773> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_774> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_775> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_776> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_777> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_778> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_779> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_780> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_781> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_782> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_783> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_784> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_785> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_786> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_787> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_788> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_789> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_790> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_791> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_792> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_793> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_794> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_795> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_796> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_797> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_798> of sequential type is unconnected in block <DEA>.
-WARNING:Xst:2677 - Node <userData_99_799> of sequential type is unconnected in block <DEA>.
 
 =========================================================================
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 2
+# RAMs                                                 : 1
+ 100x8-bit dual-port distributed RAM                   : 1
+# Adders/Subtractors                                   : 11
  3-bit adder                                           : 1
- 8-bit subtractor                                      : 1
+ 7-bit adder carry in                                  : 8
+ 7-bit subtractor                                      : 2
 # Counters                                             : 2
  14-bit down counter                                   : 1
  7-bit up counter                                      : 1
-# Registers                                            : 32
- Flip-Flops                                            : 32
-# Comparators                                          : 1
- 32-bit comparator lessequal                           : 1
-# Multiplexers                                         : 12
- 1-bit 2-to-1 multiplexer                              : 8
- 14-bit 2-to-1 multiplexer                             : 3
+# Registers                                            : 26
+ Flip-Flops                                            : 26
+# Comparators                                          : 8
+ 10-bit comparator lessequal                           : 1
+ 11-bit comparator lessequal                           : 1
+ 12-bit comparator lessequal                           : 1
+ 13-bit comparator lessequal                           : 1
+ 14-bit comparator lessequal                           : 1
+ 7-bit comparator lessequal                            : 1
+ 8-bit comparator lessequal                            : 1
+ 9-bit comparator lessequal                            : 1
+# Multiplexers                                         : 51
+ 1-bit 2-to-1 multiplexer                              : 43
+ 14-bit 2-to-1 multiplexer                             : 4
  3-bit 2-to-1 multiplexer                              : 1
+ 7-bit 2-to-1 multiplexer                              : 3
 # FSMs                                                 : 1
 
 =========================================================================
@@ -1052,9 +351,12 @@ Optimizing unit <DEA> ...
 
 Optimizing unit <UART_Receiver> ...
 
+Optimizing unit <mod_7u_7u> ...
+
 Mapping all equations...
 Building and optimizing final netlist ...
 Found area constraint ratio of 100 (+ 5) on block DEA, actual ratio is 0.
+FlipFlop charCount_0 has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -1062,8 +364,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 55
- Flip-Flops                                            : 55
+# Registers                                            : 50
+ Flip-Flops                                            : 50
 
 =========================================================================
 
@@ -1086,24 +388,29 @@ Top Level Output File Name         : DEA.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 94
+# BELS                             : 217
 #      GND                         : 1
-#      INV                         : 15
+#      INV                         : 21
 #      LUT1                        : 1
-#      LUT2                        : 3
-#      LUT3                        : 14
-#      LUT4                        : 6
-#      LUT5                        : 19
-#      LUT6                        : 7
-#      MUXCY                       : 13
+#      LUT2                        : 33
+#      LUT3                        : 40
+#      LUT4                        : 13
+#      LUT5                        : 23
+#      LUT6                        : 33
+#      MUXCY                       : 24
 #      VCC                         : 1
-#      XORCY                       : 14
-# FlipFlops/Latches                : 55
+#      XORCY                       : 27
+# FlipFlops/Latches                : 58
 #      FD                          : 3
-#      FDE                         : 26
-#      FDR                         : 18
+#      FDE                         : 20
+#      FDR                         : 19
 #      FDRE                        : 8
-# Clock Buffers                    : 1
+#      LD_1                        : 8
+# RAMS                             : 8
+#      RAM64M                      : 4
+#      RAM64X1D                    : 4
+# Clock Buffers                    : 2
+#      BUFG                        : 1
 #      BUFGP                       : 1
 # IO Buffers                       : 10
 #      IBUF                        : 2
@@ -1116,23 +423,26 @@ Selected Device : 7a100tcsg324-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:              55  out of  126800     0%  
- Number of Slice LUTs:                   65  out of  63400     0%  
-    Number used as Logic:                65  out of  63400     0%  
+ Number of Slice Registers:              50  out of  126800     0%  
+ Number of Slice LUTs:                  188  out of  63400     0%  
+    Number used as Logic:               164  out of  63400     0%  
+    Number used as Memory:               24  out of  19000     0%  
+       Number used as RAM:               24
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:     82
-   Number with an unused Flip Flop:      27  out of     82    32%  
-   Number with an unused LUT:            17  out of     82    20%  
-   Number of fully used LUT-FF pairs:    38  out of     82    46%  
-   Number of unique control sets:         6
+ Number of LUT Flip Flop pairs used:    201
+   Number with an unused Flip Flop:     151  out of    201    75%  
+   Number with an unused LUT:            13  out of    201     6%  
+   Number of fully used LUT-FF pairs:    37  out of    201    18%  
+   Number of unique control sets:         9
 
 IO Utilization: 
- Number of IOs:                          12
+ Number of IOs:                          14
  Number of bonded IOBs:                  11  out of    210     5%  
+    IOB Flip Flops/Latches:               8
 
 Specific Feature Utilization:
- Number of BUFG/BUFGCTRLs:                1  out of     32     3%  
+ Number of BUFG/BUFGCTRLs:                2  out of     32     6%  
 
 ---------------------------
 Partition Resource Summary:
@@ -1155,7 +465,8 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-Clk_100M                           | BUFGP                  | 55    |
+Clk_100M                           | BUFGP                  | 58    |
+Reset                              | IBUF+BUFG              | 8     |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -1166,9 +477,9 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 2.520ns (Maximum Frequency: 396.794MHz)
-   Minimum input arrival time before clock: 1.185ns
-   Maximum output required time after clock: 0.645ns
+   Minimum period: 31.099ns (Maximum Frequency: 32.155MHz)
+   Minimum input arrival time before clock: 30.535ns
+   Maximum output required time after clock: 0.754ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -1177,67 +488,268 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'Clk_100M'
-  Clock period: 2.520ns (frequency: 396.794MHz)
-  Total number of paths / destination ports: 842 / 113
+  Clock period: 31.099ns (frequency: 32.155MHz)
+  Total number of paths / destination ports: 1314085 / 197
 -------------------------------------------------------------------------
-Delay:               2.520ns (Levels of Logic = 3)
-  Source:            receiver/Count_13 (FF)
-  Destination:       receiver/Temp_7 (FF)
+Delay:               31.099ns (Levels of Logic = 64)
+  Source:            charCount_0_1 (FF)
+  Destination:       Mram_userData32 (RAM)
   Source Clock:      Clk_100M rising
   Destination Clock: Clk_100M rising
 
-  Data Path: receiver/Count_13 to receiver/Temp_7
+  Data Path: charCount_0_1 to Mram_userData32
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              3   0.361   0.703  receiver/Count_13 (receiver/Count_13)
-     LUT6:I0->O            3   0.097   0.389  receiver/out2 (receiver/out1)
-     LUT4:I2->O           17   0.097   0.369  receiver/out3 (receiver/n0023)
-     LUT4:I3->O            8   0.097   0.311  receiver/_n0122_inv1 (receiver/_n0122_inv)
-     FDE:CE                    0.095          receiver/Temp_0
+     FDE:C->Q              1   0.361   0.295  charCount_0_1 (charCount_0_1)
+     LUT3:I2->O            1   0.097   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_lut<0> (currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_lut<0>)
+     XORCY:LI->O           1   0.173   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_xor<0> (currentCharIndex[6]_charCount[6]_mod_15/a[6]_b[6]_add_15_OUT[6:0]<0>)
+     LUT3:I2->O            2   0.097   0.299  currentCharIndex[6]_charCount[6]_mod_15/Mmux_o11 (currentCharIndex[6]_charCount[6]_mod_15_OUT<0>)
+     LUT2:I1->O            3   0.097   0.289  Mmux_currentCharIndex11 (currentCharIndex<0>)
+     MUXCY:DI->O           1   0.337   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_cy<0> (currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_cy<0>)
+     XORCY:CI->O           1   0.370   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_xor<1> (currentCharIndex[6]_charCount[6]_mod_15/a[6]_b[6]_add_15_OUT[6:0]<1>)
+     LUT3:I2->O            2   0.097   0.299  currentCharIndex[6]_charCount[6]_mod_15/Mmux_o21 (currentCharIndex[6]_charCount[6]_mod_15_OUT<1>)
+     LUT2:I1->O            3   0.097   0.305  Mmux_currentCharIndex21 (currentCharIndex<1>)
+     LUT3:I2->O            1   0.097   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<1> (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<1>)
+     XORCY:LI->O           1   0.173   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_xor<1> (currentCharIndex[6]_charCount[6]_mod_15/GND_4_o_b[6]_add_13_OUT<1>)
+     LUT3:I2->O            3   0.097   0.289  currentCharIndex[6]_charCount[6]_mod_15/Mmux_n026221 (currentCharIndex[6]_charCount[6]_mod_15/n0262<1>)
+     MUXCY:DI->O           1   0.337   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_cy<1> (currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_cy<1>)
+     XORCY:CI->O           1   0.370   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_xor<2> (currentCharIndex[6]_charCount[6]_mod_15/a[6]_b[6]_add_15_OUT[6:0]<2>)
+     LUT3:I2->O            5   0.097   0.314  currentCharIndex[6]_charCount[6]_mod_15/Mmux_o31 (currentCharIndex[6]_charCount[6]_mod_15_OUT<2>)
+     LUT2:I1->O            9   0.097   0.548  Mmux_currentCharIndex31 (currentCharIndex<2>)
+     LUT5:I2->O            3   0.097   0.305  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_212_o131 (currentCharIndex[6]_charCount[6]_mod_15/a[3]_GND_4_o_MUX_209_o)
+     LUT2:I1->O            1   0.097   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<3> (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<3>)
+     XORCY:LI->O           1   0.173   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_xor<3> (currentCharIndex[6]_charCount[6]_mod_15/GND_4_o_b[6]_add_13_OUT<3>)
+     LUT3:I2->O            4   0.097   0.393  currentCharIndex[6]_charCount[6]_mod_15/Mmux_n026241 (currentCharIndex[6]_charCount[6]_mod_15/n0262<3>)
+     LUT2:I0->O            1   0.097   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_lut<3> (currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_lut<3>)
+     XORCY:LI->O           1   0.173   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_xor<3> (currentCharIndex[6]_charCount[6]_mod_15/a[6]_b[6]_add_15_OUT[6:0]<3>)
+     LUT3:I2->O            5   0.097   0.314  currentCharIndex[6]_charCount[6]_mod_15/Mmux_o41 (currentCharIndex[6]_charCount[6]_mod_15_OUT<3>)
+     LUT2:I1->O            5   0.097   0.530  Mmux_currentCharIndex41 (currentCharIndex<3>)
+     LUT5:I2->O            4   0.097   0.309  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_194_o141 (currentCharIndex[6]_charCount[6]_mod_15/a[4]_GND_4_o_MUX_190_o)
+     LUT2:I1->O            1   0.097   0.683  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_11_OUT_Madd_Madd_lut<4>1 (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_11_OUT_Madd_Madd_lut<4>)
+     LUT6:I1->O            3   0.097   0.305  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_212_o14 (currentCharIndex[6]_charCount[6]_mod_15/a[4]_GND_4_o_MUX_208_o)
+     LUT2:I1->O            1   0.097   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<4> (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<4>)
+     XORCY:LI->O           1   0.173   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_xor<4> (currentCharIndex[6]_charCount[6]_mod_15/GND_4_o_b[6]_add_13_OUT<4>)
+     LUT3:I2->O            4   0.097   0.393  currentCharIndex[6]_charCount[6]_mod_15/Mmux_n026251 (currentCharIndex[6]_charCount[6]_mod_15/n0262<4>)
+     LUT2:I0->O            1   0.097   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_lut<4> (currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_lut<4>)
+     XORCY:LI->O           1   0.173   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_xor<4> (currentCharIndex[6]_charCount[6]_mod_15/a[6]_b[6]_add_15_OUT[6:0]<4>)
+     LUT3:I2->O            4   0.097   0.309  currentCharIndex[6]_charCount[6]_mod_15/Mmux_o51 (currentCharIndex[6]_charCount[6]_mod_15_OUT<4>)
+     LUT2:I1->O            4   0.097   0.570  Mmux_currentCharIndex51 (currentCharIndex<4>)
+     LUT4:I0->O            1   0.097   0.295  currentCharIndex[6]_charCount[6]_mod_15/BUS_0004_INV_85_o1_SW0 (N4)
+     LUT5:I4->O            3   0.097   0.693  currentCharIndex[6]_charCount[6]_mod_15/BUS_0004_INV_85_o1 (currentCharIndex[6]_charCount[6]_mod_15/BUS_0004_INV_85_o)
+     LUT5:I0->O            4   0.097   0.309  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_174_o151 (currentCharIndex[6]_charCount[6]_mod_15/a[5]_GND_4_o_MUX_169_o)
+     LUT2:I1->O            2   0.097   0.698  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_9_OUT_Madd_Madd_lut<5>1 (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_9_OUT_Madd_Madd_lut<5>)
+     LUT6:I0->O            1   0.097   0.511  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_9_OUT_Madd_Madd_cy<5>11 (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_9_OUT_Madd_Madd_cy<5>)
+     LUT4:I1->O            3   0.097   0.693  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_194_o161 (currentCharIndex[6]_charCount[6]_mod_15/a[6]_GND_4_o_MUX_188_o)
+     LUT6:I1->O            6   0.097   0.579  currentCharIndex[6]_charCount[6]_mod_15/BUS_0006_INV_108_o1 (currentCharIndex[6]_charCount[6]_mod_15/BUS_0006_INV_108_o)
+     LUT4:I0->O            3   0.097   0.305  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_212_o151 (currentCharIndex[6]_charCount[6]_mod_15/a[5]_GND_4_o_MUX_207_o)
+     LUT2:I1->O            1   0.097   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<5> (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<5>)
+     XORCY:LI->O           1   0.173   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_xor<5> (currentCharIndex[6]_charCount[6]_mod_15/GND_4_o_b[6]_add_13_OUT<5>)
+     LUT3:I2->O            4   0.097   0.309  currentCharIndex[6]_charCount[6]_mod_15/Mmux_n026261 (currentCharIndex[6]_charCount[6]_mod_15/n0262<5>)
+     LUT2:I1->O            1   0.097   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_lut<5> (currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_lut<5>)
+     MUXCY:S->O            0   0.353   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_cy<5> (currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_cy<5>)
+     XORCY:CI->O           1   0.370   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_xor<6> (currentCharIndex[6]_charCount[6]_mod_15/a[6]_b[6]_add_15_OUT[6:0]<6>)
+     LUT3:I2->O            2   0.097   0.299  currentCharIndex[6]_charCount[6]_mod_15/Mmux_o71 (currentCharIndex[6]_charCount[6]_mod_15_OUT<6>)
+     LUT2:I1->O            2   0.097   0.300  Mmux_currentCharIndex71 (Msub_GND_1_o_GND_1_o_sub_17_OUT<6:0>_lut<6>)
+     LUT6:I5->O            1   0.097   0.379  currentCharIndex[6]_charCount[6]_mod_15/BUS_0002_INV_58_o11 (currentCharIndex[6]_charCount[6]_mod_15/BUS_0002_INV_58_o)
+     LUT3:I1->O            2   0.097   0.516  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_128_o161 (currentCharIndex[6]_charCount[6]_mod_15/a[6]_GND_4_o_MUX_122_o)
+     LUT6:I3->O            2   0.097   0.384  currentCharIndex[6]_charCount[6]_mod_15/BUS_0003_INV_72_o11 (currentCharIndex[6]_charCount[6]_mod_15/BUS_0003_INV_72_o)
+     LUT3:I1->O            4   0.097   0.393  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_152_o151 (currentCharIndex[6]_charCount[6]_mod_15/a[5]_GND_4_o_MUX_147_o)
+     LUT2:I0->O            2   0.097   0.561  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_7_OUT_Madd_Madd_lut<5>1 (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_7_OUT_Madd_Madd_lut<5>)
+     LUT4:I0->O            1   0.097   0.511  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_7_OUT_Madd_Madd_cy<5>11 (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_7_OUT_Madd_Madd_cy<5>)
+     LUT4:I1->O            2   0.097   0.516  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_174_o161 (currentCharIndex[6]_charCount[6]_mod_15/a[6]_GND_4_o_MUX_168_o)
+     LUT4:I1->O            4   0.097   0.707  currentCharIndex[6]_charCount[6]_mod_15/BUS_0005_INV_97_o11 (currentCharIndex[6]_charCount[6]_mod_15/BUS_0005_INV_97_o)
+     LUT6:I0->O            5   0.097   0.702  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_194_o15 (currentCharIndex[6]_charCount[6]_mod_15/a[5]_GND_4_o_MUX_189_o)
+     LUT6:I1->O            2   0.097   0.688  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_212_o161 (currentCharIndex[6]_charCount[6]_mod_15/a[6]_GND_4_o_MUX_206_o)
+     LUT6:I1->O            6   0.097   0.534  currentCharIndex[6]_charCount[6]_mod_15/BUS_0007_INV_118_o1 (currentCharIndex[6]_charCount[6]_mod_15/BUS_0007_INV_118_o)
+     LUT3:I0->O            3   0.097   0.566  currentCharIndex[6]_charCount[6]_mod_15/Mmux_n026271 (currentCharIndex[6]_charCount[6]_mod_15/n0262<6>)
+     LUT4:I0->O            7   0.097   0.539  currentCharIndex[6]_charCount[6]_mod_15/BUS_0008_INV_127_o25 (currentCharIndex[6]_charCount[6]_mod_15/BUS_0008_INV_127_o)
+     LUT3:I0->O            3   0.097   0.305  currentCharIndex[6]_charCount[6]_mod_15/Mmux_o61 (currentCharIndex[6]_charCount[6]_mod_15_OUT<5>)
+     LUT5:I4->O            4   0.097   0.293  Msub_GND_1_o_GND_1_o_sub_17_OUT<6:0>_xor<5>11 (GND_1_o_GND_1_o_sub_17_OUT<5>)
+     RAM64X1D:DPRA5            0.150          Mram_userData32
     ----------------------------------------
-    Total                      2.520ns (0.747ns logic, 1.773ns route)
-                                       (29.6% logic, 70.4% route)
+    Total                     31.099ns (8.806ns logic, 22.293ns route)
+                                       (28.3% logic, 71.7% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'Clk_100M'
-  Total number of paths / destination ports: 19 / 19
+  Total number of paths / destination ports: 518073 / 61
 -------------------------------------------------------------------------
-Offset:              1.185ns (Levels of Logic = 3)
-  Source:            Rx (PAD)
-  Destination:       receiver/Count_12 (FF)
+Offset:              29.940ns (Levels of Logic = 62)
+  Source:            Reset (PAD)
+  Destination:       Mram_userData32 (RAM)
   Destination Clock: Clk_100M rising
 
-  Data Path: Rx to receiver/Count_12
+  Data Path: Reset to Mram_userData32
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             7   0.001   0.407  Rx_IBUF (Rx_IBUF)
-     LUT3:I1->O            5   0.097   0.575  receiver/State[1]_GND_2_o_select_22_OUT<0>11 (receiver/State[1]_GND_2_o_select_22_OUT<0>1)
-     LUT5:I1->O            1   0.097   0.000  receiver/Mcount_Count_eqn_121 (receiver/Mcount_Count_eqn_12)
-     FDR:D                     0.008          receiver/Count_12
+     IBUF:I->O            18   0.001   0.458  Reset_IBUF (Reset_IBUF)
+     LUT2:I0->O            3   0.097   0.289  Mmux_currentCharIndex11 (currentCharIndex<0>)
+     MUXCY:DI->O           1   0.337   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_cy<0> (currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_cy<0>)
+     XORCY:CI->O           1   0.370   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_xor<1> (currentCharIndex[6]_charCount[6]_mod_15/a[6]_b[6]_add_15_OUT[6:0]<1>)
+     LUT3:I2->O            2   0.097   0.299  currentCharIndex[6]_charCount[6]_mod_15/Mmux_o21 (currentCharIndex[6]_charCount[6]_mod_15_OUT<1>)
+     LUT2:I1->O            3   0.097   0.305  Mmux_currentCharIndex21 (currentCharIndex<1>)
+     LUT3:I2->O            1   0.097   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<1> (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<1>)
+     XORCY:LI->O           1   0.173   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_xor<1> (currentCharIndex[6]_charCount[6]_mod_15/GND_4_o_b[6]_add_13_OUT<1>)
+     LUT3:I2->O            3   0.097   0.289  currentCharIndex[6]_charCount[6]_mod_15/Mmux_n026221 (currentCharIndex[6]_charCount[6]_mod_15/n0262<1>)
+     MUXCY:DI->O           1   0.337   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_cy<1> (currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_cy<1>)
+     XORCY:CI->O           1   0.370   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_xor<2> (currentCharIndex[6]_charCount[6]_mod_15/a[6]_b[6]_add_15_OUT[6:0]<2>)
+     LUT3:I2->O            5   0.097   0.314  currentCharIndex[6]_charCount[6]_mod_15/Mmux_o31 (currentCharIndex[6]_charCount[6]_mod_15_OUT<2>)
+     LUT2:I1->O            9   0.097   0.548  Mmux_currentCharIndex31 (currentCharIndex<2>)
+     LUT5:I2->O            3   0.097   0.305  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_212_o131 (currentCharIndex[6]_charCount[6]_mod_15/a[3]_GND_4_o_MUX_209_o)
+     LUT2:I1->O            1   0.097   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<3> (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<3>)
+     XORCY:LI->O           1   0.173   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_xor<3> (currentCharIndex[6]_charCount[6]_mod_15/GND_4_o_b[6]_add_13_OUT<3>)
+     LUT3:I2->O            4   0.097   0.393  currentCharIndex[6]_charCount[6]_mod_15/Mmux_n026241 (currentCharIndex[6]_charCount[6]_mod_15/n0262<3>)
+     LUT2:I0->O            1   0.097   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_lut<3> (currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_lut<3>)
+     XORCY:LI->O           1   0.173   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_xor<3> (currentCharIndex[6]_charCount[6]_mod_15/a[6]_b[6]_add_15_OUT[6:0]<3>)
+     LUT3:I2->O            5   0.097   0.314  currentCharIndex[6]_charCount[6]_mod_15/Mmux_o41 (currentCharIndex[6]_charCount[6]_mod_15_OUT<3>)
+     LUT2:I1->O            5   0.097   0.530  Mmux_currentCharIndex41 (currentCharIndex<3>)
+     LUT5:I2->O            4   0.097   0.309  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_194_o141 (currentCharIndex[6]_charCount[6]_mod_15/a[4]_GND_4_o_MUX_190_o)
+     LUT2:I1->O            1   0.097   0.683  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_11_OUT_Madd_Madd_lut<4>1 (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_11_OUT_Madd_Madd_lut<4>)
+     LUT6:I1->O            3   0.097   0.305  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_212_o14 (currentCharIndex[6]_charCount[6]_mod_15/a[4]_GND_4_o_MUX_208_o)
+     LUT2:I1->O            1   0.097   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<4> (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<4>)
+     XORCY:LI->O           1   0.173   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_xor<4> (currentCharIndex[6]_charCount[6]_mod_15/GND_4_o_b[6]_add_13_OUT<4>)
+     LUT3:I2->O            4   0.097   0.393  currentCharIndex[6]_charCount[6]_mod_15/Mmux_n026251 (currentCharIndex[6]_charCount[6]_mod_15/n0262<4>)
+     LUT2:I0->O            1   0.097   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_lut<4> (currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_lut<4>)
+     XORCY:LI->O           1   0.173   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_xor<4> (currentCharIndex[6]_charCount[6]_mod_15/a[6]_b[6]_add_15_OUT[6:0]<4>)
+     LUT3:I2->O            4   0.097   0.309  currentCharIndex[6]_charCount[6]_mod_15/Mmux_o51 (currentCharIndex[6]_charCount[6]_mod_15_OUT<4>)
+     LUT2:I1->O            4   0.097   0.570  Mmux_currentCharIndex51 (currentCharIndex<4>)
+     LUT4:I0->O            1   0.097   0.295  currentCharIndex[6]_charCount[6]_mod_15/BUS_0004_INV_85_o1_SW0 (N4)
+     LUT5:I4->O            3   0.097   0.693  currentCharIndex[6]_charCount[6]_mod_15/BUS_0004_INV_85_o1 (currentCharIndex[6]_charCount[6]_mod_15/BUS_0004_INV_85_o)
+     LUT5:I0->O            4   0.097   0.309  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_174_o151 (currentCharIndex[6]_charCount[6]_mod_15/a[5]_GND_4_o_MUX_169_o)
+     LUT2:I1->O            2   0.097   0.698  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_9_OUT_Madd_Madd_lut<5>1 (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_9_OUT_Madd_Madd_lut<5>)
+     LUT6:I0->O            1   0.097   0.511  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_9_OUT_Madd_Madd_cy<5>11 (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_9_OUT_Madd_Madd_cy<5>)
+     LUT4:I1->O            3   0.097   0.693  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_194_o161 (currentCharIndex[6]_charCount[6]_mod_15/a[6]_GND_4_o_MUX_188_o)
+     LUT6:I1->O            6   0.097   0.579  currentCharIndex[6]_charCount[6]_mod_15/BUS_0006_INV_108_o1 (currentCharIndex[6]_charCount[6]_mod_15/BUS_0006_INV_108_o)
+     LUT4:I0->O            3   0.097   0.305  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_212_o151 (currentCharIndex[6]_charCount[6]_mod_15/a[5]_GND_4_o_MUX_207_o)
+     LUT2:I1->O            1   0.097   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<5> (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<5>)
+     XORCY:LI->O           1   0.173   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_xor<5> (currentCharIndex[6]_charCount[6]_mod_15/GND_4_o_b[6]_add_13_OUT<5>)
+     LUT3:I2->O            4   0.097   0.309  currentCharIndex[6]_charCount[6]_mod_15/Mmux_n026261 (currentCharIndex[6]_charCount[6]_mod_15/n0262<5>)
+     LUT2:I1->O            1   0.097   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_lut<5> (currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_lut<5>)
+     MUXCY:S->O            0   0.353   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_cy<5> (currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_cy<5>)
+     XORCY:CI->O           1   0.370   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_xor<6> (currentCharIndex[6]_charCount[6]_mod_15/a[6]_b[6]_add_15_OUT[6:0]<6>)
+     LUT3:I2->O            2   0.097   0.299  currentCharIndex[6]_charCount[6]_mod_15/Mmux_o71 (currentCharIndex[6]_charCount[6]_mod_15_OUT<6>)
+     LUT2:I1->O            2   0.097   0.300  Mmux_currentCharIndex71 (Msub_GND_1_o_GND_1_o_sub_17_OUT<6:0>_lut<6>)
+     LUT6:I5->O            1   0.097   0.379  currentCharIndex[6]_charCount[6]_mod_15/BUS_0002_INV_58_o11 (currentCharIndex[6]_charCount[6]_mod_15/BUS_0002_INV_58_o)
+     LUT3:I1->O            2   0.097   0.516  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_128_o161 (currentCharIndex[6]_charCount[6]_mod_15/a[6]_GND_4_o_MUX_122_o)
+     LUT6:I3->O            2   0.097   0.384  currentCharIndex[6]_charCount[6]_mod_15/BUS_0003_INV_72_o11 (currentCharIndex[6]_charCount[6]_mod_15/BUS_0003_INV_72_o)
+     LUT3:I1->O            4   0.097   0.393  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_152_o151 (currentCharIndex[6]_charCount[6]_mod_15/a[5]_GND_4_o_MUX_147_o)
+     LUT2:I0->O            2   0.097   0.561  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_7_OUT_Madd_Madd_lut<5>1 (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_7_OUT_Madd_Madd_lut<5>)
+     LUT4:I0->O            1   0.097   0.511  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_7_OUT_Madd_Madd_cy<5>11 (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_7_OUT_Madd_Madd_cy<5>)
+     LUT4:I1->O            2   0.097   0.516  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_174_o161 (currentCharIndex[6]_charCount[6]_mod_15/a[6]_GND_4_o_MUX_168_o)
+     LUT4:I1->O            4   0.097   0.707  currentCharIndex[6]_charCount[6]_mod_15/BUS_0005_INV_97_o11 (currentCharIndex[6]_charCount[6]_mod_15/BUS_0005_INV_97_o)
+     LUT6:I0->O            5   0.097   0.702  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_194_o15 (currentCharIndex[6]_charCount[6]_mod_15/a[5]_GND_4_o_MUX_189_o)
+     LUT6:I1->O            2   0.097   0.688  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_212_o161 (currentCharIndex[6]_charCount[6]_mod_15/a[6]_GND_4_o_MUX_206_o)
+     LUT6:I1->O            6   0.097   0.534  currentCharIndex[6]_charCount[6]_mod_15/BUS_0007_INV_118_o1 (currentCharIndex[6]_charCount[6]_mod_15/BUS_0007_INV_118_o)
+     LUT3:I0->O            3   0.097   0.566  currentCharIndex[6]_charCount[6]_mod_15/Mmux_n026271 (currentCharIndex[6]_charCount[6]_mod_15/n0262<6>)
+     LUT4:I0->O            7   0.097   0.539  currentCharIndex[6]_charCount[6]_mod_15/BUS_0008_INV_127_o25 (currentCharIndex[6]_charCount[6]_mod_15/BUS_0008_INV_127_o)
+     LUT3:I0->O            3   0.097   0.305  currentCharIndex[6]_charCount[6]_mod_15/Mmux_o61 (currentCharIndex[6]_charCount[6]_mod_15_OUT<5>)
+     LUT5:I4->O            4   0.097   0.293  Msub_GND_1_o_GND_1_o_sub_17_OUT<6:0>_xor<5>11 (GND_1_o_GND_1_o_sub_17_OUT<5>)
+     RAM64X1D:DPRA5            0.150          Mram_userData32
     ----------------------------------------
-    Total                      1.185ns (0.203ns logic, 0.982ns route)
-                                       (17.1% logic, 82.9% route)
+    Total                     29.940ns (8.079ns logic, 21.861ns route)
+                                       (27.0% logic, 73.0% route)
 
 =========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'Clk_100M'
-  Total number of paths / destination ports: 8 / 8
+Timing constraint: Default OFFSET IN BEFORE for Clock 'Reset'
+  Total number of paths / destination ports: 1611932 / 8
 -------------------------------------------------------------------------
-Offset:              0.645ns (Levels of Logic = 1)
-  Source:            userData_99_23 (FF)
-  Destination:       LEDs<7> (PAD)
-  Source Clock:      Clk_100M rising
+Offset:              30.535ns (Levels of Logic = 63)
+  Source:            Reset (PAD)
+  Destination:       LEDs_7 (LATCH)
+  Destination Clock: Reset rising
 
-  Data Path: userData_99_23 to LEDs<7>
+  Data Path: Reset to LEDs_7
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q              2   0.361   0.283  userData_99_23 (userData_99_23)
+     IBUF:I->O            18   0.001   0.458  Reset_IBUF (Reset_IBUF)
+     LUT2:I0->O            3   0.097   0.289  Mmux_currentCharIndex11 (currentCharIndex<0>)
+     MUXCY:DI->O           1   0.337   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_cy<0> (currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_cy<0>)
+     XORCY:CI->O           1   0.370   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_xor<1> (currentCharIndex[6]_charCount[6]_mod_15/a[6]_b[6]_add_15_OUT[6:0]<1>)
+     LUT3:I2->O            2   0.097   0.299  currentCharIndex[6]_charCount[6]_mod_15/Mmux_o21 (currentCharIndex[6]_charCount[6]_mod_15_OUT<1>)
+     LUT2:I1->O            3   0.097   0.305  Mmux_currentCharIndex21 (currentCharIndex<1>)
+     LUT3:I2->O            1   0.097   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<1> (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<1>)
+     XORCY:LI->O           1   0.173   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_xor<1> (currentCharIndex[6]_charCount[6]_mod_15/GND_4_o_b[6]_add_13_OUT<1>)
+     LUT3:I2->O            3   0.097   0.289  currentCharIndex[6]_charCount[6]_mod_15/Mmux_n026221 (currentCharIndex[6]_charCount[6]_mod_15/n0262<1>)
+     MUXCY:DI->O           1   0.337   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_cy<1> (currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_cy<1>)
+     XORCY:CI->O           1   0.370   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_xor<2> (currentCharIndex[6]_charCount[6]_mod_15/a[6]_b[6]_add_15_OUT[6:0]<2>)
+     LUT3:I2->O            5   0.097   0.314  currentCharIndex[6]_charCount[6]_mod_15/Mmux_o31 (currentCharIndex[6]_charCount[6]_mod_15_OUT<2>)
+     LUT2:I1->O            9   0.097   0.548  Mmux_currentCharIndex31 (currentCharIndex<2>)
+     LUT5:I2->O            3   0.097   0.305  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_212_o131 (currentCharIndex[6]_charCount[6]_mod_15/a[3]_GND_4_o_MUX_209_o)
+     LUT2:I1->O            1   0.097   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<3> (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<3>)
+     XORCY:LI->O           1   0.173   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_xor<3> (currentCharIndex[6]_charCount[6]_mod_15/GND_4_o_b[6]_add_13_OUT<3>)
+     LUT3:I2->O            4   0.097   0.393  currentCharIndex[6]_charCount[6]_mod_15/Mmux_n026241 (currentCharIndex[6]_charCount[6]_mod_15/n0262<3>)
+     LUT2:I0->O            1   0.097   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_lut<3> (currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_lut<3>)
+     XORCY:LI->O           1   0.173   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_xor<3> (currentCharIndex[6]_charCount[6]_mod_15/a[6]_b[6]_add_15_OUT[6:0]<3>)
+     LUT3:I2->O            5   0.097   0.314  currentCharIndex[6]_charCount[6]_mod_15/Mmux_o41 (currentCharIndex[6]_charCount[6]_mod_15_OUT<3>)
+     LUT2:I1->O            5   0.097   0.530  Mmux_currentCharIndex41 (currentCharIndex<3>)
+     LUT5:I2->O            4   0.097   0.309  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_194_o141 (currentCharIndex[6]_charCount[6]_mod_15/a[4]_GND_4_o_MUX_190_o)
+     LUT2:I1->O            1   0.097   0.683  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_11_OUT_Madd_Madd_lut<4>1 (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_11_OUT_Madd_Madd_lut<4>)
+     LUT6:I1->O            3   0.097   0.305  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_212_o14 (currentCharIndex[6]_charCount[6]_mod_15/a[4]_GND_4_o_MUX_208_o)
+     LUT2:I1->O            1   0.097   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<4> (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<4>)
+     XORCY:LI->O           1   0.173   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_xor<4> (currentCharIndex[6]_charCount[6]_mod_15/GND_4_o_b[6]_add_13_OUT<4>)
+     LUT3:I2->O            4   0.097   0.393  currentCharIndex[6]_charCount[6]_mod_15/Mmux_n026251 (currentCharIndex[6]_charCount[6]_mod_15/n0262<4>)
+     LUT2:I0->O            1   0.097   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_lut<4> (currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_lut<4>)
+     XORCY:LI->O           1   0.173   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_xor<4> (currentCharIndex[6]_charCount[6]_mod_15/a[6]_b[6]_add_15_OUT[6:0]<4>)
+     LUT3:I2->O            4   0.097   0.309  currentCharIndex[6]_charCount[6]_mod_15/Mmux_o51 (currentCharIndex[6]_charCount[6]_mod_15_OUT<4>)
+     LUT2:I1->O            4   0.097   0.570  Mmux_currentCharIndex51 (currentCharIndex<4>)
+     LUT4:I0->O            1   0.097   0.295  currentCharIndex[6]_charCount[6]_mod_15/BUS_0004_INV_85_o1_SW0 (N4)
+     LUT5:I4->O            3   0.097   0.693  currentCharIndex[6]_charCount[6]_mod_15/BUS_0004_INV_85_o1 (currentCharIndex[6]_charCount[6]_mod_15/BUS_0004_INV_85_o)
+     LUT5:I0->O            4   0.097   0.309  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_174_o151 (currentCharIndex[6]_charCount[6]_mod_15/a[5]_GND_4_o_MUX_169_o)
+     LUT2:I1->O            2   0.097   0.698  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_9_OUT_Madd_Madd_lut<5>1 (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_9_OUT_Madd_Madd_lut<5>)
+     LUT6:I0->O            1   0.097   0.511  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_9_OUT_Madd_Madd_cy<5>11 (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_9_OUT_Madd_Madd_cy<5>)
+     LUT4:I1->O            3   0.097   0.693  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_194_o161 (currentCharIndex[6]_charCount[6]_mod_15/a[6]_GND_4_o_MUX_188_o)
+     LUT6:I1->O            6   0.097   0.579  currentCharIndex[6]_charCount[6]_mod_15/BUS_0006_INV_108_o1 (currentCharIndex[6]_charCount[6]_mod_15/BUS_0006_INV_108_o)
+     LUT4:I0->O            3   0.097   0.305  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_212_o151 (currentCharIndex[6]_charCount[6]_mod_15/a[5]_GND_4_o_MUX_207_o)
+     LUT2:I1->O            1   0.097   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<5> (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_lut<5>)
+     XORCY:LI->O           1   0.173   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_13_OUT_Madd_Madd_xor<5> (currentCharIndex[6]_charCount[6]_mod_15/GND_4_o_b[6]_add_13_OUT<5>)
+     LUT3:I2->O            4   0.097   0.309  currentCharIndex[6]_charCount[6]_mod_15/Mmux_n026261 (currentCharIndex[6]_charCount[6]_mod_15/n0262<5>)
+     LUT2:I1->O            1   0.097   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_lut<5> (currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_lut<5>)
+     MUXCY:S->O            0   0.353   0.000  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_cy<5> (currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_cy<5>)
+     XORCY:CI->O           1   0.370   0.295  currentCharIndex[6]_charCount[6]_mod_15/Madd_a[6]_b[6]_add_15_OUT[6:0]_Madd_xor<6> (currentCharIndex[6]_charCount[6]_mod_15/a[6]_b[6]_add_15_OUT[6:0]<6>)
+     LUT3:I2->O            2   0.097   0.299  currentCharIndex[6]_charCount[6]_mod_15/Mmux_o71 (currentCharIndex[6]_charCount[6]_mod_15_OUT<6>)
+     LUT2:I1->O            2   0.097   0.299  Mmux_currentCharIndex71 (Msub_GND_1_o_GND_1_o_sub_17_OUT<6:0>_lut<6>)
+     LUT6:I5->O            1   0.097   0.379  currentCharIndex[6]_charCount[6]_mod_15/BUS_0002_INV_58_o11 (currentCharIndex[6]_charCount[6]_mod_15/BUS_0002_INV_58_o)
+     LUT3:I1->O            2   0.097   0.516  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_128_o161 (currentCharIndex[6]_charCount[6]_mod_15/a[6]_GND_4_o_MUX_122_o)
+     LUT6:I3->O            2   0.097   0.384  currentCharIndex[6]_charCount[6]_mod_15/BUS_0003_INV_72_o11 (currentCharIndex[6]_charCount[6]_mod_15/BUS_0003_INV_72_o)
+     LUT3:I1->O            4   0.097   0.393  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_152_o151 (currentCharIndex[6]_charCount[6]_mod_15/a[5]_GND_4_o_MUX_147_o)
+     LUT2:I0->O            2   0.097   0.561  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_7_OUT_Madd_Madd_lut<5>1 (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_7_OUT_Madd_Madd_lut<5>)
+     LUT4:I0->O            1   0.097   0.511  currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_7_OUT_Madd_Madd_cy<5>11 (currentCharIndex[6]_charCount[6]_mod_15/Madd_GND_4_o_b[6]_add_7_OUT_Madd_Madd_cy<5>)
+     LUT4:I1->O            2   0.097   0.516  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_174_o161 (currentCharIndex[6]_charCount[6]_mod_15/a[6]_GND_4_o_MUX_168_o)
+     LUT4:I1->O            4   0.097   0.707  currentCharIndex[6]_charCount[6]_mod_15/BUS_0005_INV_97_o11 (currentCharIndex[6]_charCount[6]_mod_15/BUS_0005_INV_97_o)
+     LUT6:I0->O            5   0.097   0.702  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_194_o15 (currentCharIndex[6]_charCount[6]_mod_15/a[5]_GND_4_o_MUX_189_o)
+     LUT6:I1->O            2   0.097   0.688  currentCharIndex[6]_charCount[6]_mod_15/Mmux_a[0]_GND_4_o_MUX_212_o161 (currentCharIndex[6]_charCount[6]_mod_15/a[6]_GND_4_o_MUX_206_o)
+     LUT6:I1->O            6   0.097   0.534  currentCharIndex[6]_charCount[6]_mod_15/BUS_0007_INV_118_o1 (currentCharIndex[6]_charCount[6]_mod_15/BUS_0007_INV_118_o)
+     LUT3:I0->O            3   0.097   0.566  currentCharIndex[6]_charCount[6]_mod_15/Mmux_n026271 (currentCharIndex[6]_charCount[6]_mod_15/n0262<6>)
+     LUT4:I0->O            7   0.097   0.539  currentCharIndex[6]_charCount[6]_mod_15/BUS_0008_INV_127_o25 (currentCharIndex[6]_charCount[6]_mod_15/BUS_0008_INV_127_o)
+     LUT3:I0->O            3   0.097   0.703  currentCharIndex[6]_charCount[6]_mod_15/Mmux_o61 (currentCharIndex[6]_charCount[6]_mod_15_OUT<5>)
+     LUT6:I0->O            8   0.097   0.543  Msub_GND_1_o_GND_1_o_sub_17_OUT<6:0>_xor<6>11 (GND_1_o_GND_1_o_sub_17_OUT<6>)
+     LUT3:I0->O            1   0.097   0.000  inst_LPM_MUX112 (_n0044<0>)
+     LD_1:D                   -0.028          LEDs_0
+    ----------------------------------------
+    Total                     30.535ns (8.026ns logic, 22.509ns route)
+                                       (26.3% logic, 73.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'Reset'
+  Total number of paths / destination ports: 8 / 8
+-------------------------------------------------------------------------
+Offset:              0.754ns (Levels of Logic = 1)
+  Source:            LEDs_7 (LATCH)
+  Destination:       LEDs<7> (PAD)
+  Source Clock:      Reset rising
+
+  Data Path: LEDs_7 to LEDs<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD_1:G->Q             1   0.475   0.279  LEDs_7 (LEDs_7)
      OBUF:I->O                 0.000          LEDs_7_OBUF (LEDs<7>)
     ----------------------------------------
-    Total                      0.645ns (0.361ns logic, 0.283ns route)
-                                       (56.0% logic, 44.0% route)
+    Total                      0.754ns (0.475ns logic, 0.279ns route)
+                                       (63.0% logic, 37.0% route)
 
 =========================================================================
 
@@ -1249,21 +761,29 @@ Clock to Setup on destination clock Clk_100M
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-Clk_100M       |    2.520|         |         |         |
+Clk_100M       |   31.099|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock Reset
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+Clk_100M       |   31.694|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
 Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 7.90 secs
+Total CPU time to Xst completion: 8.62 secs
  
 --> 
 
 
-Total memory usage is 509340 kilobytes
+Total memory usage is 507404 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  798 (   0 filtered)
-Number of infos    :    0 (   0 filtered)
+Number of warnings :   11 (   0 filtered)
+Number of infos    :    3 (   0 filtered)
 

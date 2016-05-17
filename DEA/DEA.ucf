@@ -40,6 +40,6 @@ net "LEDs<2>" loc = J13 | IOSTANDARD = LVCMOS33 | TIG;
 net "LEDs<1>" loc = K15 | IOSTANDARD = LVCMOS33 | TIG;
 net "LEDs<0>" loc = H17 | IOSTANDARD = LVCMOS33 | TIG;
 
-net "Reset" loc      = P18 | IOSTANDARD = LVCMOS33 | TIG;
-#net "minuteBtn" loc = M17 | IOSTANDARD = LVCMOS33 | TIG;	// minutes button 
-#net "hourBtn" loc   = P17 | IOSTANDARD = LVCMOS33 | TIG;	// hour button 
+net "Reset" loc      	= P18 | IOSTANDARD = LVCMOS33 | TIG;
+net "prevCharBtn" loc 	= P17 | IOSTANDARD = LVCMOS33 | TIG;
+net "nextCharBtn" loc   = M17 | IOSTANDARD = LVCMOS33 | TIG;

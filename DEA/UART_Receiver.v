@@ -1,25 +1,26 @@
 // Alt+C for commenting
 // Alt+Shift+C for uncommenting
-//`timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date:    14:51:51 05/14/2016 
-// Design Name: 
-// Module Name:    UART_Receiver 
-// Project Name: 
-// Target Devices: 
-// Tool versions: 
-// Description: 
+
+//==============================================================================
+// Copyright (C) John-Philip Taylor
+// jpt13653903@gmail.com
 //
-// Dependencies: 
+// This file is part of a library
 //
-// Revision: 
-// Revision 0.01 - File Created
-// Additional Comments: 
+// This file is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
 //
-//////////////////////////////////////////////////////////////////////////////////
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>
+//==============================================================================
+
 module UART_Receiver #(
 	parameter N    = 5,
 	parameter Full = 5'd29 // Clk / BAUD - 1
@@ -30,7 +31,7 @@ module UART_Receiver #(
 	output reg [7:0]Data,
 	output reg      Ready,	// 'low' means busy, and 'high' mean free.
 	input           Ack,
-	input 			 softReset,
+	// input 			 softReset,
 	input 			 Rx
 );
 //------------------------------------------------------------------------------
@@ -54,27 +55,27 @@ reg tReset;
 //reg tSoftReset;
 
 always @(posedge Clk) begin
-	tRx    <= Rx;		// synchronise.
-	tAck   <= Ack;		// synchronise.
-	tReset <= Reset;	// synchronise.
-	// tSoftReset <= softReset;	// synchronise.
+	// clock domain crossing.
+	tRx    <= Rx;
+	tAck   <= Ack;
+	tReset <= Reset;
+	// tSoftReset <= softReset;
 
-	if(tReset | softReset) begin
+	if(tReset | Ack) begin
 		// if Reset the reinitialise everything.
 		Data    <= 0;
 		Ready   <= 0;
 		NewData <= 0;
-
 		Count   <= 0;
 		State   <= Idle;
 		//------------------------------------------------------------------------------
 		
 	end else begin
-		if(Ready & tAck) Ready <= 1'b0;	// set to 'low' to indicate busy.
+		if(Ready & tAck) Ready <= 1'b0;	// set to 'low' to indicate not yet received data.
 
 		case(State)
 			Idle: begin
-				// if there is nothing on the Rx line.
+				// if Rx line if idle.
 				if(~tRx) begin
 					Count <= {1'b0, Full[N-1:1]};
 					State <= StartBit;	// successfully received startbit.
@@ -82,9 +83,9 @@ always @(posedge Clk) begin
 				// if successfully received 8-bits of data.
 				if(NewData & ~tAck && ~Ready) begin 
 					Data    <= Temp;
-					Ready   <= 1'b1;	// set to 'high' to indicate free.
+					Ready   <= 1'b1;	// set to 'high' to indicate new data received.
 					NewData <= 1'b0;
-					//Count <= 0;
+					Count   <= 1'b0;
 				end
 			end
 //------------------------------------------------------------------------------

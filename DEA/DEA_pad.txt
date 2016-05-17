@@ -1,7 +1,7 @@
 Release 14.7 - par P.20131013 (lin64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Mon May 16 23:23:06 2016
+Tue May 17 13:07:46 2016
 
 
 INFO: The IO information is provided in three file formats as part of the Place and Route (PAR) process.  These formats are:
@@ -234,7 +234,7 @@ Pinout by Pin Number:
 |M14       |           |IOB33S   |IO_L2N_T0_D03_14            |UNUSED   |           |14            |          |         |           |         |         |          |           |                |
 |M15       |           |         |GND                         |         |           |              |          |         |           |         |         |          |           |                |
 |M16       |           |IOB33M   |IO_L10P_T1_D14_14           |UNUSED   |           |14            |          |         |           |         |         |          |           |                |
-|M17       |           |IOB33S   |IO_L10N_T1_D15_14           |UNUSED   |           |14            |          |         |           |         |         |          |           |                |
+|M17       |nextCharBtn|IOB33    |IO_L10N_T1_D15_14           |INPUT    |LVCMOS33   |14            |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |M18       |           |IOB33S   |IO_L4N_T0_D05_14            |UNUSED   |           |14            |          |         |           |         |         |          |           |                |
 |N1        |           |IOB33S   |IO_L3N_T0_DQS_34            |UNUSED   |           |34            |          |         |           |         |         |          |           |                |
 |N2        |           |IOB33M   |IO_L3P_T0_DQS_34            |UNUSED   |           |34            |          |         |           |         |         |          |           |                |
@@ -270,7 +270,7 @@ Pinout by Pin Number:
 |P14       |           |IOB33S   |IO_L8N_T1_D12_14            |UNUSED   |           |14            |          |         |           |         |         |          |           |                |
 |P15       |           |IOB33M   |IO_L13P_T2_MRCC_14          |UNUSED   |           |14            |          |         |           |         |         |          |           |                |
 |P16       |           |         |VCCO_14                     |         |           |14            |          |         |           |         |3.30     |          |           |                |
-|P17       |           |IOB33M   |IO_L12P_T1_MRCC_14          |UNUSED   |           |14            |          |         |           |         |         |          |           |                |
+|P17       |prevCharBtn|IOB33    |IO_L12P_T1_MRCC_14          |INPUT    |LVCMOS33   |14            |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |P18       |Reset      |IOB33    |IO_L9N_T1_DQS_D13_14        |INPUT    |LVCMOS33   |14            |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |R1        |           |IOB33M   |IO_L17P_T2_34               |UNUSED   |           |34            |          |         |           |         |         |          |           |                |
 |R2        |           |IOB33S   |IO_L15N_T2_DQS_34           |UNUSED   |           |34            |          |         |           |         |         |          |           |                |
