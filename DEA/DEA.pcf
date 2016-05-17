@@ -1,8 +1,16 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Tue May 17 17:23:17 2016
+// Written by: Map P.20131013 on Wed May 18 00:09:37 2016
 //! **************************************************************************
 
 SCHEMATIC START;
+COMP "LEDs<8>" LOCATE = SITE "V16" LEVEL 1;
+COMP "LEDs<9>" LOCATE = SITE "T15" LEVEL 1;
+COMP "LEDs<10>" LOCATE = SITE "U14" LEVEL 1;
+COMP "LEDs<11>" LOCATE = SITE "T16" LEVEL 1;
+COMP "LEDs<12>" LOCATE = SITE "V15" LEVEL 1;
+COMP "LEDs<13>" LOCATE = SITE "V14" LEVEL 1;
+COMP "LEDs<14>" LOCATE = SITE "V12" LEVEL 1;
+COMP "LEDs<15>" LOCATE = SITE "V11" LEVEL 1;
 COMP "nextCharBtn" LOCATE = SITE "M17" LEVEL 1;
 COMP "Reset" LOCATE = SITE "P18" LEVEL 1;
 COMP "prevCharBtn" LOCATE = SITE "P17" LEVEL 1;
@@ -17,6 +25,14 @@ COMP "LEDs<5>" LOCATE = SITE "V17" LEVEL 1;
 COMP "LEDs<6>" LOCATE = SITE "U17" LEVEL 1;
 COMP "LEDs<7>" LOCATE = SITE "U16" LEVEL 1;
 NET "Clk_100M_BUFGP/IBUFG" PERIOD = 10 ns HIGH 5 ns;
+PIN LEDs_15_OBUF_pins<1> = BEL "LEDs_15_OBUF" PINNAME OUT;
+PIN LEDs_14_OBUF_pins<1> = BEL "LEDs_14_OBUF" PINNAME OUT;
+PIN LEDs_13_OBUF_pins<1> = BEL "LEDs_13_OBUF" PINNAME OUT;
+PIN LEDs_12_OBUF_pins<1> = BEL "LEDs_12_OBUF" PINNAME OUT;
+PIN LEDs_11_OBUF_pins<1> = BEL "LEDs_11_OBUF" PINNAME OUT;
+PIN LEDs_10_OBUF_pins<1> = BEL "LEDs_10_OBUF" PINNAME OUT;
+PIN LEDs_9_OBUF_pins<1> = BEL "LEDs_9_OBUF" PINNAME OUT;
+PIN LEDs_8_OBUF_pins<1> = BEL "LEDs_8_OBUF" PINNAME OUT;
 PIN LEDs_7_OBUF_pins<1> = BEL "LEDs_7_OBUF" PINNAME OUT;
 PIN LEDs_6_OBUF_pins<1> = BEL "LEDs_6_OBUF" PINNAME OUT;
 PIN LEDs_5_OBUF_pins<1> = BEL "LEDs_5_OBUF" PINNAME OUT;
@@ -29,6 +45,14 @@ PIN Reset_pins<0> = BEL "Reset" PINNAME PAD;
 PIN prevCharBtn_pins<0> = BEL "prevCharBtn" PINNAME PAD;
 PIN nextCharBtn_pins<0> = BEL "nextCharBtn" PINNAME PAD;
 PIN Rx_pins<0> = BEL "Rx" PINNAME PAD;
+PIN "LEDs_15_OBUF_pins<1>" TIG;
+PIN "LEDs_14_OBUF_pins<1>" TIG;
+PIN "LEDs_13_OBUF_pins<1>" TIG;
+PIN "LEDs_12_OBUF_pins<1>" TIG;
+PIN "LEDs_11_OBUF_pins<1>" TIG;
+PIN "LEDs_10_OBUF_pins<1>" TIG;
+PIN "LEDs_9_OBUF_pins<1>" TIG;
+PIN "LEDs_8_OBUF_pins<1>" TIG;
 PIN "LEDs_7_OBUF_pins<1>" TIG;
 PIN "LEDs_6_OBUF_pins<1>" TIG;
 PIN "LEDs_5_OBUF_pins<1>" TIG;

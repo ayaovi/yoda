@@ -61,7 +61,7 @@ always @(posedge Clk) begin
 	tReset <= Reset;
 	// tSoftReset <= softReset;
 
-	if(tReset | Ack) begin
+	if(tReset | tAck) begin
 		// if Reset the reinitialise everything.
 		Data    <= 0;
 		Ready   <= 0;

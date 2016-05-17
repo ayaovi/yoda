@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total CPU time to Xst completion: 0.05 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total CPU time to Xst completion: 0.05 secs
  
 --> 
 Reading design: DEA.prj
@@ -133,26 +133,29 @@ Synthesizing Unit <DEA>.
     Related source file is "/home/bluelabuser/temp/yoda/DEA/DEA.v".
 WARNING:Xst:3035 - Index value(s) does not match array range for signal <userData>, simulation mismatch.
     Found 100x8-bit dual-port RAM <Mram_userData> for signal <userData>.
+    Found 8-bit register for signal <charCount>.
     Found 1-bit register for signal <Rx_Ack>.
-    Found 7-bit register for signal <charCount>.
+    Found 1-bit register for signal <receivingData>.
+    Found 8-bit register for signal <sizeOfDataInByte>.
     Found 1-bit register for signal <prevBusyState>.
     Found 1-bit register for signal <prevCharBtnPreviousState>.
     Found 1-bit register for signal <nextCharBtnPreviousState>.
-    Found 7-bit register for signal <currentCharIndex>.
-    Found 7-bit subtractor for signal <charCount[6]_GND_1_o_sub_9_OUT> created at line 75.
-    Found 7-bit subtractor for signal <currentCharIndex[6]_GND_1_o_sub_10_OUT> created at line 77.
-    Found 8-bit subtractor for signal <GND_1_o_GND_1_o_sub_15_OUT> created at line 86.
-    Found 7-bit adder for signal <charCount[6]_GND_1_o_add_3_OUT> created at line 63.
-    Found 7-bit adder for signal <currentCharIndex[6]_GND_1_o_add_16_OUT> created at line 89.
-    Found 7-bit subtractor for signal <GND_1_o_GND_1_o_sub_2_OUT<6:0>> created at line 62.
-    Found 7-bit subtractor for signal <GND_1_o_GND_1_o_sub_24_OUT<6:0>> created at line 136.
-    Found 32-bit comparator equal for signal <GND_1_o_GND_1_o_equal_16_o> created at line 86
+    Found 8-bit register for signal <currentCharIndex>.
+    Found 8-bit subtractor for signal <charCount[7]_GND_1_o_sub_28_OUT> created at line 156.
+    Found 8-bit subtractor for signal <currentCharIndex[7]_GND_1_o_sub_29_OUT> created at line 158.
+    Found 9-bit subtractor for signal <GND_1_o_GND_1_o_sub_34_OUT> created at line 167.
+    Found 8-bit adder for signal <charCount[7]_GND_1_o_add_4_OUT> created at line 97.
+    Found 8-bit adder for signal <currentCharIndex[7]_GND_1_o_add_35_OUT> created at line 170.
+    Found 7-bit subtractor for signal <GND_1_o_GND_1_o_sub_3_OUT<6:0>> created at line 96.
+    Found 7-bit subtractor for signal <GND_1_o_GND_1_o_sub_49_OUT<6:0>> created at line 251.
+    Found 8-bit comparator not equal for signal <charCount[7]_sizeOfDataInByte[7]_equal_6_o> created at line 100
+    Found 32-bit comparator equal for signal <GND_1_o_GND_1_o_equal_35_o> created at line 167
     Summary:
 	inferred   1 RAM(s).
 	inferred   5 Adder/Subtractor(s).
-	inferred  18 D-type flip-flop(s).
-	inferred   1 Comparator(s).
-	inferred   3 Multiplexer(s).
+	inferred  29 D-type flip-flop(s).
+	inferred   2 Comparator(s).
+	inferred   5 Multiplexer(s).
 Unit <DEA> synthesized.
 
 Synthesizing Unit <UART_Receiver>.
@@ -176,7 +179,7 @@ Synthesizing Unit <UART_Receiver>.
     | Inputs             | 6                                              |
     | Outputs            | 4                                              |
     | Clock              | Clk (rising_edge)                              |
-    | Reset              | tReset_Ack_OR_32_o (positive)                  |
+    | Reset              | tReset_tAck_OR_39_o (positive)                 |
     | Reset type         | synchronous                                    |
     | Reset State        | 00                                             |
     | Encoding           | auto                                           |
@@ -214,25 +217,25 @@ Macro Statistics
  14-bit subtractor                                     : 1
  22-bit adder                                          : 2
  3-bit adder                                           : 1
- 7-bit adder                                           : 1
- 7-bit addsub                                          : 1
  7-bit subtractor                                      : 2
- 8-bit subtractor                                      : 1
-# Registers                                            : 21
- 1-bit register                                        : 13
+ 8-bit adder                                           : 1
+ 8-bit addsub                                          : 1
+ 9-bit subtractor                                      : 1
+# Registers                                            : 23
+ 1-bit register                                        : 14
  14-bit register                                       : 1
  22-bit register                                       : 2
  3-bit register                                        : 1
- 7-bit register                                        : 2
- 8-bit register                                        : 2
-# Comparators                                          : 3
+ 8-bit register                                        : 5
+# Comparators                                          : 4
  1-bit comparator not equal                            : 2
  32-bit comparator equal                               : 1
-# Multiplexers                                         : 9
- 1-bit 2-to-1 multiplexer                              : 1
+ 8-bit comparator not equal                            : 1
+# Multiplexers                                         : 11
+ 1-bit 2-to-1 multiplexer                              : 3
  14-bit 2-to-1 multiplexer                             : 5
  3-bit 2-to-1 multiplexer                              : 1
- 7-bit 2-to-1 multiplexer                              : 2
+ 8-bit 2-to-1 multiplexer                              : 2
 # FSMs                                                 : 1
 
 =========================================================================
@@ -253,12 +256,12 @@ INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_userData> will be implemented on LUT
     |     aspect ratio   | 100-word x 8-bit                    |          |
     |     clkA           | connected to signal <Clk_100M>      | rise     |
     |     weA            | connected to internal node          | high     |
-    |     addrA          | connected to signal <GND_1_o_GND_1_o_sub_2_OUT> |          |
+    |     addrA          | connected to signal <GND_1_o_GND_1_o_sub_3_OUT> |          |
     |     diA            | connected to signal <Rx_Data>       |          |
     -----------------------------------------------------------------------
     | Port B                                                              |
     |     aspect ratio   | 100-word x 8-bit                    |          |
-    |     addrB          | connected to signal <GND_1_o_GND_1_o_sub_24_OUT> |          |
+    |     addrB          | connected to signal <GND_1_o_GND_1_o_sub_49_OUT> |          |
     |     doB            | connected to signal <LEDs>          |          |
     -----------------------------------------------------------------------
 Unit <DEA> synthesized (advanced).
@@ -279,22 +282,24 @@ Macro Statistics
  100x8-bit dual-port distributed RAM                   : 1
 # Adders/Subtractors                                   : 5
  3-bit adder                                           : 1
- 7-bit addsub                                          : 1
  7-bit subtractor                                      : 2
- 8-bit subtractor                                      : 1
+ 8-bit addsub                                          : 1
+ 9-bit subtractor                                      : 1
 # Counters                                             : 4
  14-bit down counter                                   : 1
  22-bit up counter                                     : 2
- 7-bit up counter                                      : 1
-# Registers                                            : 39
- Flip-Flops                                            : 39
-# Comparators                                          : 3
+ 8-bit up counter                                      : 1
+# Registers                                            : 49
+ Flip-Flops                                            : 49
+# Comparators                                          : 4
  1-bit comparator not equal                            : 2
  32-bit comparator equal                               : 1
-# Multiplexers                                         : 7
+ 8-bit comparator not equal                            : 1
+# Multiplexers                                         : 10
+ 1-bit 2-to-1 multiplexer                              : 3
  14-bit 2-to-1 multiplexer                             : 4
  3-bit 2-to-1 multiplexer                              : 1
- 7-bit 2-to-1 multiplexer                              : 2
+ 8-bit 2-to-1 multiplexer                              : 2
 # FSMs                                                 : 1
 
 =========================================================================
@@ -320,6 +325,8 @@ Optimizing unit <UART_Receiver> ...
 Mapping all equations...
 Building and optimizing final netlist ...
 Found area constraint ratio of 100 (+ 5) on block DEA, actual ratio is 0.
+FlipFlop debounceNextBtn/NextState has been replicated 1 time(s)
+INFO:Xst:1843 - HDL ADVISOR - FlipFlop debounceNextBtn/NextState connected to a primary input has been replicated
 
 Final Macro Processing ...
 
@@ -327,8 +334,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 106
- Flip-Flops                                            : 106
+# Registers                                            : 118
+ Flip-Flops                                            : 118
 
 =========================================================================
 
@@ -351,31 +358,31 @@ Top Level Output File Name         : DEA.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 294
+# BELS                             : 331
 #      GND                         : 1
-#      INV                         : 21
-#      LUT1                        : 43
-#      LUT2                        : 11
-#      LUT3                        : 22
+#      INV                         : 22
+#      LUT1                        : 50
+#      LUT2                        : 8
+#      LUT3                        : 26
 #      LUT4                        : 12
 #      LUT5                        : 23
-#      LUT6                        : 47
-#      MUXCY                       : 55
+#      LUT6                        : 60
+#      MUXCY                       : 62
 #      VCC                         : 1
-#      XORCY                       : 58
-# FlipFlops/Latches                : 106
-#      FD                          : 3
-#      FDE                         : 67
-#      FDR                         : 21
-#      FDRE                        : 15
+#      XORCY                       : 66
+# FlipFlops/Latches                : 118
+#      FD                          : 5
+#      FDE                         : 61
+#      FDR                         : 22
+#      FDRE                        : 30
 # RAMS                             : 8
 #      RAM64M                      : 4
 #      RAM64X1D                    : 4
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
-# IO Buffers                       : 12
+# IO Buffers                       : 20
 #      IBUF                        : 4
-#      OBUF                        : 8
+#      OBUF                        : 16
 
 Device utilization summary:
 ---------------------------
@@ -384,22 +391,22 @@ Selected Device : 7a100tcsg324-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             106  out of  126800     0%  
- Number of Slice LUTs:                  203  out of  63400     0%  
-    Number used as Logic:               179  out of  63400     0%  
+ Number of Slice Registers:             118  out of  126800     0%  
+ Number of Slice LUTs:                  225  out of  63400     0%  
+    Number used as Logic:               201  out of  63400     0%  
     Number used as Memory:               24  out of  19000     0%  
        Number used as RAM:               24
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    217
-   Number with an unused Flip Flop:     111  out of    217    51%  
-   Number with an unused LUT:            14  out of    217     6%  
-   Number of fully used LUT-FF pairs:    92  out of    217    42%  
-   Number of unique control sets:        15
+ Number of LUT Flip Flop pairs used:    248
+   Number with an unused Flip Flop:     130  out of    248    52%  
+   Number with an unused LUT:            23  out of    248     9%  
+   Number of fully used LUT-FF pairs:    95  out of    248    38%  
+   Number of unique control sets:        16
 
 IO Utilization: 
- Number of IOs:                          14
- Number of bonded IOBs:                  13  out of    210     6%  
+ Number of IOs:                          22
+ Number of bonded IOBs:                  21  out of    210    10%  
 
 Specific Feature Utilization:
  Number of BUFG/BUFGCTRLs:                1  out of     32     3%  
@@ -425,7 +432,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-Clk_100M                           | BUFGP                  | 114   |
+Clk_100M                           | BUFGP                  | 126   |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -436,9 +443,9 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 2.907ns (Maximum Frequency: 344.009MHz)
-   Minimum input arrival time before clock: 1.384ns
-   Maximum output required time after clock: 2.197ns
+   Minimum period: 3.058ns (Maximum Frequency: 327.000MHz)
+   Minimum input arrival time before clock: 1.550ns
+   Maximum output required time after clock: 2.211ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -447,53 +454,55 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'Clk_100M'
-  Clock period: 2.907ns (frequency: 344.009MHz)
-  Total number of paths / destination ports: 2650 / 312
+  Clock period: 3.058ns (frequency: 327.000MHz)
+  Total number of paths / destination ports: 3530 / 331
 -------------------------------------------------------------------------
-Delay:               2.907ns (Levels of Logic = 3)
-  Source:            charCount_1 (FF)
-  Destination:       currentCharIndex_0 (FF)
+Delay:               3.058ns (Levels of Logic = 5)
+  Source:            currentCharIndex_1 (FF)
+  Destination:       currentCharIndex_3 (FF)
   Source Clock:      Clk_100M rising
   Destination Clock: Clk_100M rising
 
-  Data Path: charCount_1 to currentCharIndex_0
+  Data Path: currentCharIndex_1 to currentCharIndex_3
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q             14   0.361   0.743  charCount_1 (charCount_1)
-     LUT6:I1->O            1   0.097   0.556  _n00773 (_n00773)
-     LUT6:I2->O            2   0.097   0.299  _n00774 (_n0077)
-     LUT2:I1->O            7   0.097   0.307  Reset_OR_DriverANDClockEnable1 (Reset_OR_DriverANDClockEnable)
-     FDRE:R                    0.349          currentCharIndex_0
+     FDRE:C->Q             8   0.361   0.725  currentCharIndex_1 (currentCharIndex_1)
+     LUT6:I0->O            1   0.097   0.556  _n01612 (_n01612)
+     LUT6:I2->O            2   0.097   0.299  _n01613 (_n01613)
+     LUT6:I5->O            2   0.097   0.299  _n01614 (_n0161)
+     LUT5:I4->O            7   0.097   0.323  _n0188_inv11 (_n0188_inv1)
+     LUT5:I4->O            1   0.097   0.000  currentCharIndex_3_rstpot (currentCharIndex_3_rstpot)
+     FD:D                      0.008          currentCharIndex_3
     ----------------------------------------
-    Total                      2.907ns (1.001ns logic, 1.906ns route)
-                                       (34.4% logic, 65.6% route)
+    Total                      3.058ns (0.854ns logic, 2.204ns route)
+                                       (27.9% logic, 72.1% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'Clk_100M'
-  Total number of paths / destination ports: 51 / 51
+  Total number of paths / destination ports: 64 / 64
 -------------------------------------------------------------------------
-Offset:              1.384ns (Levels of Logic = 2)
+Offset:              1.550ns (Levels of Logic = 2)
   Source:            Reset (PAD)
-  Destination:       Mram_userData1 (RAM)
+  Destination:       currentCharIndex_1 (FF)
   Destination Clock: Clk_100M rising
 
-  Data Path: Reset to Mram_userData1
+  Data Path: Reset to currentCharIndex_1
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             7   0.001   0.584  Reset_IBUF (Reset_IBUF)
-     LUT4:I0->O            4   0.097   0.293  write_ctrl (write_ctrl)
-     RAM64M:WE                 0.408          Mram_userData1
+     IBUF:I->O            23   0.001   0.791  Reset_IBUF (Reset_IBUF)
+     LUT6:I0->O            8   0.097   0.311  Reset_OR_DriverANDClockEnable1 (Reset_OR_DriverANDClockEnable)
+     FDRE:R                    0.349          currentCharIndex_7
     ----------------------------------------
-    Total                      1.384ns (0.506ns logic, 0.878ns route)
-                                       (36.6% logic, 63.4% route)
+    Total                      1.550ns (0.447ns logic, 1.103ns route)
+                                       (28.8% logic, 71.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'Clk_100M'
-  Total number of paths / destination ports: 104 / 8
+  Total number of paths / destination ports: 112 / 16
 -------------------------------------------------------------------------
-Offset:              2.197ns (Levels of Logic = 4)
+Offset:              2.211ns (Levels of Logic = 4)
   Source:            currentCharIndex_5 (FF)
   Destination:       LEDs<7> (PAD)
   Source Clock:      Clk_100M rising
@@ -502,14 +511,14 @@ Offset:              2.197ns (Levels of Logic = 4)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q             9   0.361   0.593  currentCharIndex_5 (currentCharIndex_5)
-     LUT4:I0->O            4   0.097   0.293  Msub_GND_1_o_GND_1_o_sub_24_OUT<6:0>_xor<5>11 (GND_1_o_GND_1_o_sub_24_OUT<5>)
+     FDRE:C->Q            12   0.361   0.607  currentCharIndex_5 (currentCharIndex_5)
+     LUT4:I0->O            4   0.097   0.293  Msub_GND_1_o_GND_1_o_sub_49_OUT<6:0>_xor<5>11 (GND_1_o_GND_1_o_sub_49_OUT<5>)
      RAM64X1D:DPRA5->DPO    1   0.097   0.379  Mram_userData31 (N18)
      LUT3:I1->O            1   0.097   0.279  inst_LPM_MUX611 (LEDs_6_OBUF)
      OBUF:I->O                 0.000          LEDs_6_OBUF (LEDs<6>)
     ----------------------------------------
-    Total                      2.197ns (0.652ns logic, 1.545ns route)
-                                       (29.7% logic, 70.3% route)
+    Total                      2.211ns (0.652ns logic, 1.559ns route)
+                                       (29.5% logic, 70.5% route)
 
 =========================================================================
 
@@ -521,21 +530,21 @@ Clock to Setup on destination clock Clk_100M
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-Clk_100M       |    2.907|         |         |         |
+Clk_100M       |    3.058|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 7.88 secs
+Total REAL time to Xst completion: 9.00 secs
+Total CPU time to Xst completion: 8.42 secs
  
 --> 
 
 
-Total memory usage is 506964 kilobytes
+Total memory usage is 507096 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    1 (   0 filtered)
-Number of infos    :    2 (   0 filtered)
+Number of infos    :    3 (   0 filtered)
 

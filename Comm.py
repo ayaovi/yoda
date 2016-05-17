@@ -1,5 +1,10 @@
 import serial
 ser = serial.Serial('/dev/ttyUSB1', baudrate=10000, bytesize=8, parity='N', stopbits=1, timeout=None, xonxoff=0, rtscts=0)  # open serial port
 print(ser.name)         # check which port was really used
-ser.write(b'hello')     # write a string
+data = 'ayaovidjissenou'
+keys = 'AED'
+ser.write(chr(len(data)).encode())     # write the lenght of the data
+ser.write(data.encode())     # write a data
+ser.write(chr(len(keys)).encode())     # write the lenght of keys
+ser.write(keys.encode())     # write a keys
 ser.close()
