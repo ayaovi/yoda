@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total CPU time to Xst completion: 0.03 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total CPU time to Xst completion: 0.03 secs
  
 --> 
 Reading design: DEA.prj
@@ -153,22 +153,22 @@ WARNING:Xst:3035 - Index value(s) does not match array range for signal <keys>, 
     Found 8-bit register for signal <byteOfKey>.
     Found 8-bit register for signal <currentCharIndex>.
     Found 9-bit subtractor for signal <GND_1_o_GND_1_o_sub_6_OUT> created at line 108.
-    Found 8-bit subtractor for signal <currentCharIndex[7]_GND_1_o_sub_29_OUT> created at line 159.
-    Found 8-bit subtractor for signal <sizeOfDataInByte[7]_GND_1_o_sub_30_OUT> created at line 161.
-    Found 9-bit subtractor for signal <GND_1_o_GND_1_o_sub_57_OUT> created at line 209.
+    Found 8-bit subtractor for signal <currentCharIndex[7]_GND_1_o_sub_29_OUT> created at line 143.
+    Found 8-bit subtractor for signal <sizeOfDataInByte[7]_GND_1_o_sub_30_OUT> created at line 145.
+    Found 9-bit subtractor for signal <GND_1_o_GND_1_o_sub_57_OUT> created at line 193.
     Found 8-bit adder for signal <charCount[7]_GND_1_o_add_4_OUT> created at line 105.
     Found 8-bit adder for signal <keyCount[7]_GND_1_o_add_9_OUT> created at line 121.
-    Found 8-bit adder for signal <currentCharIndex[7]_GND_1_o_add_36_OUT> created at line 172.
-    Found 8-bit adder for signal <index[7]_GND_1_o_add_54_OUT> created at line 207.
-    Found 2-bit adder for signal <keyIndex[1]_GND_1_o_add_58_OUT> created at line 210.
+    Found 8-bit adder for signal <currentCharIndex[7]_GND_1_o_add_36_OUT> created at line 156.
+    Found 8-bit adder for signal <index[7]_GND_1_o_add_54_OUT> created at line 191.
+    Found 2-bit adder for signal <keyIndex[1]_GND_1_o_add_58_OUT> created at line 194.
 WARNING:Xst:3035 - Index value(s) does not match array range for signal <userData>, simulation mismatch.
     Found 100x8-bit dual-port RAM <Mram_userData> for signal <userData>.
     Found 32-bit comparator not equal for signal <GND_1_o_GND_1_o_equal_7_o> created at line 108
     Found 8-bit comparator not equal for signal <keyCount[7]_sizeOfKeyInByte[7]_equal_11_o> created at line 124
-    Found 32-bit comparator lessequal for signal <GND_1_o_GND_1_o_LessThan_36_o> created at line 171
-    Found 8-bit comparator greater for signal <index[7]_sizeOfDataInByte[7]_LessThan_51_o> created at line 198
-    Found 32-bit comparator lessequal for signal <GND_1_o_GND_1_o_LessThan_54_o> created at line 206
-    Found 32-bit comparator lessequal for signal <GND_1_o_GND_1_o_LessThan_58_o> created at line 209
+    Found 32-bit comparator lessequal for signal <GND_1_o_GND_1_o_LessThan_36_o> created at line 155
+    Found 8-bit comparator greater for signal <index[7]_sizeOfDataInByte[7]_LessThan_51_o> created at line 182
+    Found 32-bit comparator lessequal for signal <GND_1_o_GND_1_o_LessThan_54_o> created at line 190
+    Found 32-bit comparator lessequal for signal <GND_1_o_GND_1_o_LessThan_58_o> created at line 193
     Summary:
 	inferred   4 RAM(s).
 	inferred   7 Adder/Subtractor(s).
@@ -635,7 +635,7 @@ Clk_100M       |    2.968|         |         |         |
 
 
 Total REAL time to Xst completion: 9.00 secs
-Total CPU time to Xst completion: 9.07 secs
+Total CPU time to Xst completion: 9.08 secs
  
 --> 
 

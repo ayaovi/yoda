@@ -123,22 +123,6 @@ always @(posedge Clk_100M) begin
 				// if done receiving data, signal start of encryption.
 				if (keyCount == sizeOfKeyInByte) begin
 					receivingKeys <= 1'b0;						// to indicate finish receiving keys.
-					
-//******************************************************************************
-//					for (index = 0; index < sizeOfDataInByte; index = index + 1) begin
-//						byteOfUserData <= userData[index];		// grab a new byte of data.
-//						byteOfKey <= keys[index%3];				// and a new byte of key.
-//						startEncryption <= 1'b1;					// reset encryption engine.
-//						
-//						// then wait for encryption to finish
-//						while (!encrypt_Ready) begin
-//							startEncryption <= 1'b0;
-//						end
-//						
-//						// read data.
-//						result[index] <= encrypt_Data;
-//					end
-//******************************************************************************
 				end
 			end
 			
@@ -253,26 +237,6 @@ Debounce debounceNextBtn(
 	nextCharBtn,
 	nextCharBtnNextState
 );
-
-//Encryption encryption(
-//	Clk_100M,
-//	startEncryption,
-//	userData,
-//	sizeOfDataInByte,
-//	keys,
-//	sizeOfKeyInByte,
-//	result,
-//	encrypt_Ready
-//);
-
-//Encryption encryption(
-//	Clk_100M,
-//	startEncryption,
-//	byteOfUserData,
-//	byteOfkey,
-//	encrypt_Data,
-//	encrypt_Ready
-//);
 
 always @(*) begin
 	// displays characters on the LEDs. Characters are shifted using btn P17 and M17
