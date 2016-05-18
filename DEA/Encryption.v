@@ -21,7 +21,7 @@
 
 module Encryption(
 	input 			 Clk,
-	input 			 Reset,
+	input 			 Ack,
 	//input 	  [7:0]ID,
 	input 	  [7:0]DataIn,
 	//input 	  [7:0]SizeOfData,
@@ -33,18 +33,19 @@ module Encryption(
 );
 
 //reg [2:0]dataCount;
-reg [2:0]count;
+reg [3:0]count;
+//parameter NumberOfbitsInByte = 8;
 
 always @(posedge Clk) begin
 
-	if (Reset) begin
+	if (Ack) begin
 		Ready <= 1'b0;
-		count <= 1'b0;
+//		count <= 1'b0;
 //		dataCount <= 0;
 	end
 	else begin
 //		if (dataCount < SizeOfData) begin
-		for (count = 0; count < 8; count = count + 1) begin
+		for (count = 0; count < 8; count = count + 1'b1) begin
 			DataOut[count] <= DataIn[count] ^ key[count];
 //			dataCount <= dataCount + 1'b1;
 //			keyCount  <= keyCount + 1'b1;

@@ -14,3 +14,4 @@ Time resolution is 1 ps
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
 # isim force add /UART_Receiver/Rx 1 -radix bin
+# exit 0

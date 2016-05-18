@@ -4,6 +4,7 @@
 XOREncryption.py
 Created by Kyle Banks on 2013-10-06.
 """
+import time
 
 def encryptDecrypt(input):
 	key = ['A', 'E', 'D'] #Can be any chars, and any size array
@@ -17,11 +18,17 @@ def encryptDecrypt(input):
 
 
 def main():
+	start_time = time.time()
 	encrypted = encryptDecrypt("ayaovidjissenou");
-	print("Encrypted:"+encrypted);
+	stop_time = time.time()	
+	print("Encrypted: "+encrypted);
+	print("Encryption process took %s ms ---" % (stop_time*1000 - start_time*1000))
 	
+	start_time = time.time()
 	decrypted = encryptDecrypt(encrypted);
+	stop_time = time.time()
 	print("Decrypted:"+decrypted);
+	print("Decryption process took %s ms ---" % (stop_time*1000 - start_time*1000))
 	pass
 
 
