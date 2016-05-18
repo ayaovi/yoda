@@ -35,9 +35,9 @@ wire       Rx_Ready;
 reg        Rx_Ack;
 wire  [7:0]Rx_Data;
 
-//reg   [7:0]Tx_Data;
-//reg        Tx_Send;
-//wire       Tx_Busy;
+reg   [7:0]Tx_Data;
+reg        Tx_Send;
+wire       Tx_Busy;
 
 reg        encrypt_Ack;
 wire       encrypt_Ready;
@@ -151,6 +151,7 @@ always @(posedge Clk_100M) begin
 				currentCharIndex <= sizeOfDataInByte - 1'b1;
 			else
 				currentCharIndex <= currentCharIndex - 1'b1;
+//				currentCharIndex <= (currentCharIndex - 1'b1) % sizeOfDataInByte;
 		
 		end else
 			prevCharBtnPreviousState <= prevCharBtnNextState;
@@ -182,36 +183,37 @@ always @(posedge Clk_100M) begin
 	
 	if (Reset) begin
 		encrypt_Ack    <= 1'b0;
-		index <= 1'b0;			// reset index
+		index 			<= 1'b0;			// reset index
 		
 		byteOfUserData <= userData[index];			// grab a new byte of data.
 		byteOfKey 		<= keys[index%3];				// and a new byte of key.
-		index <= index + 1'b1;
+		//index 			<= index + 1'b1;
+		index 			<= 1'b1;
 	end
 	else begin
 		if (index < sizeOfDataInByte && encrypt_Ready == 1'b1) begin
-			result[index] <= encrypt_Data;
-			encrypt_Ack <= 1'b1;							// reset encryption engine.
+			result[index]	<= encrypt_Data;
+			encrypt_Ack		<= 1'b1;							// reset encryption engine.
 			
 			byteOfUserData <= userData[index];		// grab a new byte of data.
-			byteOfKey 		<= keys[index%3];			// and a new byte of key, if possible wrap around.
+			byteOfKey		<= keys	  [index%3];			// and a new byte of key, if possible wrap around.
 			
-			index <= index + 1'b1;
+			index 			<= index + 1'b1;
 		end
 		else if (~encrypt_Ready) begin
-			encrypt_Ack <= 1'b0;
+			encrypt_Ack 	<= 1'b0;
 		end
 	end
 end
 
-//	UART_Sender #(14, 14'd9999) sender(
-//		Clk_100M, 
-//		Reset,
-//		Tx_Data,
-//		Tx_Send,
-//		Tx_Busy,
-//		Tx
-//	);
+UART_Sender #(14, 14'd9999) sender(
+	Clk_100M, 
+	Reset,
+	Tx_Data,
+	Tx_Send,
+	Tx_Busy,
+	Tx
+);
 
 UART_Receiver #(14, 14'd9999) receiver(
 	Clk_100M,
@@ -258,11 +260,14 @@ always @(*) begin
 	// displays characters on the LEDs. Characters are shifted using btn P17 and M17
 	// going from left to right and right to left respectively.
 	
-	//LEDs[15:8] <= sizeOfDataInByte;
+	//LEDs[15:8] <= sizeOfDataInByte;				// check
 	LEDs[15:8] <= result[currentCharIndex];
-	//LEDs[15:8] <= sizeOfKeyInByte;
+	//LEDs[15:8] <= encrypt_Data;
+	//LEDs[15:8] <= keys[currentCharIndex%3];		// check
+	//LEDs[15:8] <= index;								// check
+	//LEDs[15:8] <= sizeOfKeyInByte;					// check
 	//LEDs[7:0] <= userData[99-currentCharIndex];
-	LEDs[7:0] <= userData[currentCharIndex];
+	LEDs[7:0] <= userData[currentCharIndex];		// check
 end
 
 endmodule

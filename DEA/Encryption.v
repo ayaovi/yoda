@@ -34,6 +34,7 @@ module Encryption(
 
 //reg [2:0]dataCount;
 reg [3:0]count;
+//reg [7:0]temp;
 //parameter NumberOfbitsInByte = 8;
 
 always @(posedge Clk) begin
@@ -45,15 +46,18 @@ always @(posedge Clk) begin
 	end
 	else begin
 //		if (dataCount < SizeOfData) begin
-		for (count = 0; count < 8; count = count + 1'b1) begin
-			DataOut[count] <= DataIn[count] ^ key[count];
-//			dataCount <= dataCount + 1'b1;
-//			keyCount  <= keyCount + 1'b1;
-//			
-//			if (keyCount == NumberOfKeys)
-//				keyCount <= 1'b0;		// wrap around.
-		end
-		if (count == 8)
+//		for (count = 0; count < 8; count = count + 1'b1) begin
+//			temp <= DataIn[count] ^ key[count];
+//			DataOut[count] <= temp;
+////			dataCount <= dataCount + 1'b1;
+////			keyCount  <= keyCount + 1'b1;
+////			
+////			if (keyCount == NumberOfKeys)
+////				keyCount <= 1'b0;		// wrap around.
+//		end
+//		if (count == 8)
+//		temp <= DataIn ^ key;
+		DataOut <= DataIn ^ key;
 			Ready <= 1'b1;				// to indicate that we completed encryption.
 	end
 end
