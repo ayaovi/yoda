@@ -1,0 +1,204 @@
+#-----------------------------------------------------------
+# PlanAhead v14.7 (64-bit)
+# Build 321239 by xbuild on Fri Sep 27 19:24:36 MDT 2013
+# Start of session at: Thu May 19 00:13:44 2016
+# Process ID: 9544
+# Log file: /home/bluelabuser/temp/yoda/DEA/planAhead_run_1/planAhead.log
+# Journal file: /home/bluelabuser/temp/yoda/DEA/planAhead_run_1/planAhead.jou
+#-----------------------------------------------------------
+INFO: [Common 17-78] Attempting to get a license: PlanAhead
+INFO: [Common 17-290] Got license for PlanAhead
+INFO: [Common 17-86] Your PlanAhead license expires in -839 day(s)
+INFO: [Device 21-36] Loading parts and site information from /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/arch.xml
+Parsing RTL primitives file [/opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+Finished parsing RTL primitives file [/opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+start_gui
+source /home/bluelabuser/temp/yoda/DEA/pa.fromNetlist.tcl
+# create_project -name DEA -dir "/home/bluelabuser/temp/yoda/DEA/planAhead_run_2" -part xc7a100tcsg324-3
+# set_property design_mode GateLvl [get_property srcset [current_run -impl]]
+# set_property edif_top_file "/home/bluelabuser/temp/yoda/DEA/DEA.ngc" [ get_property srcset [ current_run ] ]
+# add_files -norecurse { {/home/bluelabuser/temp/yoda/DEA} }
+# set_property target_constrs_file "DEA.ucf" [current_fileset -constrset]
+Adding file '/home/bluelabuser/temp/yoda/DEA/DEA.ucf' to fileset 'constrs_1'
+# add_files [list {DEA.ucf}] -fileset [get_property constrset [current_run]]
+# link_design
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+Design is defaulting to project part: xc7a100tcsg324-3
+Release 14.7 - ngc2edif P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+Release 14.7 - ngc2edif P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design DEA.ngc ...
+WARNING:NetListWriters:298 - No output is written to DEA.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+WARNING:NetListWriters:306 - Signal bus
+   Mmux_currentCharIndex[7]_GND_1_o_mux_38_OUT_rs_lut<7 : 1> on block DEA is not
+   reconstructed, because there are some missing bus signals.
+  finished :Prep
+Writing EDIF netlist file DEA.edif ...
+ngc2edif: Total memory usage is 104892 kilobytes
+
+Parsing EDIF File [./planAhead_run_2/DEA.data/cache/DEA_ngc_f50eeb88.edif]
+Finished Parsing EDIF File [./planAhead_run_2/DEA.data/cache/DEA_ngc_f50eeb88.edif]
+INFO: [Netlist 29-17] Analyzing 139 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+Loading clock regions from /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/artix7/artix7/xc7a100t/ClockRegion.xml
+Loading clock buffers from /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/artix7/artix7/xc7a100t/ClockBuffers.xml
+Loading clock placement rules from /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/artix7/ClockPlacerRules.xml
+Loading package pin functions from /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/artix7/PinFunctions.xml...
+Loading package from /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/artix7/artix7/xc7a100t/csg324/Package.xml
+Loading io standards from /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/./parts/xilinx/artix7/IOStandards.xml
+Loading device configuration modes from /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/artix7/ConfigModes.xml
+Loading list of drcs for the architecture : /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/./parts/xilinx/artix7/drc.xml
+Parsing UCF File [/home/bluelabuser/temp/yoda/DEA/DEA.ucf]
+Finished Parsing UCF File [/home/bluelabuser/temp/yoda/DEA/DEA.ucf]
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 138 instances were transformed.
+  BUFGP => BUFGP (IBUF, BUFG): 1 instances
+  FD => FDCE: 10 instances
+  FDE => FDCE: 84 instances
+  FDR => FDRE: 24 instances
+  RAM32M => RAM32M (RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMS32, RAMS32): 1 instances
+  RAM32X1D => RAM32X1D (RAMD32, RAMD32): 2 instances
+  RAM64M => RAM64M (RAMD64E, RAMD64E, RAMD64E, RAMD64E): 8 instances
+  RAM64X1D => RAM64X1D (RAMD64E, RAMD64E): 8 instances
+
+Phase 0 | Netlist Checksum: 74d7ec07
+link_design: Time (s): cpu = 00:00:23 ; elapsed = 00:00:15 . Memory (MB): peak = 2984.789 ; gain = 335.508
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+ERROR: [#UNDEF] *** Exception: java.lang.NumberFormatException: For input string: "0,0198108" (See /home/bluelabuser/temp/yoda/DEA/planAhead_pid9544.debug)
+exit
+INFO: [Common 17-206] Exiting PlanAhead at Thu May 19 00:16:18 2016...
+INFO: [Common 17-83] Releasing license: PlanAhead

@@ -39,6 +39,8 @@ reg   [7:0]	Tx_Data;
 reg        	Tx_Send;
 wire       	Tx_Busy;
 reg        	Tx_Reset;
+reg 	[7:0]	Tx_DataIndex;
+reg 			Tx_DataIndexLocked;
 
 reg        	encrypt_Ack;
 reg        	encrypt_Ready;
@@ -183,13 +185,15 @@ always @(posedge Clk_100M) begin
 	//	Make encrypt_Ack low.
 	
 	if (Reset) begin
-		encrypt_Ack    <= 1'b0;
-		index 			<= 1'b0;			// reset index
-		keyIndex			<= 1'b0;
-		Tx_Data 			<= 1'b0;
-		Tx_Send 			<= 1'b0;
-		Tx_Reset 		<= 1'b0;
+		encrypt_Ack    		<= 1'b0;
+		index 					<= 1'b0;			// reset index
+		keyIndex					<= 1'b0;
+		Tx_Data 					<= 1'b0;
+		Tx_Send 					<= 1'b0;
+		Tx_Reset 				<= 1'b0;
 		sentSizeOfDataInByte <= 1'b0;
+		Tx_DataIndex			<= 1'b0;
+		Tx_DataIndexLocked	<= 1'b0;			// used to lock Tx_DataIndex to prevent uncontrolled increments.
 	end
 	//else if (startEncryption) begin
 	else begin
@@ -198,31 +202,32 @@ always @(posedge Clk_100M) begin
 				result[index]	<= encrypt_Data;
 				encrypt_Ack		<= 1'b1;							// reset encryption engine.
 				encrypt_Ready 	<= 1'b0;
-				
+
 //************************************************************************
-				// send this to PC.
-				if (~Tx_Busy) begin
-					if (~sentSizeOfDataInByte) begin
-						Tx_Data 		<= sizeOfDataInByte;
-						sentSizeOfDataInByte <= 1'b1;
-					end
-					else
-						Tx_Data 		<= encrypt_Data;
-						
-					Tx_Send 		<= 1'b1;
-					Tx_Reset	 	<= 1'b1;
-				end
-				else begin
-					Tx_Send 		<= 1'b0;
-					Tx_Reset	 	<= 1'b0;
-				end
+				// send this to PC. we first want to send the # of byte of the result.
+				// the the result it self.
+//				if (~Tx_Busy) begin
+//					if (~sentSizeOfDataInByte) begin			// the following should only happen once.
+//						Tx_Data 	<= sizeOfDataInByte;
+//						sentSizeOfDataInByte <= 1'b1;
+//					end
+//					else
+//						Tx_Data 	<= encrypt_Data;
+//						
+//					Tx_Send 		<= 1'b1;
+//					Tx_Reset	 	<= 1'b1;
+//				end
+//				else begin
+//					Tx_Send 		<= 1'b0;
+//					Tx_Reset	 	<= 1'b0;
+//				end
 //************************************************************************
-					
+
 			end
 			else if (~encrypt_Ready & encrypt_Ack) begin
 				
 				if (index < (sizeOfDataInByte - 1))
-					index		<= index + 1'b1;
+					index			<= index + 1'b1;
 				
 				if (keyIndex < (sizeOfKeyInByte - 1))
 					keyIndex		<= keyIndex + 1'b1;
@@ -240,22 +245,36 @@ always @(posedge Clk_100M) begin
 			end
 		end
 		
-//		else begin		// we finished encryption so we send it back to PC.
-//			//reset Tx_Reset to low.
-//			//Wait for Tx_Busy to go high.
-//			//load new byte the data.
-//			//Make Tx_Reset high.
-//			//Wait for Tx_Busy to go low.
-//			//Make Tx_Reset low.
-//			
-//			if (~Tx_Busy) begin
-//				Tx_Data <= result[];
-//				Tx_Send <= 1'b1;
-//			end
-//			else begin
-//				Tx_Send <= 1'b0;
-//			end
-//		end
+		else begin		// we finished encryption so we send it back to PC.
+			//reset Tx_Reset to low.
+			//Wait for Tx_Busy to go high.
+			//load new byte the data.
+			//Make Tx_Reset high.
+			//Wait for Tx_Busy to go low.
+			//Make Tx_Reset low.
+			
+//***********************************************************************************************
+			if (~Tx_Busy) begin
+				if (~sentSizeOfDataInByte) begin			// the following should only happen once.
+					Tx_Data 	<= sizeOfDataInByte;
+					sentSizeOfDataInByte <= 1'b1;
+				end
+				else
+					Tx_Data 	<= result[Tx_DataIndex];
+				
+				Tx_Send 		<= 1'b1;
+				Tx_Reset	 	<= 1'b1;
+			end
+			else begin
+				if (sentSizeOfDataInByte & ~Tx_DataIndexLocked) begin
+					Tx_DataIndex 			<= Tx_DataIndex + 1'b1;
+					Tx_DataIndexLocked	<= 1'b1;
+				end
+				Tx_Send 		<= 1'b0;
+				Tx_Reset	 	<= 1'b0;
+			end
+//***********************************************************************************************
+		end
 	end
 end
 

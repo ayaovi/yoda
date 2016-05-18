@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# PlanAhead v14.7 (64-bit)
+# Build 321239 by xbuild on Fri Sep 27 19:24:36 MDT 2013
+# Start of session at: Thu May 19 00:13:44 2016
+# Process ID: 9544
+# Log file: /home/bluelabuser/temp/yoda/DEA/planAhead_run_1/planAhead.log
+# Journal file: /home/bluelabuser/temp/yoda/DEA/planAhead_run_1/planAhead.jou
+#-----------------------------------------------------------
+start_gui
+source /home/bluelabuser/temp/yoda/DEA/pa.fromNetlist.tcl
