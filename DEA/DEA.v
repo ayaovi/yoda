@@ -35,13 +35,14 @@ wire       Rx_Ready;
 reg        Rx_Ack;
 wire  [7:0]Rx_Data;
 
-reg   [7:0]Tx_Data;
-reg        Tx_Send;
-wire       Tx_Busy;
+//reg   [7:0]Tx_Data;
+//reg        Tx_Send;
+//wire       Tx_Busy;
 
 reg        encrypt_Ack;
-wire       encrypt_Ready;
+reg        encrypt_Ready;
 wire  [7:0]encrypt_Data;
+
 
 reg   [7:0]sizeOfDataInByte;
 reg   [7:0]currentCharIndex;
@@ -63,9 +64,16 @@ reg 		  receivingData;
 reg 		  receivingKeys;
 
 reg 	[7:0]index;
+reg 	[1:0]keyIndex;
 reg	[7:0]byteOfUserData;
 reg	[7:0]byteOfKey;
 
+//assign byteOfUserData = userData[index];
+//assign byteOfKey		 = keys[keyIndex];
+assign encrypt_Data 	 = byteOfUserData ^ byteOfKey;
+
+initial sizeOfDataInByte = 1'b0;
+initial sizeOfKeyInByte  = 1'b0;
 // Echo the received character
 always @(posedge Clk_100M) begin
 	if(Reset) begin
@@ -76,8 +84,8 @@ always @(posedge Clk_100M) begin
 		//encrypt_Ack  <= 1'b0;
 		receivingData 	  <= 1'b0;
 		receivingKeys 	  <= 1'b0;
-		sizeOfDataInByte <= 1'b0;
-		sizeOfKeyInByte  <= 1'b0;
+		//sizeOfDataInByte <= 1'b0;
+		//sizeOfKeyInByte  <= 1'b0;
 		//Tx_Data <= 0;
 		//Tx_Send <= 0;
 	end 
@@ -147,11 +155,11 @@ always @(posedge Clk_100M) begin
 		if (prevCharBtnPreviousState == 1'b0 && prevCharBtnNextState == 1'b1) begin
 			prevCharBtnPreviousState <= prevCharBtnNextState;
 			
-			if (currentCharIndex == 0)
-				currentCharIndex <= sizeOfDataInByte - 1'b1;
-			else
+			if (currentCharIndex > 0)
 				currentCharIndex <= currentCharIndex - 1'b1;
-//				currentCharIndex <= (currentCharIndex - 1'b1) % sizeOfDataInByte;
+			else
+				currentCharIndex <= sizeOfDataInByte - 1'b1;
+				//currentCharIndex <= (currentCharIndex - 1'b1) % sizeOfDataInByte;
 		
 		end else
 			prevCharBtnPreviousState <= prevCharBtnNextState;
@@ -160,10 +168,10 @@ always @(posedge Clk_100M) begin
 		if (nextCharBtnPreviousState == 1'b0 && nextCharBtnNextState == 1'b1) begin
 			nextCharBtnPreviousState <= nextCharBtnNextState;
 			
-			if (currentCharIndex == sizeOfDataInByte - 1)
-				currentCharIndex <= 1'b0;
-			else
+			if (currentCharIndex < sizeOfDataInByte - 1)
 				currentCharIndex <= currentCharIndex + 1'b1;
+			else
+				currentCharIndex <= 1'b0;
 				
 		end else
 			nextCharBtnPreviousState <= nextCharBtnNextState;
@@ -184,36 +192,46 @@ always @(posedge Clk_100M) begin
 	if (Reset) begin
 		encrypt_Ack    <= 1'b0;
 		index 			<= 1'b0;			// reset index
-		
-		byteOfUserData <= userData[index];			// grab a new byte of data.
-		byteOfKey 		<= keys[index%3];				// and a new byte of key.
-		//index 			<= index + 1'b1;
-		index 			<= 1'b1;
+		keyIndex			<= 1'b0;
 	end
 	else begin
-		if (index < sizeOfDataInByte && encrypt_Ready == 1'b1) begin
-			result[index]	<= encrypt_Data;
-			encrypt_Ack		<= 1'b1;							// reset encryption engine.
-			
-			byteOfUserData <= userData[index];		// grab a new byte of data.
-			byteOfKey		<= keys	  [index%3];			// and a new byte of key, if possible wrap around.
-			
-			index 			<= index + 1'b1;
-		end
-		else if (~encrypt_Ready) begin
-			encrypt_Ack 	<= 1'b0;
+		if (index < sizeOfDataInByte) begin
+			if (encrypt_Ready & encrypt_Ack) begin
+				result[index]	<= encrypt_Data;
+				encrypt_Ack		<= 1'b1;							// reset encryption engine.
+				encrypt_Ready 	<= 1'b0;
+			end
+			else if (~encrypt_Ready & encrypt_Ack) begin
+				
+				if (index < (sizeOfDataInByte - 1))
+					index		<= index + 1'b1;
+				
+				if (keyIndex < (sizeOfKeyInByte - 1))
+					keyIndex		<= keyIndex + 1'b1;
+				else
+					keyIndex		<= 1'b0;
+					
+				encrypt_Ready 	<= 1'b1;
+				encrypt_Ack		<= 1'b0;
+			end
+			else if (~encrypt_Ack) begin
+				byteOfUserData <= userData[index];		// grab a new byte of data.
+				byteOfKey		<= keys	  [keyIndex];
+				encrypt_Ack		<= 1'b1;
+				encrypt_Ready 	<= 1'b1;
+			end
 		end
 	end
 end
 
-UART_Sender #(14, 14'd9999) sender(
-	Clk_100M, 
-	Reset,
-	Tx_Data,
-	Tx_Send,
-	Tx_Busy,
-	Tx
-);
+//UART_Sender #(14, 14'd9999) sender(
+//	Clk_100M, 
+//	Reset,
+//	Tx_Data,
+//	Tx_Send,
+//	Tx_Busy,
+//	Tx
+//);
 
 UART_Receiver #(14, 14'd9999) receiver(
 	Clk_100M,
@@ -247,14 +265,14 @@ Debounce debounceNextBtn(
 //	encrypt_Ready
 //);
 
-Encryption encryption(
-	Clk_100M,
-	startEncryption,
-	byteOfUserData,
-	byteOfkey,
-	encrypt_Data,
-	encrypt_Ready
-);
+//Encryption encryption(
+//	Clk_100M,
+//	startEncryption,
+//	byteOfUserData,
+//	byteOfkey,
+//	encrypt_Data,
+//	encrypt_Ready
+//);
 
 always @(*) begin
 	// displays characters on the LEDs. Characters are shifted using btn P17 and M17
@@ -263,6 +281,7 @@ always @(*) begin
 	//LEDs[15:8] <= sizeOfDataInByte;				// check
 	LEDs[15:8] <= result[currentCharIndex];
 	//LEDs[15:8] <= encrypt_Data;
+	//LEDs[15:8] <= byteOfUserData;
 	//LEDs[15:8] <= keys[currentCharIndex%3];		// check
 	//LEDs[15:8] <= index;								// check
 	//LEDs[15:8] <= sizeOfKeyInByte;					// check

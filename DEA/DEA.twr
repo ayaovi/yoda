@@ -28,19 +28,259 @@ INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on
 Timing constraint: NET "Clk_100M_BUFGP/IBUFG" PERIOD = 10 ns HIGH 5 ns;
 For more information, see Period Analysis in the Timing Closure User Guide (UG612).
 
- 5352 paths analyzed, 919 endpoints analyzed, 0 failing endpoints
+ 6140 paths analyzed, 1105 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
- Minimum period is   4.017ns.
+ Minimum period is   3.923ns.
 --------------------------------------------------------------------------------
 
-Paths for end point Mram_result1_RAMA (SLICE_X6Y84.CE), 39 paths
+Paths for end point currentCharIndex_6 (SLICE_X2Y86.SR), 66 paths
 --------------------------------------------------------------------------------
-Slack (setup path):     5.983ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               sizeOfDataInByte_6 (FF)
+Slack (setup path):     6.077ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               sizeOfDataInByte_1 (FF)
+  Destination:          currentCharIndex_6 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      3.904ns (Levels of Logic = 3)
+  Clock Path Skew:      0.016ns (0.640 - 0.624)
+  Source Clock:         Clk_100M_BUFGP rising at 0.000ns
+  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: sizeOfDataInByte_1 to currentCharIndex_6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X10Y92.BQ      Tcko                  0.393   sizeOfDataInByte<3>
+                                                       sizeOfDataInByte_1
+    SLICE_X8Y87.D3       net (fanout=17)       1.014   sizeOfDataInByte<1>
+    SLICE_X8Y87.D        Tilo                  0.097   N651
+                                                       _n02665_SW1
+    SLICE_X8Y87.C2       net (fanout=1)        0.606   N651
+    SLICE_X8Y87.C        Tilo                  0.097   N651
+                                                       _n02665
+    SLICE_X3Y87.A1       net (fanout=1)        0.785   _n02665
+    SLICE_X3Y87.A        Tilo                  0.097   currentCharIndex<3>
+                                                       Reset_OR_DriverANDClockEnable1
+    SLICE_X2Y86.SR       net (fanout=6)        0.442   Reset_OR_DriverANDClockEnable
+    SLICE_X2Y86.CLK      Tsrck                 0.373   currentCharIndex<7>
+                                                       currentCharIndex_6
+    -------------------------------------------------  ---------------------------
+    Total                                      3.904ns (1.057ns logic, 2.847ns route)
+                                                       (27.1% logic, 72.9% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     6.163ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               currentCharIndex_4 (FF)
+  Destination:          currentCharIndex_6 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      3.780ns (Levels of Logic = 3)
+  Clock Path Skew:      -0.022ns (0.097 - 0.119)
+  Source Clock:         Clk_100M_BUFGP rising at 0.000ns
+  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: currentCharIndex_4 to currentCharIndex_6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X3Y86.BQ       Tcko                  0.341   currentCharIndex<5>
+                                                       currentCharIndex_4
+    SLICE_X10Y87.D1      net (fanout=46)       1.126   currentCharIndex<4>
+    SLICE_X10Y87.D       Tilo                  0.097   N641
+                                                       _n02665_SW0
+    SLICE_X8Y87.C4       net (fanout=1)        0.422   N641
+    SLICE_X8Y87.C        Tilo                  0.097   N651
+                                                       _n02665
+    SLICE_X3Y87.A1       net (fanout=1)        0.785   _n02665
+    SLICE_X3Y87.A        Tilo                  0.097   currentCharIndex<3>
+                                                       Reset_OR_DriverANDClockEnable1
+    SLICE_X2Y86.SR       net (fanout=6)        0.442   Reset_OR_DriverANDClockEnable
+    SLICE_X2Y86.CLK      Tsrck                 0.373   currentCharIndex<7>
+                                                       currentCharIndex_6
+    -------------------------------------------------  ---------------------------
+    Total                                      3.780ns (1.005ns logic, 2.775ns route)
+                                                       (26.6% logic, 73.4% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     6.167ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               sizeOfDataInByte_0 (FF)
+  Destination:          currentCharIndex_6 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      3.814ns (Levels of Logic = 3)
+  Clock Path Skew:      0.016ns (0.640 - 0.624)
+  Source Clock:         Clk_100M_BUFGP rising at 0.000ns
+  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: sizeOfDataInByte_0 to currentCharIndex_6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X10Y92.AQ      Tcko                  0.393   sizeOfDataInByte<3>
+                                                       sizeOfDataInByte_0
+    SLICE_X11Y87.C2      net (fanout=17)       0.967   sizeOfDataInByte<0>
+    SLICE_X11Y87.C       Tilo                  0.097   byteOfKey_6
+                                                       Msub_GND_1_o_GND_1_o_sub_6_OUT_xor<3>11
+    SLICE_X9Y87.C3       net (fanout=3)        0.472   GND_1_o_GND_1_o_sub_6_OUT<3>
+    SLICE_X9Y87.C        Tilo                  0.097   GND_1_o_GND_1_o_sub_6_OUT<5>
+                                                       _n02668_SW0_SW0
+    SLICE_X3Y87.A2       net (fanout=1)        0.876   N45
+    SLICE_X3Y87.A        Tilo                  0.097   currentCharIndex<3>
+                                                       Reset_OR_DriverANDClockEnable1
+    SLICE_X2Y86.SR       net (fanout=6)        0.442   Reset_OR_DriverANDClockEnable
+    SLICE_X2Y86.CLK      Tsrck                 0.373   currentCharIndex<7>
+                                                       currentCharIndex_6
+    -------------------------------------------------  ---------------------------
+    Total                                      3.814ns (1.057ns logic, 2.757ns route)
+                                                       (27.7% logic, 72.3% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point currentCharIndex_7 (SLICE_X2Y86.SR), 66 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     6.077ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               sizeOfDataInByte_1 (FF)
+  Destination:          currentCharIndex_7 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      3.904ns (Levels of Logic = 3)
+  Clock Path Skew:      0.016ns (0.640 - 0.624)
+  Source Clock:         Clk_100M_BUFGP rising at 0.000ns
+  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: sizeOfDataInByte_1 to currentCharIndex_7
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X10Y92.BQ      Tcko                  0.393   sizeOfDataInByte<3>
+                                                       sizeOfDataInByte_1
+    SLICE_X8Y87.D3       net (fanout=17)       1.014   sizeOfDataInByte<1>
+    SLICE_X8Y87.D        Tilo                  0.097   N651
+                                                       _n02665_SW1
+    SLICE_X8Y87.C2       net (fanout=1)        0.606   N651
+    SLICE_X8Y87.C        Tilo                  0.097   N651
+                                                       _n02665
+    SLICE_X3Y87.A1       net (fanout=1)        0.785   _n02665
+    SLICE_X3Y87.A        Tilo                  0.097   currentCharIndex<3>
+                                                       Reset_OR_DriverANDClockEnable1
+    SLICE_X2Y86.SR       net (fanout=6)        0.442   Reset_OR_DriverANDClockEnable
+    SLICE_X2Y86.CLK      Tsrck                 0.373   currentCharIndex<7>
+                                                       currentCharIndex_7
+    -------------------------------------------------  ---------------------------
+    Total                                      3.904ns (1.057ns logic, 2.847ns route)
+                                                       (27.1% logic, 72.9% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     6.163ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               currentCharIndex_4 (FF)
+  Destination:          currentCharIndex_7 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      3.780ns (Levels of Logic = 3)
+  Clock Path Skew:      -0.022ns (0.097 - 0.119)
+  Source Clock:         Clk_100M_BUFGP rising at 0.000ns
+  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: currentCharIndex_4 to currentCharIndex_7
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X3Y86.BQ       Tcko                  0.341   currentCharIndex<5>
+                                                       currentCharIndex_4
+    SLICE_X10Y87.D1      net (fanout=46)       1.126   currentCharIndex<4>
+    SLICE_X10Y87.D       Tilo                  0.097   N641
+                                                       _n02665_SW0
+    SLICE_X8Y87.C4       net (fanout=1)        0.422   N641
+    SLICE_X8Y87.C        Tilo                  0.097   N651
+                                                       _n02665
+    SLICE_X3Y87.A1       net (fanout=1)        0.785   _n02665
+    SLICE_X3Y87.A        Tilo                  0.097   currentCharIndex<3>
+                                                       Reset_OR_DriverANDClockEnable1
+    SLICE_X2Y86.SR       net (fanout=6)        0.442   Reset_OR_DriverANDClockEnable
+    SLICE_X2Y86.CLK      Tsrck                 0.373   currentCharIndex<7>
+                                                       currentCharIndex_7
+    -------------------------------------------------  ---------------------------
+    Total                                      3.780ns (1.005ns logic, 2.775ns route)
+                                                       (26.6% logic, 73.4% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     6.167ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               sizeOfDataInByte_0 (FF)
+  Destination:          currentCharIndex_7 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      3.814ns (Levels of Logic = 3)
+  Clock Path Skew:      0.016ns (0.640 - 0.624)
+  Source Clock:         Clk_100M_BUFGP rising at 0.000ns
+  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: sizeOfDataInByte_0 to currentCharIndex_7
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X10Y92.AQ      Tcko                  0.393   sizeOfDataInByte<3>
+                                                       sizeOfDataInByte_0
+    SLICE_X11Y87.C2      net (fanout=17)       0.967   sizeOfDataInByte<0>
+    SLICE_X11Y87.C       Tilo                  0.097   byteOfKey_6
+                                                       Msub_GND_1_o_GND_1_o_sub_6_OUT_xor<3>11
+    SLICE_X9Y87.C3       net (fanout=3)        0.472   GND_1_o_GND_1_o_sub_6_OUT<3>
+    SLICE_X9Y87.C        Tilo                  0.097   GND_1_o_GND_1_o_sub_6_OUT<5>
+                                                       _n02668_SW0_SW0
+    SLICE_X3Y87.A2       net (fanout=1)        0.876   N45
+    SLICE_X3Y87.A        Tilo                  0.097   currentCharIndex<3>
+                                                       Reset_OR_DriverANDClockEnable1
+    SLICE_X2Y86.SR       net (fanout=6)        0.442   Reset_OR_DriverANDClockEnable
+    SLICE_X2Y86.CLK      Tsrck                 0.373   currentCharIndex<7>
+                                                       currentCharIndex_7
+    -------------------------------------------------  ---------------------------
+    Total                                      3.814ns (1.057ns logic, 2.757ns route)
+                                                       (27.7% logic, 72.3% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point Mram_result1_RAMA (SLICE_X2Y85.CE), 22 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     6.112ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               sizeOfDataInByte_4 (FF)
   Destination:          Mram_result1_RAMA (RAM)
   Requirement:          10.000ns
-  Data Path Delay:      3.994ns (Levels of Logic = 3)
-  Clock Path Skew:      0.012ns (0.635 - 0.623)
+  Data Path Delay:      3.868ns (Levels of Logic = 3)
+  Clock Path Skew:      0.015ns (0.639 - 0.624)
   Source Clock:         Clk_100M_BUFGP rising at 0.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -51,36 +291,35 @@ Slack (setup path):     5.983ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: sizeOfDataInByte_6 to Mram_result1_RAMA
+  Maximum Data Path at Slow Process Corner: sizeOfDataInByte_4 to Mram_result1_RAMA
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X9Y90.CQ       Tcko                  0.341   sizeOfDataInByte<7>
-                                                       sizeOfDataInByte_6
-    SLICE_X9Y86.A1       net (fanout=10)       0.867   sizeOfDataInByte<6>
-    SLICE_X9Y86.A        Tilo                  0.097   N27
-                                                       index[7]_sizeOfDataInByte[7]_LessThan_53_o1_SW3
-    SLICE_X9Y86.C1       net (fanout=2)        0.498   N28
-    SLICE_X9Y86.CMUX     Tilo                  0.415   N27
-                                                       index[7]_encrypt_Ready_AND_4_o1_G
-                                                       index[7]_encrypt_Ready_AND_4_o1
-    SLICE_X7Y83.A2       net (fanout=5)        0.914   index[7]_encrypt_Ready_AND_4_o
-    SLICE_X7Y83.A        Tilo                  0.097   LEDs_8_OBUF
+    SLICE_X11Y92.AQ      Tcko                  0.341   sizeOfDataInByte<7>
+                                                       sizeOfDataInByte_4
+    SLICE_X11Y86.C3      net (fanout=12)       0.788   sizeOfDataInByte<4>
+    SLICE_X11Y86.C       Tilo                  0.097   Mcount_keyIndex_val2
+                                                       index[7]_sizeOfDataInByte[7]_LessThan_51_o1_SW1
+    SLICE_X8Y85.B2       net (fanout=5)        0.784   N11
+    SLICE_X8Y85.B        Tilo                  0.097   index[7]_sizeOfDataInByte[7]_LessThan_51_o2
+                                                       index[7]_sizeOfDataInByte[7]_LessThan_51_o1
+    SLICE_X9Y83.A2       net (fanout=4)        0.617   index[7]_sizeOfDataInByte[7]_LessThan_51_o2
+    SLICE_X9Y83.A        Tilo                  0.097   N67
                                                        write_ctrl2
-    SLICE_X6Y84.CE       net (fanout=3)        0.381   write_ctrl2
-    SLICE_X6Y84.CLK      Tceck                 0.384   Mram_result1_RAMD_O
+    SLICE_X2Y85.CE       net (fanout=3)        0.663   write_ctrl2
+    SLICE_X2Y85.CLK      Tceck                 0.384   Mram_result1_RAMD_O
                                                        Mram_result1_RAMA
     -------------------------------------------------  ---------------------------
-    Total                                      3.994ns (1.334ns logic, 2.660ns route)
-                                                       (33.4% logic, 66.6% route)
+    Total                                      3.868ns (1.016ns logic, 2.852ns route)
+                                                       (26.3% logic, 73.7% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     5.987ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               sizeOfDataInByte_6 (FF)
+Slack (setup path):     6.144ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               index_4 (FF)
   Destination:          Mram_result1_RAMA (RAM)
   Requirement:          10.000ns
-  Data Path Delay:      3.990ns (Levels of Logic = 3)
-  Clock Path Skew:      0.012ns (0.635 - 0.623)
+  Data Path Delay:      3.845ns (Levels of Logic = 3)
+  Clock Path Skew:      0.024ns (0.639 - 0.615)
   Source Clock:         Clk_100M_BUFGP rising at 0.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -91,36 +330,35 @@ Slack (setup path):     5.987ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: sizeOfDataInByte_6 to Mram_result1_RAMA
+  Maximum Data Path at Slow Process Corner: index_4 to Mram_result1_RAMA
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X9Y90.CQ       Tcko                  0.341   sizeOfDataInByte<7>
-                                                       sizeOfDataInByte_6
-    SLICE_X9Y86.A1       net (fanout=10)       0.867   sizeOfDataInByte<6>
-    SLICE_X9Y86.A        Tilo                  0.097   N27
-                                                       index[7]_sizeOfDataInByte[7]_LessThan_53_o1_SW3
-    SLICE_X9Y86.D1       net (fanout=2)        0.501   N28
-    SLICE_X9Y86.CMUX     Topdc                 0.408   N27
-                                                       index[7]_encrypt_Ready_AND_4_o1_F
-                                                       index[7]_encrypt_Ready_AND_4_o1
-    SLICE_X7Y83.A2       net (fanout=5)        0.914   index[7]_encrypt_Ready_AND_4_o
-    SLICE_X7Y83.A        Tilo                  0.097   LEDs_8_OBUF
+    SLICE_X11Y82.BQ      Tcko                  0.341   index<6>
+                                                       index_4
+    SLICE_X11Y86.C1      net (fanout=14)       0.765   index<4>
+    SLICE_X11Y86.C       Tilo                  0.097   Mcount_keyIndex_val2
+                                                       index[7]_sizeOfDataInByte[7]_LessThan_51_o1_SW1
+    SLICE_X8Y85.B2       net (fanout=5)        0.784   N11
+    SLICE_X8Y85.B        Tilo                  0.097   index[7]_sizeOfDataInByte[7]_LessThan_51_o2
+                                                       index[7]_sizeOfDataInByte[7]_LessThan_51_o1
+    SLICE_X9Y83.A2       net (fanout=4)        0.617   index[7]_sizeOfDataInByte[7]_LessThan_51_o2
+    SLICE_X9Y83.A        Tilo                  0.097   N67
                                                        write_ctrl2
-    SLICE_X6Y84.CE       net (fanout=3)        0.381   write_ctrl2
-    SLICE_X6Y84.CLK      Tceck                 0.384   Mram_result1_RAMD_O
+    SLICE_X2Y85.CE       net (fanout=3)        0.663   write_ctrl2
+    SLICE_X2Y85.CLK      Tceck                 0.384   Mram_result1_RAMD_O
                                                        Mram_result1_RAMA
     -------------------------------------------------  ---------------------------
-    Total                                      3.990ns (1.327ns logic, 2.663ns route)
-                                                       (33.3% logic, 66.7% route)
+    Total                                      3.845ns (1.016ns logic, 2.829ns route)
+                                                       (26.4% logic, 73.6% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     6.019ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               sizeOfDataInByte_5 (FF)
+Slack (setup path):     6.241ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               sizeOfDataInByte_3 (FF)
   Destination:          Mram_result1_RAMA (RAM)
   Requirement:          10.000ns
-  Data Path Delay:      3.958ns (Levels of Logic = 3)
-  Clock Path Skew:      0.012ns (0.635 - 0.623)
+  Data Path Delay:      3.739ns (Levels of Logic = 3)
+  Clock Path Skew:      0.015ns (0.639 - 0.624)
   Source Clock:         Clk_100M_BUFGP rising at 0.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -131,358 +369,111 @@ Slack (setup path):     6.019ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: sizeOfDataInByte_5 to Mram_result1_RAMA
+  Maximum Data Path at Slow Process Corner: sizeOfDataInByte_3 to Mram_result1_RAMA
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X9Y90.BQ       Tcko                  0.341   sizeOfDataInByte<7>
-                                                       sizeOfDataInByte_5
-    SLICE_X9Y86.A2       net (fanout=10)       0.831   sizeOfDataInByte<5>
-    SLICE_X9Y86.A        Tilo                  0.097   N27
-                                                       index[7]_sizeOfDataInByte[7]_LessThan_53_o1_SW3
-    SLICE_X9Y86.C1       net (fanout=2)        0.498   N28
-    SLICE_X9Y86.CMUX     Tilo                  0.415   N27
-                                                       index[7]_encrypt_Ready_AND_4_o1_G
-                                                       index[7]_encrypt_Ready_AND_4_o1
-    SLICE_X7Y83.A2       net (fanout=5)        0.914   index[7]_encrypt_Ready_AND_4_o
-    SLICE_X7Y83.A        Tilo                  0.097   LEDs_8_OBUF
+    SLICE_X10Y92.DQ      Tcko                  0.393   sizeOfDataInByte<3>
+                                                       sizeOfDataInByte_3
+    SLICE_X10Y86.D4      net (fanout=11)       0.750   sizeOfDataInByte<3>
+    SLICE_X10Y86.D       Tilo                  0.097   encrypt_Ack
+                                                       index[7]_sizeOfDataInByte[7]_LessThan_51_o1_SW0
+    SLICE_X8Y85.B1       net (fanout=5)        0.641   N01
+    SLICE_X8Y85.B        Tilo                  0.097   index[7]_sizeOfDataInByte[7]_LessThan_51_o2
+                                                       index[7]_sizeOfDataInByte[7]_LessThan_51_o1
+    SLICE_X9Y83.A2       net (fanout=4)        0.617   index[7]_sizeOfDataInByte[7]_LessThan_51_o2
+    SLICE_X9Y83.A        Tilo                  0.097   N67
                                                        write_ctrl2
-    SLICE_X6Y84.CE       net (fanout=3)        0.381   write_ctrl2
-    SLICE_X6Y84.CLK      Tceck                 0.384   Mram_result1_RAMD_O
+    SLICE_X2Y85.CE       net (fanout=3)        0.663   write_ctrl2
+    SLICE_X2Y85.CLK      Tceck                 0.384   Mram_result1_RAMD_O
                                                        Mram_result1_RAMA
     -------------------------------------------------  ---------------------------
-    Total                                      3.958ns (1.334ns logic, 2.624ns route)
-                                                       (33.7% logic, 66.3% route)
-
---------------------------------------------------------------------------------
-
-Paths for end point Mram_result1_RAMB (SLICE_X6Y84.CE), 39 paths
---------------------------------------------------------------------------------
-Slack (setup path):     5.983ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               sizeOfDataInByte_6 (FF)
-  Destination:          Mram_result1_RAMB (RAM)
-  Requirement:          10.000ns
-  Data Path Delay:      3.994ns (Levels of Logic = 3)
-  Clock Path Skew:      0.012ns (0.635 - 0.623)
-  Source Clock:         Clk_100M_BUFGP rising at 0.000ns
-  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
-  Clock Uncertainty:    0.035ns
-
-  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Total Input Jitter (TIJ):   0.000ns
-    Discrete Jitter (DJ):       0.000ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: sizeOfDataInByte_6 to Mram_result1_RAMB
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X9Y90.CQ       Tcko                  0.341   sizeOfDataInByte<7>
-                                                       sizeOfDataInByte_6
-    SLICE_X9Y86.A1       net (fanout=10)       0.867   sizeOfDataInByte<6>
-    SLICE_X9Y86.A        Tilo                  0.097   N27
-                                                       index[7]_sizeOfDataInByte[7]_LessThan_53_o1_SW3
-    SLICE_X9Y86.C1       net (fanout=2)        0.498   N28
-    SLICE_X9Y86.CMUX     Tilo                  0.415   N27
-                                                       index[7]_encrypt_Ready_AND_4_o1_G
-                                                       index[7]_encrypt_Ready_AND_4_o1
-    SLICE_X7Y83.A2       net (fanout=5)        0.914   index[7]_encrypt_Ready_AND_4_o
-    SLICE_X7Y83.A        Tilo                  0.097   LEDs_8_OBUF
-                                                       write_ctrl2
-    SLICE_X6Y84.CE       net (fanout=3)        0.381   write_ctrl2
-    SLICE_X6Y84.CLK      Tceck                 0.384   Mram_result1_RAMD_O
-                                                       Mram_result1_RAMB
-    -------------------------------------------------  ---------------------------
-    Total                                      3.994ns (1.334ns logic, 2.660ns route)
-                                                       (33.4% logic, 66.6% route)
-
---------------------------------------------------------------------------------
-Slack (setup path):     5.987ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               sizeOfDataInByte_6 (FF)
-  Destination:          Mram_result1_RAMB (RAM)
-  Requirement:          10.000ns
-  Data Path Delay:      3.990ns (Levels of Logic = 3)
-  Clock Path Skew:      0.012ns (0.635 - 0.623)
-  Source Clock:         Clk_100M_BUFGP rising at 0.000ns
-  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
-  Clock Uncertainty:    0.035ns
-
-  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Total Input Jitter (TIJ):   0.000ns
-    Discrete Jitter (DJ):       0.000ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: sizeOfDataInByte_6 to Mram_result1_RAMB
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X9Y90.CQ       Tcko                  0.341   sizeOfDataInByte<7>
-                                                       sizeOfDataInByte_6
-    SLICE_X9Y86.A1       net (fanout=10)       0.867   sizeOfDataInByte<6>
-    SLICE_X9Y86.A        Tilo                  0.097   N27
-                                                       index[7]_sizeOfDataInByte[7]_LessThan_53_o1_SW3
-    SLICE_X9Y86.D1       net (fanout=2)        0.501   N28
-    SLICE_X9Y86.CMUX     Topdc                 0.408   N27
-                                                       index[7]_encrypt_Ready_AND_4_o1_F
-                                                       index[7]_encrypt_Ready_AND_4_o1
-    SLICE_X7Y83.A2       net (fanout=5)        0.914   index[7]_encrypt_Ready_AND_4_o
-    SLICE_X7Y83.A        Tilo                  0.097   LEDs_8_OBUF
-                                                       write_ctrl2
-    SLICE_X6Y84.CE       net (fanout=3)        0.381   write_ctrl2
-    SLICE_X6Y84.CLK      Tceck                 0.384   Mram_result1_RAMD_O
-                                                       Mram_result1_RAMB
-    -------------------------------------------------  ---------------------------
-    Total                                      3.990ns (1.327ns logic, 2.663ns route)
-                                                       (33.3% logic, 66.7% route)
-
---------------------------------------------------------------------------------
-Slack (setup path):     6.019ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               sizeOfDataInByte_5 (FF)
-  Destination:          Mram_result1_RAMB (RAM)
-  Requirement:          10.000ns
-  Data Path Delay:      3.958ns (Levels of Logic = 3)
-  Clock Path Skew:      0.012ns (0.635 - 0.623)
-  Source Clock:         Clk_100M_BUFGP rising at 0.000ns
-  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
-  Clock Uncertainty:    0.035ns
-
-  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Total Input Jitter (TIJ):   0.000ns
-    Discrete Jitter (DJ):       0.000ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: sizeOfDataInByte_5 to Mram_result1_RAMB
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X9Y90.BQ       Tcko                  0.341   sizeOfDataInByte<7>
-                                                       sizeOfDataInByte_5
-    SLICE_X9Y86.A2       net (fanout=10)       0.831   sizeOfDataInByte<5>
-    SLICE_X9Y86.A        Tilo                  0.097   N27
-                                                       index[7]_sizeOfDataInByte[7]_LessThan_53_o1_SW3
-    SLICE_X9Y86.C1       net (fanout=2)        0.498   N28
-    SLICE_X9Y86.CMUX     Tilo                  0.415   N27
-                                                       index[7]_encrypt_Ready_AND_4_o1_G
-                                                       index[7]_encrypt_Ready_AND_4_o1
-    SLICE_X7Y83.A2       net (fanout=5)        0.914   index[7]_encrypt_Ready_AND_4_o
-    SLICE_X7Y83.A        Tilo                  0.097   LEDs_8_OBUF
-                                                       write_ctrl2
-    SLICE_X6Y84.CE       net (fanout=3)        0.381   write_ctrl2
-    SLICE_X6Y84.CLK      Tceck                 0.384   Mram_result1_RAMD_O
-                                                       Mram_result1_RAMB
-    -------------------------------------------------  ---------------------------
-    Total                                      3.958ns (1.334ns logic, 2.624ns route)
-                                                       (33.7% logic, 66.3% route)
-
---------------------------------------------------------------------------------
-
-Paths for end point Mram_result1_RAMC (SLICE_X6Y84.CE), 39 paths
---------------------------------------------------------------------------------
-Slack (setup path):     5.983ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               sizeOfDataInByte_6 (FF)
-  Destination:          Mram_result1_RAMC (RAM)
-  Requirement:          10.000ns
-  Data Path Delay:      3.994ns (Levels of Logic = 3)
-  Clock Path Skew:      0.012ns (0.635 - 0.623)
-  Source Clock:         Clk_100M_BUFGP rising at 0.000ns
-  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
-  Clock Uncertainty:    0.035ns
-
-  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Total Input Jitter (TIJ):   0.000ns
-    Discrete Jitter (DJ):       0.000ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: sizeOfDataInByte_6 to Mram_result1_RAMC
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X9Y90.CQ       Tcko                  0.341   sizeOfDataInByte<7>
-                                                       sizeOfDataInByte_6
-    SLICE_X9Y86.A1       net (fanout=10)       0.867   sizeOfDataInByte<6>
-    SLICE_X9Y86.A        Tilo                  0.097   N27
-                                                       index[7]_sizeOfDataInByte[7]_LessThan_53_o1_SW3
-    SLICE_X9Y86.C1       net (fanout=2)        0.498   N28
-    SLICE_X9Y86.CMUX     Tilo                  0.415   N27
-                                                       index[7]_encrypt_Ready_AND_4_o1_G
-                                                       index[7]_encrypt_Ready_AND_4_o1
-    SLICE_X7Y83.A2       net (fanout=5)        0.914   index[7]_encrypt_Ready_AND_4_o
-    SLICE_X7Y83.A        Tilo                  0.097   LEDs_8_OBUF
-                                                       write_ctrl2
-    SLICE_X6Y84.CE       net (fanout=3)        0.381   write_ctrl2
-    SLICE_X6Y84.CLK      Tceck                 0.384   Mram_result1_RAMD_O
-                                                       Mram_result1_RAMC
-    -------------------------------------------------  ---------------------------
-    Total                                      3.994ns (1.334ns logic, 2.660ns route)
-                                                       (33.4% logic, 66.6% route)
-
---------------------------------------------------------------------------------
-Slack (setup path):     5.987ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               sizeOfDataInByte_6 (FF)
-  Destination:          Mram_result1_RAMC (RAM)
-  Requirement:          10.000ns
-  Data Path Delay:      3.990ns (Levels of Logic = 3)
-  Clock Path Skew:      0.012ns (0.635 - 0.623)
-  Source Clock:         Clk_100M_BUFGP rising at 0.000ns
-  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
-  Clock Uncertainty:    0.035ns
-
-  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Total Input Jitter (TIJ):   0.000ns
-    Discrete Jitter (DJ):       0.000ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: sizeOfDataInByte_6 to Mram_result1_RAMC
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X9Y90.CQ       Tcko                  0.341   sizeOfDataInByte<7>
-                                                       sizeOfDataInByte_6
-    SLICE_X9Y86.A1       net (fanout=10)       0.867   sizeOfDataInByte<6>
-    SLICE_X9Y86.A        Tilo                  0.097   N27
-                                                       index[7]_sizeOfDataInByte[7]_LessThan_53_o1_SW3
-    SLICE_X9Y86.D1       net (fanout=2)        0.501   N28
-    SLICE_X9Y86.CMUX     Topdc                 0.408   N27
-                                                       index[7]_encrypt_Ready_AND_4_o1_F
-                                                       index[7]_encrypt_Ready_AND_4_o1
-    SLICE_X7Y83.A2       net (fanout=5)        0.914   index[7]_encrypt_Ready_AND_4_o
-    SLICE_X7Y83.A        Tilo                  0.097   LEDs_8_OBUF
-                                                       write_ctrl2
-    SLICE_X6Y84.CE       net (fanout=3)        0.381   write_ctrl2
-    SLICE_X6Y84.CLK      Tceck                 0.384   Mram_result1_RAMD_O
-                                                       Mram_result1_RAMC
-    -------------------------------------------------  ---------------------------
-    Total                                      3.990ns (1.327ns logic, 2.663ns route)
-                                                       (33.3% logic, 66.7% route)
-
---------------------------------------------------------------------------------
-Slack (setup path):     6.019ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               sizeOfDataInByte_5 (FF)
-  Destination:          Mram_result1_RAMC (RAM)
-  Requirement:          10.000ns
-  Data Path Delay:      3.958ns (Levels of Logic = 3)
-  Clock Path Skew:      0.012ns (0.635 - 0.623)
-  Source Clock:         Clk_100M_BUFGP rising at 0.000ns
-  Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
-  Clock Uncertainty:    0.035ns
-
-  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Total Input Jitter (TIJ):   0.000ns
-    Discrete Jitter (DJ):       0.000ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: sizeOfDataInByte_5 to Mram_result1_RAMC
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X9Y90.BQ       Tcko                  0.341   sizeOfDataInByte<7>
-                                                       sizeOfDataInByte_5
-    SLICE_X9Y86.A2       net (fanout=10)       0.831   sizeOfDataInByte<5>
-    SLICE_X9Y86.A        Tilo                  0.097   N27
-                                                       index[7]_sizeOfDataInByte[7]_LessThan_53_o1_SW3
-    SLICE_X9Y86.C1       net (fanout=2)        0.498   N28
-    SLICE_X9Y86.CMUX     Tilo                  0.415   N27
-                                                       index[7]_encrypt_Ready_AND_4_o1_G
-                                                       index[7]_encrypt_Ready_AND_4_o1
-    SLICE_X7Y83.A2       net (fanout=5)        0.914   index[7]_encrypt_Ready_AND_4_o
-    SLICE_X7Y83.A        Tilo                  0.097   LEDs_8_OBUF
-                                                       write_ctrl2
-    SLICE_X6Y84.CE       net (fanout=3)        0.381   write_ctrl2
-    SLICE_X6Y84.CLK      Tceck                 0.384   Mram_result1_RAMD_O
-                                                       Mram_result1_RAMC
-    -------------------------------------------------  ---------------------------
-    Total                                      3.958ns (1.334ns logic, 2.624ns route)
-                                                       (33.7% logic, 66.3% route)
+    Total                                      3.739ns (1.068ns logic, 2.671ns route)
+                                                       (28.6% logic, 71.4% route)
 
 --------------------------------------------------------------------------------
 
 Hold Paths: NET "Clk_100M_BUFGP/IBUFG" PERIOD = 10 ns HIGH 5 ns;
 --------------------------------------------------------------------------------
 
-Paths for end point Mram_result1_RAMA (SLICE_X6Y84.AI), 1 path
+Paths for end point Mram_userData15_RAMA (SLICE_X8Y90.D3), 1 path
 --------------------------------------------------------------------------------
-Slack (hold path):      0.047ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               encryption/DataOut_0 (FF)
-  Destination:          Mram_result1_RAMA (RAM)
+Slack (hold path):      0.101ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               charCount_2 (FF)
+  Destination:          Mram_userData15_RAMA (RAM)
   Requirement:          0.000ns
-  Data Path Delay:      0.060ns (Levels of Logic = 0)
-  Clock Path Skew:      0.013ns (0.071 - 0.058)
+  Data Path Delay:      0.138ns (Levels of Logic = 0)
+  Clock Path Skew:      0.037ns (0.318 - 0.281)
   Source Clock:         Clk_100M_BUFGP rising at 10.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.000ns
 
-  Minimum Data Path at Fast Process Corner: encryption/DataOut_0 to Mram_result1_RAMA
+  Minimum Data Path at Fast Process Corner: charCount_2 to Mram_userData15_RAMA
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X7Y84.AQ       Tcko                  0.141   encryption/DataOut<3>
-                                                       encryption/DataOut_0
-    SLICE_X6Y84.AI       net (fanout=2)        0.066   encryption/DataOut<0>
-    SLICE_X6Y84.CLK      Tdh         (-Th)     0.147   Mram_result1_RAMD_O
-                                                       Mram_result1_RAMA
+    SLICE_X10Y90.CQ      Tcko                  0.164   charCount<3>
+                                                       charCount_2
+    SLICE_X8Y90.D3       net (fanout=11)       0.228   charCount<2>
+    SLICE_X8Y90.CLK      Tah         (-Th)     0.254   Mram_userData15_RAMD_O
+                                                       Mram_userData15_RAMA
     -------------------------------------------------  ---------------------------
-    Total                                      0.060ns (-0.006ns logic, 0.066ns route)
-                                                       (-10.0% logic, 110.0% route)
+    Total                                      0.138ns (-0.090ns logic, 0.228ns route)
+                                                       (-65.2% logic, 165.2% route)
 
 --------------------------------------------------------------------------------
 
-Paths for end point Mram_result4_RAMA (SLICE_X6Y83.AI), 1 path
+Paths for end point Mram_userData15_RAMB (SLICE_X8Y90.D3), 1 path
 --------------------------------------------------------------------------------
-Slack (hold path):      0.098ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               encryption/DataOut_0 (FF)
-  Destination:          Mram_result4_RAMA (RAM)
+Slack (hold path):      0.101ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               charCount_2 (FF)
+  Destination:          Mram_userData15_RAMB (RAM)
   Requirement:          0.000ns
-  Data Path Delay:      0.111ns (Levels of Logic = 0)
-  Clock Path Skew:      0.013ns (0.080 - 0.067)
+  Data Path Delay:      0.138ns (Levels of Logic = 0)
+  Clock Path Skew:      0.037ns (0.318 - 0.281)
   Source Clock:         Clk_100M_BUFGP rising at 10.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.000ns
 
-  Minimum Data Path at Fast Process Corner: encryption/DataOut_0 to Mram_result4_RAMA
+  Minimum Data Path at Fast Process Corner: charCount_2 to Mram_userData15_RAMB
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X7Y84.AQ       Tcko                  0.141   encryption/DataOut<3>
-                                                       encryption/DataOut_0
-    SLICE_X6Y83.AI       net (fanout=2)        0.117   encryption/DataOut<0>
-    SLICE_X6Y83.CLK      Tdh         (-Th)     0.147   Mram_result4_RAMD_O
-                                                       Mram_result4_RAMA
+    SLICE_X10Y90.CQ      Tcko                  0.164   charCount<3>
+                                                       charCount_2
+    SLICE_X8Y90.D3       net (fanout=11)       0.228   charCount<2>
+    SLICE_X8Y90.CLK      Tah         (-Th)     0.254   Mram_userData15_RAMD_O
+                                                       Mram_userData15_RAMB
     -------------------------------------------------  ---------------------------
-    Total                                      0.111ns (-0.006ns logic, 0.117ns route)
-                                                       (-5.4% logic, 105.4% route)
+    Total                                      0.138ns (-0.090ns logic, 0.228ns route)
+                                                       (-65.2% logic, 165.2% route)
 
 --------------------------------------------------------------------------------
 
-Paths for end point Mram_result4_RAMB (SLICE_X6Y83.BI), 1 path
+Paths for end point Mram_userData15_RAMC (SLICE_X8Y90.D3), 1 path
 --------------------------------------------------------------------------------
-Slack (hold path):      0.099ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               encryption/DataOut_1 (FF)
-  Destination:          Mram_result4_RAMB (RAM)
+Slack (hold path):      0.101ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               charCount_2 (FF)
+  Destination:          Mram_userData15_RAMC (RAM)
   Requirement:          0.000ns
-  Data Path Delay:      0.112ns (Levels of Logic = 0)
-  Clock Path Skew:      0.013ns (0.080 - 0.067)
+  Data Path Delay:      0.138ns (Levels of Logic = 0)
+  Clock Path Skew:      0.037ns (0.318 - 0.281)
   Source Clock:         Clk_100M_BUFGP rising at 10.000ns
   Destination Clock:    Clk_100M_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.000ns
 
-  Minimum Data Path at Fast Process Corner: encryption/DataOut_1 to Mram_result4_RAMB
+  Minimum Data Path at Fast Process Corner: charCount_2 to Mram_userData15_RAMC
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X7Y84.BQ       Tcko                  0.141   encryption/DataOut<3>
-                                                       encryption/DataOut_1
-    SLICE_X6Y83.BI       net (fanout=2)        0.117   encryption/DataOut<1>
-    SLICE_X6Y83.CLK      Tdh         (-Th)     0.146   Mram_result4_RAMD_O
-                                                       Mram_result4_RAMB
+    SLICE_X10Y90.CQ      Tcko                  0.164   charCount<3>
+                                                       charCount_2
+    SLICE_X8Y90.D3       net (fanout=11)       0.228   charCount<2>
+    SLICE_X8Y90.CLK      Tah         (-Th)     0.254   Mram_userData15_RAMD_O
+                                                       Mram_userData15_RAMC
     -------------------------------------------------  ---------------------------
-    Total                                      0.112ns (-0.005ns logic, 0.117ns route)
-                                                       (-4.5% logic, 104.5% route)
+    Total                                      0.138ns (-0.090ns logic, 0.228ns route)
+                                                       (-65.2% logic, 165.2% route)
 
 --------------------------------------------------------------------------------
 
@@ -493,25 +484,25 @@ Slack: 7.766ns (period - min period limit)
   Min period limit: 2.234ns (447.628MHz) (Trper_CLKA)
   Physical resource: Mram_userData/CLKARDCLK
   Logical resource: Mram_userData/CLKARDCLK
-  Location pin: RAMB18_X0Y34.RDCLK
+  Location pin: RAMB18_X0Y35.CLKARDCLK
   Clock network: Clk_100M_BUFGP
 --------------------------------------------------------------------------------
 Slack: 7.900ns (period - (min low pulse limit / (low pulse / period)))
   Period: 10.000ns
   Low pulse: 5.000ns
   Low pulse limit: 1.050ns (Tmpw)
-  Physical resource: N69/CLK
-  Logical resource: Mram_result61/DP/CLK
-  Location pin: SLICE_X6Y79.CLK
+  Physical resource: Mram_result1_RAMD_O/CLK
+  Logical resource: Mram_result1_RAMA/CLK
+  Location pin: SLICE_X2Y85.CLK
   Clock network: Clk_100M_BUFGP
 --------------------------------------------------------------------------------
 Slack: 7.900ns (period - (min high pulse limit / (high pulse / period)))
   Period: 10.000ns
   High pulse: 5.000ns
   High pulse limit: 1.050ns (Tmpw)
-  Physical resource: N69/CLK
-  Logical resource: Mram_result61/DP/CLK
-  Location pin: SLICE_X6Y79.CLK
+  Physical resource: Mram_result1_RAMD_O/CLK
+  Logical resource: Mram_result1_RAMA/CLK
+  Location pin: SLICE_X2Y85.CLK
   Clock network: Clk_100M_BUFGP
 --------------------------------------------------------------------------------
 
@@ -528,7 +519,7 @@ Clock to Setup on destination clock Clk_100M
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-Clk_100M       |    4.017|         |         |         |
+Clk_100M       |    3.923|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
@@ -537,16 +528,16 @@ Timing summary:
 
 Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
 
-Constraints cover 5352 paths, 0 nets, and 961 connections
+Constraints cover 6140 paths, 0 nets, and 1307 connections
 
 Design statistics:
-   Minimum period:   4.017ns{1}   (Maximum frequency: 248.942MHz)
+   Minimum period:   3.923ns{1}   (Maximum frequency: 254.907MHz)
 
 
 ------------------------------------Footnotes-----------------------------------
 1)  The minimum period statistic assumes all single cycle delays.
 
-Analysis completed Wed May 18 14:21:38 2016 
+Analysis completed Wed May 18 20:11:34 2016 
 --------------------------------------------------------------------------------
 
 Trace Settings:

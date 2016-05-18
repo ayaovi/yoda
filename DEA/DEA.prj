@@ -1,4 +1,3 @@
 verilog work "UART_Receiver.v"
-verilog work "Encryption.v"
 verilog work "Debounce.v"
 verilog work "DEA.v"

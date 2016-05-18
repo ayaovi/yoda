@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.05 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.05 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 Reading design: DEA.prj
@@ -110,8 +110,6 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 Analyzing Verilog file "/home/bluelabuser/temp/yoda/DEA/UART_Receiver.v" into library work
 Parsing module <UART_Receiver>.
-Analyzing Verilog file "/home/bluelabuser/temp/yoda/DEA/Encryption.v" into library work
-Parsing module <Encryption>.
 Analyzing Verilog file "/home/bluelabuser/temp/yoda/DEA/Debounce.v" into library work
 Parsing module <Debounce>.
 Analyzing Verilog file "/home/bluelabuser/temp/yoda/DEA/DEA.v" into library work
@@ -122,16 +120,10 @@ Parsing module <DEA>.
 =========================================================================
 
 Elaborating module <DEA>.
-WARNING:HDLCompiler:1127 - "/home/bluelabuser/temp/yoda/DEA/DEA.v" Line 174: Assignment to encrypt_Ack ignored, since the identifier is never used
 
 Elaborating module <UART_Receiver(N=14,Full=14'b10011100001111)>.
 
 Elaborating module <Debounce>.
-
-Elaborating module <Encryption>.
-WARNING:HDLCompiler:189 - "/home/bluelabuser/temp/yoda/DEA/DEA.v" Line 254: Size mismatch in connection of port <key>. Formal port size is 8-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:634 - "/home/bluelabuser/temp/yoda/DEA/DEA.v" Line 252: Net <startEncryption> does not have a driver.
-WARNING:HDLCompiler:634 - "/home/bluelabuser/temp/yoda/DEA/DEA.v" Line 254: Net <byteOfkey> does not have a driver.
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -139,43 +131,518 @@ WARNING:HDLCompiler:634 - "/home/bluelabuser/temp/yoda/DEA/DEA.v" Line 254: Net 
 
 Synthesizing Unit <DEA>.
     Related source file is "/home/bluelabuser/temp/yoda/DEA/DEA.v".
-WARNING:Xst:653 - Signal <startEncryption> is used but never assigned. This sourceless signal will be automatically connected to value GND.
-WARNING:Xst:653 - Signal <byteOfkey> is used but never assigned. This sourceless signal will be automatically connected to value GND.
 WARNING:Xst:3035 - Index value(s) does not match array range for signal <result>, simulation mismatch.
     Found 100x8-bit dual-port RAM <Mram_result> for signal <result>.
+WARNING:Xst:3035 - Index value(s) does not match array range for signal <keys>, simulation mismatch.
+    Found 3x8-bit dual-port RAM <Mram_keys> for signal <keys>.
     Found 8-bit register for signal <charCount>.
+    Found 8-bit register for signal <keyCount>.
     Found 1-bit register for signal <Rx_Ack>.
     Found 1-bit register for signal <receivingData>.
+    Found 1-bit register for signal <receivingKeys>.
     Found 8-bit register for signal <sizeOfDataInByte>.
+    Found 8-bit register for signal <sizeOfKeyInByte>.
     Found 1-bit register for signal <prevBusyState>.
     Found 1-bit register for signal <prevCharBtnPreviousState>.
     Found 1-bit register for signal <nextCharBtnPreviousState>.
+    Found 1-bit register for signal <encrypt_Ack>.
     Found 8-bit register for signal <index>.
+    Found 2-bit register for signal <keyIndex>.
+    Found 1-bit register for signal <encrypt_Ready>.
     Found 8-bit register for signal <byteOfUserData>.
+    Found 8-bit register for signal <byteOfKey>.
     Found 8-bit register for signal <currentCharIndex>.
-    Found 9-bit subtractor for signal <GND_1_o_GND_1_o_sub_5_OUT> created at line 100.
-    Found 8-bit subtractor for signal <currentCharIndex[7]_GND_1_o_sub_27_OUT> created at line 154.
-    Found 8-bit adder for signal <charCount[7]_GND_1_o_add_3_OUT> created at line 97.
-    Found 8-bit adder for signal <currentCharIndex[7]_GND_1_o_add_31_OUT> created at line 166.
-    Found 8-bit adder for signal <index[7]_GND_1_o_add_54_OUT> created at line 201.
+    Found 9-bit subtractor for signal <GND_1_o_GND_1_o_sub_6_OUT> created at line 108.
+    Found 8-bit subtractor for signal <currentCharIndex[7]_GND_1_o_sub_29_OUT> created at line 159.
+    Found 8-bit subtractor for signal <sizeOfDataInByte[7]_GND_1_o_sub_30_OUT> created at line 161.
+    Found 9-bit subtractor for signal <GND_1_o_GND_1_o_sub_57_OUT> created at line 209.
+    Found 8-bit adder for signal <charCount[7]_GND_1_o_add_4_OUT> created at line 105.
+    Found 8-bit adder for signal <keyCount[7]_GND_1_o_add_9_OUT> created at line 121.
+    Found 8-bit adder for signal <currentCharIndex[7]_GND_1_o_add_36_OUT> created at line 172.
+    Found 8-bit adder for signal <index[7]_GND_1_o_add_54_OUT> created at line 207.
+    Found 2-bit adder for signal <keyIndex[1]_GND_1_o_add_58_OUT> created at line 210.
 WARNING:Xst:3035 - Index value(s) does not match array range for signal <userData>, simulation mismatch.
     Found 100x8-bit dual-port RAM <Mram_userData> for signal <userData>.
-    Found 32-bit comparator not equal for signal <GND_1_o_GND_1_o_equal_6_o> created at line 100
-    Found 8-bit comparator greater for signal <index[7]_sizeOfDataInByte[7]_LessThan_49_o> created at line 194
-    ERROR:Xst:2817 - "/home/bluelabuser/temp/yoda/DEA/DEA.v" line 166: Operator <MODULO> is only supported when the second operand is a power of 2
+    Found 32-bit comparator not equal for signal <GND_1_o_GND_1_o_equal_7_o> created at line 108
+    Found 8-bit comparator not equal for signal <keyCount[7]_sizeOfKeyInByte[7]_equal_11_o> created at line 124
+    Found 32-bit comparator lessequal for signal <GND_1_o_GND_1_o_LessThan_36_o> created at line 171
+    Found 8-bit comparator greater for signal <index[7]_sizeOfDataInByte[7]_LessThan_51_o> created at line 198
+    Found 32-bit comparator lessequal for signal <GND_1_o_GND_1_o_LessThan_54_o> created at line 206
+    Found 32-bit comparator lessequal for signal <GND_1_o_GND_1_o_LessThan_58_o> created at line 209
     Summary:
-	inferred   3 RAM(s).
-	inferred   5 Adder/Subtractor(s).
-	inferred  45 D-type flip-flop(s).
-	inferred   2 Comparator(s).
-	inferred   4 Multiplexer(s).
+	inferred   4 RAM(s).
+	inferred   7 Adder/Subtractor(s).
+	inferred  74 D-type flip-flop(s).
+	inferred   6 Comparator(s).
+	inferred  11 Multiplexer(s).
 Unit <DEA> synthesized.
+
+Synthesizing Unit <UART_Receiver>.
+    Related source file is "/home/bluelabuser/temp/yoda/DEA/UART_Receiver.v".
+        N = 14
+        Full = 14'b10011100001111
+    Found 1-bit register for signal <tAck>.
+    Found 1-bit register for signal <tReset>.
+    Found 8-bit register for signal <Data>.
+    Found 1-bit register for signal <Ready>.
+    Found 1-bit register for signal <NewData>.
+    Found 14-bit register for signal <Count>.
+    Found 2-bit register for signal <State>.
+    Found 3-bit register for signal <BitCount>.
+    Found 8-bit register for signal <Temp>.
+    Found 1-bit register for signal <tRx>.
+    Found finite state machine <FSM_0> for signal <State>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 14                                             |
+    | Inputs             | 6                                              |
+    | Outputs            | 4                                              |
+    | Clock              | Clk (rising_edge)                              |
+    | Reset              | tReset_tAck_OR_39_o (positive)                 |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 00                                             |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 14-bit subtractor for signal <Count[13]_GND_2_o_sub_27_OUT> created at line 128.
+    Found 3-bit adder for signal <BitCount[2]_GND_2_o_add_18_OUT> created at line 122.
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred  38 D-type flip-flop(s).
+	inferred   6 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <UART_Receiver> synthesized.
+
+Synthesizing Unit <Debounce>.
+    Related source file is "/home/bluelabuser/temp/yoda/DEA/Debounce.v".
+    Found 1-bit register for signal <Delaying>.
+    Found 22-bit register for signal <DeadTime>.
+    Found 1-bit register for signal <NextState>.
+    Found 22-bit adder for signal <DeadTime[21]_GND_3_o_add_5_OUT> created at line 38.
+    Found 1-bit comparator not equal for signal <n0000> created at line 30
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  24 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+Unit <Debounce> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 4
+ 100x8-bit dual-port RAM                               : 3
+ 3x8-bit dual-port RAM                                 : 1
+# Adders/Subtractors                                   : 11
+ 14-bit subtractor                                     : 1
+ 2-bit adder                                           : 1
+ 22-bit adder                                          : 2
+ 3-bit adder                                           : 1
+ 8-bit adder                                           : 3
+ 8-bit addsub                                          : 1
+ 9-bit subtractor                                      : 2
+# Registers                                            : 31
+ 1-bit register                                        : 17
+ 14-bit register                                       : 1
+ 16-bit register                                       : 1
+ 2-bit register                                        : 1
+ 22-bit register                                       : 2
+ 3-bit register                                        : 1
+ 8-bit register                                        : 8
+# Comparators                                          : 8
+ 1-bit comparator not equal                            : 2
+ 32-bit comparator lessequal                           : 3
+ 32-bit comparator not equal                           : 1
+ 8-bit comparator greater                              : 1
+ 8-bit comparator not equal                            : 1
+# Multiplexers                                         : 17
+ 1-bit 2-to-1 multiplexer                              : 9
+ 14-bit 2-to-1 multiplexer                             : 5
+ 3-bit 2-to-1 multiplexer                              : 1
+ 8-bit 2-to-1 multiplexer                              : 2
+# FSMs                                                 : 1
+# Xors                                                 : 1
+ 8-bit xor2                                            : 1
+
+=========================================================================
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+Synthesizing (advanced) Unit <DEA>.
+The following registers are absorbed into counter <charCount>: 1 register on signal <charCount>.
+The following registers are absorbed into counter <keyCount>: 1 register on signal <keyCount>.
+The following registers are absorbed into counter <index>: 1 register on signal <index>.
+The following registers are absorbed into counter <keyIndex>: 1 register on signal <keyIndex>.
+INFO:Xst:3231 - The small RAM <Mram_keys> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 3-word x 8-bit                      |          |
+    |     clkA           | connected to signal <Clk_100M>      | rise     |
+    |     weA            | connected to internal node          | high     |
+    |     addrA          | connected to signal <keyCount<1:0>> |          |
+    |     diA            | connected to signal <Rx_Data>       |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 3-word x 8-bit                      |          |
+    |     addrB          | connected to signal <keyIndex>      |          |
+    |     doB            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3226 - The RAM <Mram_userData> will be implemented as a BLOCK RAM, absorbing the following register(s): <byteOfUserData,byteOfKey_sliced>
+    -----------------------------------------------------------------------
+    | ram_type           | Block                               |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 100-word x 8-bit                    |          |
+    |     mode           | read-first                          |          |
+    |     clkA           | connected to signal <Clk_100M>      | rise     |
+    |     weA            | connected to signal <receivingData_GND_1_o_MUX_18_o_0_0> | high     |
+    |     addrA          | connected to signal <charCount<6:0>> |          |
+    |     diA            | connected to signal <Rx_Data>       |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 100-word x 8-bit                    |          |
+    |     mode           | write-first                         |          |
+    |     clkB           | connected to signal <Clk_100M>      | rise     |
+    |     enB            | connected to internal node          | low      |
+    |     addrB          | connected to signal <index<6:0>>    |          |
+    |     doB            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_result> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 100-word x 8-bit                    |          |
+    |     clkA           | connected to signal <Clk_100M>      | rise     |
+    |     weA            | connected to internal node          | high     |
+    |     addrA          | connected to signal <index<6:0>>    |          |
+    |     diA            | connected to signal <encrypt_Data>  |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 100-word x 8-bit                    |          |
+    |     addrB          | connected to signal <currentCharIndex<6:0>> |          |
+    |     doB            | connected to signal <LEDs>          |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_userData1> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 100-word x 8-bit                    |          |
+    |     clkA           | connected to signal <Clk_100M>      | rise     |
+    |     weA            | connected to signal <receivingData_GND_1_o_MUX_18_o_0_1> | high     |
+    |     addrA          | connected to signal <charCount<6:0>> |          |
+    |     diA            | connected to signal <Rx_Data>       |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 100-word x 8-bit                    |          |
+    |     addrB          | connected to signal <currentCharIndex<6:0>> |          |
+    |     doB            | connected to signal <LEDs>          |          |
+    -----------------------------------------------------------------------
+Unit <DEA> synthesized (advanced).
+
+Synthesizing (advanced) Unit <Debounce>.
+The following registers are absorbed into counter <DeadTime>: 1 register on signal <DeadTime>.
+Unit <Debounce> synthesized (advanced).
+
+Synthesizing (advanced) Unit <UART_Receiver>.
+The following registers are absorbed into counter <Count>: 1 register on signal <Count>.
+Unit <UART_Receiver> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 4
+ 100x8-bit dual-port block RAM                         : 1
+ 100x8-bit dual-port distributed RAM                   : 2
+ 3x8-bit dual-port distributed RAM                     : 1
+# Adders/Subtractors                                   : 4
+ 3-bit adder                                           : 1
+ 8-bit addsub                                          : 1
+ 9-bit subtractor                                      : 2
+# Counters                                             : 7
+ 14-bit down counter                                   : 1
+ 2-bit up counter                                      : 1
+ 22-bit up counter                                     : 2
+ 8-bit up counter                                      : 3
+# Registers                                            : 68
+ Flip-Flops                                            : 68
+# Comparators                                          : 8
+ 1-bit comparator not equal                            : 2
+ 32-bit comparator lessequal                           : 3
+ 32-bit comparator not equal                           : 1
+ 8-bit comparator greater                              : 1
+ 8-bit comparator not equal                            : 1
+# Multiplexers                                         : 15
+ 1-bit 2-to-1 multiplexer                              : 8
+ 14-bit 2-to-1 multiplexer                             : 4
+ 3-bit 2-to-1 multiplexer                              : 1
+ 8-bit 2-to-1 multiplexer                              : 2
+# FSMs                                                 : 1
+# Xors                                                 : 1
+ 8-bit xor2                                            : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <receiver/FSM_0> on signal <State[1:2]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00    | 00
+ 10    | 01
+ 01    | 11
+ 11    | 10
+-------------------
+
+Optimizing unit <DEA> ...
+
+Optimizing unit <UART_Receiver> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block DEA, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 154
+ Flip-Flops                                            : 154
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : DEA.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 468
+#      GND                         : 1
+#      INV                         : 21
+#      LUT1                        : 64
+#      LUT2                        : 20
+#      LUT3                        : 58
+#      LUT4                        : 18
+#      LUT5                        : 36
+#      LUT6                        : 90
+#      MUXCY                       : 76
+#      MUXF7                       : 1
+#      VCC                         : 1
+#      XORCY                       : 82
+# FlipFlops/Latches                : 154
+#      FD                          : 10
+#      FDE                         : 84
+#      FDR                         : 24
+#      FDRE                        : 36
+# RAMS                             : 20
+#      RAM32M                      : 1
+#      RAM32X1D                    : 2
+#      RAM64M                      : 8
+#      RAM64X1D                    : 8
+#      RAMB18E1                    : 1
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 20
+#      IBUF                        : 4
+#      OBUF                        : 16
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 7a100tcsg324-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:             154  out of  126800     0%  
+ Number of Slice LUTs:                  363  out of  63400     0%  
+    Number used as Logic:               307  out of  63400     0%  
+    Number used as Memory:               56  out of  19000     0%  
+       Number used as RAM:               56
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:    385
+   Number with an unused Flip Flop:     231  out of    385    60%  
+   Number with an unused LUT:            22  out of    385     5%  
+   Number of fully used LUT-FF pairs:   132  out of    385    34%  
+   Number of unique control sets:        20
+
+IO Utilization: 
+ Number of IOs:                          22
+ Number of bonded IOBs:                  21  out of    210    10%  
+
+Specific Feature Utilization:
+ Number of Block RAM/FIFO:                1  out of    135     0%  
+    Number using Block RAM only:          1
+ Number of BUFG/BUFGCTRLs:                1  out of     32     3%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+Clk_100M                           | BUFGP                  | 174   |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-------------------------------------------------------------------------+------------------------+-------+
+Control Signal                                                           | Buffer(FF name)        | Load  |
+-------------------------------------------------------------------------+------------------------+-------+
+receivingData_GND_1_o_MUX_18_o_0_0(receivingData_GND_1_o_MUX_18_o_0_02:O)| NONE(Mram_userData)    | 2     |
+-------------------------------------------------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 2.968ns (Maximum Frequency: 336.927MHz)
+   Minimum input arrival time before clock: 2.064ns
+   Maximum output required time after clock: 2.125ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'Clk_100M'
+  Clock period: 2.968ns (frequency: 336.927MHz)
+  Total number of paths / destination ports: 5222 / 537
+-------------------------------------------------------------------------
+Delay:               2.968ns (Levels of Logic = 5)
+  Source:            currentCharIndex_7 (FF)
+  Destination:       currentCharIndex_5 (FF)
+  Source Clock:      Clk_100M rising
+  Destination Clock: Clk_100M rising
+
+  Data Path: currentCharIndex_7 to currentCharIndex_5
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q            10   0.361   0.553  currentCharIndex_7 (currentCharIndex_7)
+     LUT3:I0->O            3   0.097   0.305  _n0233<7>_SW0 (N71)
+     LUT6:I5->O           10   0.097   0.421  _n0233<7> (_n0233)
+     LUT6:I4->O            5   0.097   0.298  Mmux_currentCharIndex[7]_GND_1_o_mux_38_OUT_rs_lut<2>1 (Mmux_currentCharIndex[7]_GND_1_o_mux_38_OUT_rs_lut<2>)
+     MUXF7:S->O            2   0.335   0.299  Mmux_currentCharIndex[7]_GND_1_o_mux_38_OUT_rs_cy<2>12 (Mmux_currentCharIndex[7]_GND_1_o_mux_38_OUT_rs_cy<2>)
+     LUT6:I5->O            1   0.097   0.000  Mmux_currentCharIndex[7]_GND_1_o_mux_38_OUT_rs_xor<5>11 (currentCharIndex[7]_GND_1_o_mux_38_OUT<5>)
+     FDRE:D                    0.008          currentCharIndex_5
+    ----------------------------------------
+    Total                      2.968ns (1.092ns logic, 1.876ns route)
+                                       (36.8% logic, 63.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'Clk_100M'
+  Total number of paths / destination ports: 114 / 113
+-------------------------------------------------------------------------
+Offset:              2.064ns (Levels of Logic = 3)
+  Source:            Reset (PAD)
+  Destination:       Mram_keys1 (RAM)
+  Destination Clock: Clk_100M rising
+
+  Data Path: Reset to Mram_keys1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            47   0.001   0.792  Reset_IBUF (Reset_IBUF)
+     LUT5:I0->O            1   0.097   0.379  Mmux_BUS_00031_SW1 (N118)
+     LUT6:I4->O            3   0.097   0.289  Mmux_BUS_00031 (BUS_0003)
+     RAM32M:WE                 0.408          Mram_keys1
+    ----------------------------------------
+    Total                      2.064ns (0.603ns logic, 1.461ns route)
+                                       (29.2% logic, 70.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'Clk_100M'
+  Total number of paths / destination ports: 96 / 16
+-------------------------------------------------------------------------
+Offset:              2.125ns (Levels of Logic = 2)
+  Source:            Mram_result2 (RAM)
+  Destination:       LEDs<13> (PAD)
+  Source Clock:      Clk_100M rising
+
+  Data Path: Mram_result2 to LEDs<13>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     RAM64M:WCLK->DOC      1   1.369   0.379  Mram_result2 (N49)
+     LUT3:I1->O            1   0.097   0.279  inst_LPM_MUX1311 (LEDs_13_OBUF)
+     OBUF:I->O                 0.000          LEDs_13_OBUF (LEDs<13>)
+    ----------------------------------------
+    Total                      2.125ns (1.466ns logic, 0.659ns route)
+                                       (69.0% logic, 31.0% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock Clk_100M
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+Clk_100M       |    2.968|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 9.00 secs
+Total CPU time to Xst completion: 9.07 secs
+ 
 --> 
 
 
-Total memory usage is 428580 kilobytes
+Total memory usage is 507636 kilobytes
 
-Number of errors   :    1 (   0 filtered)
-Number of warnings :    8 (   0 filtered)
-Number of infos    :    0 (   0 filtered)
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    3 (   0 filtered)
+Number of infos    :    5 (   0 filtered)
 
