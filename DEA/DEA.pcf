@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Wed May 18 20:10:55 2016
+// Written by: Map P.20131013 on Wed May 18 22:05:59 2016
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -11,6 +11,7 @@ COMP "LEDs<14>" LOCATE = SITE "V12" LEVEL 1;
 COMP "LEDs<15>" LOCATE = SITE "V11" LEVEL 1;
 COMP "prevCharBtn" LOCATE = SITE "P17" LEVEL 1;
 COMP "Rx" LOCATE = SITE "C4" LEVEL 1;
+COMP "Tx" LOCATE = SITE "D4" LEVEL 1;
 COMP "Clk_100M" LOCATE = SITE "E3" LEVEL 1;
 COMP "Reset" LOCATE = SITE "P18" LEVEL 1;
 COMP "nextCharBtn" LOCATE = SITE "M17" LEVEL 1;
@@ -41,6 +42,7 @@ PIN LEDs_3_OBUF_pins<1> = BEL "LEDs_3_OBUF" PINNAME OUT;
 PIN LEDs_2_OBUF_pins<1> = BEL "LEDs_2_OBUF" PINNAME OUT;
 PIN LEDs_1_OBUF_pins<1> = BEL "LEDs_1_OBUF" PINNAME OUT;
 PIN LEDs_0_OBUF_pins<1> = BEL "LEDs_0_OBUF" PINNAME OUT;
+PIN Tx_OBUF_pins<1> = BEL "Tx_OBUF" PINNAME OUT;
 PIN Reset_pins<0> = BEL "Reset" PINNAME PAD;
 PIN prevCharBtn_pins<0> = BEL "prevCharBtn" PINNAME PAD;
 PIN nextCharBtn_pins<0> = BEL "nextCharBtn" PINNAME PAD;
@@ -61,6 +63,7 @@ PIN "LEDs_3_OBUF_pins<1>" TIG;
 PIN "LEDs_2_OBUF_pins<1>" TIG;
 PIN "LEDs_1_OBUF_pins<1>" TIG;
 PIN "LEDs_0_OBUF_pins<1>" TIG;
+PIN "Tx_OBUF_pins<1>" TIG;
 PIN "Reset_pins<0>" TIG;
 PIN "prevCharBtn_pins<0>" TIG;
 PIN "nextCharBtn_pins<0>" TIG;

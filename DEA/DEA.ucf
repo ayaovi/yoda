@@ -4,7 +4,7 @@ net "Clk_100M" loc = E3 | IOSTANDARD = LVCMOS33;
 net "Clk_100M" period = 10 ns high 5 ns;
 
 net "Rx" loc = C4 | IOSTANDARD = LVCMOS33 | TIG;
-#net "Tx" loc = D4 | IOSTANDARD = LVCMOS33 | TIG;
+net "Tx" loc = D4 | IOSTANDARD = LVCMOS33 | TIG;
 
 // U13 K2 T14 P14 J14 T9 J18 J17
 #net "SegmentDrivers<3>" loc = J14 | IOSTANDARD = LVCMOS33 | TIG;

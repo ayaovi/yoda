@@ -29,73 +29,81 @@ module DEA(
 	output Tx,
 	output reg [15:0]LEDs
 	);
-	
-reg 		  prevBusyState;
-wire       Rx_Ready;
-reg        Rx_Ack;
-wire  [7:0]Rx_Data;
 
-//reg   [7:0]Tx_Data;
-//reg        Tx_Send;
-//wire       Tx_Busy;
+reg 		  	prevBusyState;
+wire       	Rx_Ready;
+reg        	Rx_Ack;
+wire  [7:0]	Rx_Data;
 
-reg        encrypt_Ack;
-reg        encrypt_Ready;
-wire  [7:0]encrypt_Data;
+reg   [7:0]	Tx_Data;
+reg        	Tx_Send;
+wire       	Tx_Busy;
+reg        	Tx_Reset;
+
+reg        	encrypt_Ack;
+reg        	encrypt_Ready;
+wire  [7:0]	encrypt_Data;
 
 
-reg   [7:0]sizeOfDataInByte;
-reg   [7:0]currentCharIndex;
-reg   [7:0]userData[0:99];
-reg   [7:0]result	 [0:99];
-reg   [7:0]charCount;
+reg   [7:0]	sizeOfDataInByte;
+reg   [7:0]	currentCharIndex;
+reg   [7:0]	userData[0:99];
+reg   [7:0]	result	 [0:99];
+reg   [7:0]	charCount;
 
-reg   [7:0]sizeOfKeyInByte;
-reg   [7:0]keys[0:2];
-reg   [7:0]keyCount;
+reg   [7:0]	sizeOfKeyInByte;
+reg   [7:0]	keys[0:2];
+reg   [7:0]	keyCount;
 
-reg 		  prevCharBtnPreviousState;
-reg 		  nextCharBtnPreviousState;
-wire 		  prevCharBtnNextState;
-wire 		  nextCharBtnNextState;
+reg 		  	prevCharBtnPreviousState;
+reg 		  	nextCharBtnPreviousState;
+wire 		  	prevCharBtnNextState;
+wire 		  	nextCharBtnNextState;
 
-initial    prevBusyState    = 1'b0;
-reg 		  receivingData;
-reg 		  receivingKeys;
+initial    	prevBusyState    = 1'b0;
+reg 		  	receivingData;
+reg 		  	receivingKeys;
 
-reg 	[7:0]index;
-reg 	[1:0]keyIndex;
-reg	[7:0]byteOfUserData;
-reg	[7:0]byteOfKey;
+reg 	[7:0]	index;
+reg 	[1:0]	keyIndex;
+reg	[7:0]	byteOfUserData;
+reg	[7:0]	byteOfKey;
+
+//wire 			startEncryption;
+//initial 		startEncryption = 1'b0;
 
 //assign byteOfUserData = userData[index];
 //assign byteOfKey		 = keys[keyIndex];
-assign encrypt_Data 	 = byteOfUserData ^ byteOfKey;
+assign 		encrypt_Data 	 		= byteOfUserData ^ byteOfKey;
 
-initial sizeOfDataInByte = 1'b0;
-initial sizeOfKeyInByte  = 1'b0;
-// Echo the received character
+initial 		sizeOfDataInByte		= 1'b0;
+initial 		sizeOfKeyInByte		= 1'b0;
+
+reg			sentSizeOfDataInByte;
+//initial 		sentSizeOfDataInByte = 1'b0;
+
 always @(posedge Clk_100M) begin
 	if(Reset) begin
-		currentCharIndex <= 1'b0;
-		charCount 		  <= 1'b0;
-		keyCount 		  <= 1'b0;
-		Rx_Ack  			  <= 1'b0;
+		currentCharIndex	<= 1'b0;
+		charCount			<= 1'b0;
+		keyCount				<= 1'b0;
+		Rx_Ack				<= 1'b0;
 		//encrypt_Ack  <= 1'b0;
-		receivingData 	  <= 1'b0;
-		receivingKeys 	  <= 1'b0;
+		receivingData		<= 1'b0;
+		receivingKeys		<= 1'b0;
 		//sizeOfDataInByte <= 1'b0;
 		//sizeOfKeyInByte  <= 1'b0;
-		//Tx_Data <= 0;
-		//Tx_Send <= 0;
+		//Tx_Data 				<= 1'b0;
+		//Tx_Send 				<= 1'b0;
+		//Tx_Reset 			<= 1'b0;
 	end 
 	
 	else begin
 		if (prevBusyState & Rx_Ready) begin
 			// very first byte expected to be # characters in data.
 			if (sizeOfDataInByte == 0) begin
-				sizeOfDataInByte <= Rx_Data;					// get number of charcters in data.
-				receivingData <= 1'b1;							// next up start receiving data.
+				sizeOfDataInByte 		<= Rx_Data;					// get number of charcters in data.
+				receivingData 	  		<= 1'b1;							// next up start receiving data.
 			end
 			
 			// actual data starts from byte 2.
@@ -106,43 +114,28 @@ always @(posedge Clk_100M) begin
 				
 				// if done receiving data, receive key.
 				if (charCount == sizeOfDataInByte - 1) begin
-					receivingData <= 1'b0;						// to indicate finish receiving data.
+					receivingData 		<= 1'b0;						// to indicate finish receiving data.
 				end
 			end
 			
 			// next up receive # of keys.
 			else if (sizeOfKeyInByte == 0) begin
-				sizeOfKeyInByte <= Rx_Data;
-				receivingKeys <= 1'b1;							// next up we start receiving keys.
+				sizeOfKeyInByte 		<= Rx_Data;
+				receivingKeys 			<= 1'b1;							// next up we start receiving keys.
 			end
 			
 			else if (receivingKeys) begin
-				keys[keyCount]  <= Rx_Data;
-				keyCount <= keyCount + 1'b1;
+				keys[keyCount]  		<= Rx_Data;
+				keyCount 				<= keyCount + 1'b1;
 				
 				// if done receiving data, signal start of encryption.
 				if (keyCount == sizeOfKeyInByte) begin
-					receivingKeys <= 1'b0;						// to indicate finish receiving keys.
-					
-//******************************************************************************
-//					for (index = 0; index < sizeOfDataInByte; index = index + 1) begin
-//						byteOfUserData <= userData[index];		// grab a new byte of data.
-//						byteOfKey <= keys[index%3];				// and a new byte of key.
-//						startEncryption <= 1'b1;					// reset encryption engine.
-//						
-//						// then wait for encryption to finish
-//						while (!encrypt_Ready) begin
-//							startEncryption <= 1'b0;
-//						end
-//						
-//						// read data.
-//						result[index] <= encrypt_Data;
-//					end
-//******************************************************************************
+					receivingKeys 		<= 1'b0;						// to indicate finish receiving keys.
+					//startEncryption	= 1'b1;
 				end
 			end
 			
-			Rx_Ack	 <= 1'b1;
+			Rx_Ack <= 1'b1;
 			
 		end else if(~Rx_Ready) begin
 			Rx_Ack <= 1'b0;
@@ -193,13 +186,38 @@ always @(posedge Clk_100M) begin
 		encrypt_Ack    <= 1'b0;
 		index 			<= 1'b0;			// reset index
 		keyIndex			<= 1'b0;
+		Tx_Data 			<= 1'b0;
+		Tx_Send 			<= 1'b0;
+		Tx_Reset 		<= 1'b0;
+		sentSizeOfDataInByte <= 1'b0;
 	end
+	//else if (startEncryption) begin
 	else begin
 		if (index < sizeOfDataInByte) begin
 			if (encrypt_Ready & encrypt_Ack) begin
 				result[index]	<= encrypt_Data;
 				encrypt_Ack		<= 1'b1;							// reset encryption engine.
 				encrypt_Ready 	<= 1'b0;
+				
+//************************************************************************
+				// send this to PC.
+				if (~Tx_Busy) begin
+					if (~sentSizeOfDataInByte) begin
+						Tx_Data 		<= sizeOfDataInByte;
+						sentSizeOfDataInByte <= 1'b1;
+					end
+					else
+						Tx_Data 		<= encrypt_Data;
+						
+					Tx_Send 		<= 1'b1;
+					Tx_Reset	 	<= 1'b1;
+				end
+				else begin
+					Tx_Send 		<= 1'b0;
+					Tx_Reset	 	<= 1'b0;
+				end
+//************************************************************************
+					
 			end
 			else if (~encrypt_Ready & encrypt_Ack) begin
 				
@@ -221,17 +239,34 @@ always @(posedge Clk_100M) begin
 				encrypt_Ready 	<= 1'b1;
 			end
 		end
+		
+//		else begin		// we finished encryption so we send it back to PC.
+//			//reset Tx_Reset to low.
+//			//Wait for Tx_Busy to go high.
+//			//load new byte the data.
+//			//Make Tx_Reset high.
+//			//Wait for Tx_Busy to go low.
+//			//Make Tx_Reset low.
+//			
+//			if (~Tx_Busy) begin
+//				Tx_Data <= result[];
+//				Tx_Send <= 1'b1;
+//			end
+//			else begin
+//				Tx_Send <= 1'b0;
+//			end
+//		end
 	end
 end
 
-//UART_Sender #(14, 14'd9999) sender(
-//	Clk_100M, 
-//	Reset,
-//	Tx_Data,
-//	Tx_Send,
-//	Tx_Busy,
-//	Tx
-//);
+UART_Sender #(14, 14'd9999) sender(
+	Clk_100M,
+	Tx_Reset,
+	Tx_Data,
+	Tx_Send,
+	Tx_Busy,
+	Tx
+);
 
 UART_Receiver #(14, 14'd9999) receiver(
 	Clk_100M,
@@ -253,26 +288,6 @@ Debounce debounceNextBtn(
 	nextCharBtn,
 	nextCharBtnNextState
 );
-
-//Encryption encryption(
-//	Clk_100M,
-//	startEncryption,
-//	userData,
-//	sizeOfDataInByte,
-//	keys,
-//	sizeOfKeyInByte,
-//	result,
-//	encrypt_Ready
-//);
-
-//Encryption encryption(
-//	Clk_100M,
-//	startEncryption,
-//	byteOfUserData,
-//	byteOfkey,
-//	encrypt_Data,
-//	encrypt_Ready
-//);
 
 always @(*) begin
 	// displays characters on the LEDs. Characters are shifted using btn P17 and M17
