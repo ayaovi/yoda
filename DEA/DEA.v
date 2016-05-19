@@ -212,14 +212,16 @@ always @(posedge Clk_100M) begin
 //						sentSizeOfDataInByte <= 1'b1;
 //					end
 //					else
-						Tx_Data 	<= result[index];
-
+					Tx_Data 	<= result[Tx_DataIndex];
+					Tx_DataIndexLocked	<= 1'b0;
 					Tx_Send 		<= 1'b1;
-//					Tx_Reset	 	<= 1'b1;
 				end
 				else begin
+					if (~Tx_DataIndexLocked) begin
+						Tx_DataIndex 			<= Tx_DataIndex + 1'b1;
+						Tx_DataIndexLocked	<= 1'b1;
+					end
 					Tx_Send 		<= 1'b0;
-//					Tx_Reset	 	<= 1'b0;
 				end
 //************************************************************************
 
