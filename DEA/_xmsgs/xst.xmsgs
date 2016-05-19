@@ -5,7 +5,7 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"/home/bluelabuser/temp/yoda/DEA/DEA.v" Line 177: Assignment to <arg fmt="%s" index="1">sentSizeOfDataInByte</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"/home/bluelabuser/temp/yoda/DEA/DEA.v" Line 177: Assignment to <arg fmt="%s" index="1">sentSizeOfDataInByte</arg> ignored, since the identifier is never used
 </msg>
 
 <msg type="warning" file="Xst" num="3035" delta="old" >Index value(s) does not match array range for signal &lt;<arg fmt="%s" index="1">result</arg>&gt;, simulation mismatch.

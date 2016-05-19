@@ -212,8 +212,8 @@ always @(posedge Clk_100M) begin
 //						sentSizeOfDataInByte <= 1'b1;
 //					end
 //					else
-						Tx_Data 	<= encrypt_Data;
-						
+						Tx_Data 	<= result[index];
+
 					Tx_Send 		<= 1'b1;
 //					Tx_Reset	 	<= 1'b1;
 				end
@@ -263,15 +263,17 @@ always @(posedge Clk_100M) begin
 //					Tx_Data 	<= result[Tx_DataIndex];
 //				
 //				Tx_Send 		<= 1'b1;
-//				//Tx_Reset	 	<= 1'b1;
+//				Tx_DataIndexLocked	<= 1'b0;
+				//Tx_Reset	 	<= 1'b1;
 //			end
 //			else begin
 //				if (sentSizeOfDataInByte & ~Tx_DataIndexLocked) begin
+//				if (~Tx_DataIndexLocked) begin
 //					Tx_DataIndex 			<= Tx_DataIndex + 1'b1;
 //					Tx_DataIndexLocked	<= 1'b1;
 //				end
 //				Tx_Send 		<= 1'b0;
-//				//Tx_Reset	 	<= 1'b0;
+				//Tx_Reset	 	<= 1'b0;
 //			end
 //***********************************************************************************************
 //		end
@@ -321,6 +323,8 @@ always @(*) begin
 	//LEDs[15:8] <= sizeOfKeyInByte;					// check
 	//LEDs[7:0] <= userData[99-currentCharIndex];
 	LEDs[7:0] <= userData[currentCharIndex];		// check
+	//LEDs[15:0] <= 16'b1111111111111111;
+	
 end
 
 endmodule

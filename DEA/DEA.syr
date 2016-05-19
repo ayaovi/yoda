@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 Reading design: DEA.prj
@@ -163,20 +163,20 @@ WARNING:Xst:3035 - Index value(s) does not match array range for signal <keys>, 
     Found 9-bit subtractor for signal <GND_1_o_GND_1_o_sub_6_OUT> created at line 118.
     Found 8-bit subtractor for signal <currentCharIndex[7]_GND_1_o_sub_29_OUT> created at line 154.
     Found 8-bit subtractor for signal <sizeOfDataInByte[7]_GND_1_o_sub_30_OUT> created at line 156.
-    Found 9-bit subtractor for signal <GND_1_o_GND_1_o_sub_58_OUT> created at line 232.
+    Found 9-bit subtractor for signal <GND_1_o_GND_1_o_sub_59_OUT> created at line 232.
     Found 8-bit adder for signal <charCount[7]_GND_1_o_add_4_OUT> created at line 115.
     Found 8-bit adder for signal <keyCount[7]_GND_1_o_add_9_OUT> created at line 131.
     Found 8-bit adder for signal <currentCharIndex[7]_GND_1_o_add_36_OUT> created at line 167.
-    Found 8-bit adder for signal <index[7]_GND_1_o_add_55_OUT> created at line 230.
-    Found 2-bit adder for signal <keyIndex[1]_GND_1_o_add_59_OUT> created at line 233.
+    Found 8-bit adder for signal <index[7]_GND_1_o_add_56_OUT> created at line 230.
+    Found 2-bit adder for signal <keyIndex[1]_GND_1_o_add_60_OUT> created at line 233.
 WARNING:Xst:3035 - Index value(s) does not match array range for signal <userData>, simulation mismatch.
     Found 100x8-bit dual-port RAM <Mram_userData> for signal <userData>.
     Found 32-bit comparator not equal for signal <GND_1_o_GND_1_o_equal_7_o> created at line 118
     Found 8-bit comparator not equal for signal <keyCount[7]_sizeOfKeyInByte[7]_equal_11_o> created at line 134
     Found 32-bit comparator lessequal for signal <GND_1_o_GND_1_o_LessThan_36_o> created at line 166
     Found 8-bit comparator greater for signal <index[7]_sizeOfDataInByte[7]_LessThan_51_o> created at line 200
-    Found 32-bit comparator lessequal for signal <GND_1_o_GND_1_o_LessThan_55_o> created at line 229
-    Found 32-bit comparator lessequal for signal <GND_1_o_GND_1_o_LessThan_59_o> created at line 232
+    Found 32-bit comparator lessequal for signal <GND_1_o_GND_1_o_LessThan_56_o> created at line 229
+    Found 32-bit comparator lessequal for signal <GND_1_o_GND_1_o_LessThan_60_o> created at line 232
     Summary:
 	inferred   4 RAM(s).
 	inferred   7 Adder/Subtractor(s).
@@ -374,6 +374,7 @@ INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_result> will be implemented on LUTs 
     |     weA            | connected to internal node          | high     |
     |     addrA          | connected to signal <index<6:0>>    |          |
     |     diA            | connected to signal <encrypt_Data>  |          |
+    |     doA            | connected to internal node          |          |
     -----------------------------------------------------------------------
     | Port B                                                              |
     |     aspect ratio   | 100-word x 8-bit                    |          |
@@ -515,30 +516,30 @@ Top Level Output File Name         : DEA.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 521
+# BELS                             : 492
 #      GND                         : 1
 #      INV                         : 36
 #      LUT1                        : 65
-#      LUT2                        : 20
-#      LUT3                        : 44
-#      LUT4                        : 27
-#      LUT5                        : 45
-#      LUT6                        : 96
+#      LUT2                        : 15
+#      LUT3                        : 49
+#      LUT4                        : 24
+#      LUT5                        : 34
+#      LUT6                        : 82
 #      MUXCY                       : 89
-#      MUXF7                       : 1
 #      VCC                         : 1
 #      XORCY                       : 96
 # FlipFlops/Latches                : 193
-#      FD                          : 8
+#      FD                          : 7
 #      FDE                         : 92
-#      FDR                         : 41
+#      FDR                         : 42
 #      FDRE                        : 51
 #      FDSE                        : 1
 # RAMS                             : 20
+#      RAM128X1D                   : 8
 #      RAM32M                      : 1
 #      RAM32X1D                    : 2
-#      RAM64M                      : 8
-#      RAM64X1D                    : 8
+#      RAM64M                      : 4
+#      RAM64X1D                    : 4
 #      RAMB18E1                    : 1
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
@@ -554,17 +555,17 @@ Selected Device : 7a100tcsg324-3
 
 Slice Logic Utilization: 
  Number of Slice Registers:             193  out of  126800     0%  
- Number of Slice LUTs:                  389  out of  63400     0%  
-    Number used as Logic:               333  out of  63400     0%  
-    Number used as Memory:               56  out of  19000     0%  
-       Number used as RAM:               56
+ Number of Slice LUTs:                  369  out of  63400     0%  
+    Number used as Logic:               305  out of  63400     0%  
+    Number used as Memory:               64  out of  19000     0%  
+       Number used as RAM:               64
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    422
-   Number with an unused Flip Flop:     229  out of    422    54%  
-   Number with an unused LUT:            33  out of    422     7%  
-   Number of fully used LUT-FF pairs:   160  out of    422    37%  
-   Number of unique control sets:        28
+ Number of LUT Flip Flop pairs used:    399
+   Number with an unused Flip Flop:     206  out of    399    51%  
+   Number with an unused LUT:            30  out of    399     7%  
+   Number of fully used LUT-FF pairs:   163  out of    399    40%  
+   Number of unique control sets:        29
 
 IO Utilization: 
  Number of IOs:                          22
@@ -611,8 +612,8 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 3.320ns (Maximum Frequency: 301.196MHz)
-   Minimum input arrival time before clock: 1.962ns
+   Minimum period: 3.297ns (Maximum Frequency: 303.306MHz)
+   Minimum input arrival time before clock: 1.592ns
    Maximum output required time after clock: 2.125ns
    Maximum combinational path delay: No path found
 
@@ -622,10 +623,10 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'Clk_100M'
-  Clock period: 3.320ns (frequency: 301.196MHz)
-  Total number of paths / destination ports: 6386 / 602
+  Clock period: 3.297ns (frequency: 303.306MHz)
+  Total number of paths / destination ports: 6008 / 579
 -------------------------------------------------------------------------
-Delay:               3.320ns (Levels of Logic = 5)
+Delay:               3.297ns (Levels of Logic = 5)
   Source:            currentCharIndex_0 (FF)
   Destination:       currentCharIndex_6 (FF)
   Source Clock:      Clk_100M rising
@@ -635,54 +636,53 @@ Delay:               3.320ns (Levels of Logic = 5)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q              18   0.361   0.762  currentCharIndex_0 (currentCharIndex_0)
+     FD:C->Q              14   0.361   0.743  currentCharIndex_0 (currentCharIndex_0)
      LUT6:I1->O            7   0.097   0.323  Mmux_currentCharIndex[7]_GND_1_o_mux_38_OUT_A311 (Mmux_currentCharIndex[7]_GND_1_o_mux_38_OUT_A31)
-     LUT6:I5->O            4   0.097   0.570  Mmux_currentCharIndex[7]_GND_1_o_mux_38_OUT_A51 (Mmux_currentCharIndex[7]_GND_1_o_mux_38_OUT_rs_A<4>)
-     LUT4:I0->O            1   0.097   0.511  Mmux_currentCharIndex[7]_GND_1_o_mux_38_OUT_rs_xor<7>111_SW0_SW0 (N341)
+     LUT6:I5->O            3   0.097   0.566  Mmux_currentCharIndex[7]_GND_1_o_mux_38_OUT_A51 (Mmux_currentCharIndex[7]_GND_1_o_mux_38_OUT_rs_A<4>)
+     LUT4:I0->O            1   0.097   0.511  Mmux_currentCharIndex[7]_GND_1_o_mux_38_OUT_rs_xor<7>111_SW0_SW0 (N32)
      LUT5:I2->O            2   0.097   0.299  Mmux_currentCharIndex[7]_GND_1_o_mux_38_OUT_rs_xor<7>111 (Mmux_currentCharIndex[7]_GND_1_o_mux_38_OUT_rs_xor<7>111)
      LUT5:I4->O            1   0.097   0.000  Mmux_currentCharIndex[7]_GND_1_o_mux_38_OUT_rs_xor<6>11 (currentCharIndex[7]_GND_1_o_mux_38_OUT<6>)
      FDRE:D                    0.008          currentCharIndex_6
     ----------------------------------------
-    Total                      3.320ns (0.854ns logic, 2.466ns route)
-                                       (25.7% logic, 74.3% route)
+    Total                      3.297ns (0.854ns logic, 2.443ns route)
+                                       (25.9% logic, 74.1% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'Clk_100M'
-  Total number of paths / destination ports: 125 / 122
+  Total number of paths / destination ports: 123 / 123
 -------------------------------------------------------------------------
-Offset:              1.962ns (Levels of Logic = 3)
+Offset:              1.592ns (Levels of Logic = 2)
   Source:            Reset (PAD)
-  Destination:       Mram_userData (RAM)
+  Destination:       Mram_userData14 (RAM)
   Destination Clock: Clk_100M rising
 
-  Data Path: Reset to Mram_userData
+  Data Path: Reset to Mram_userData14
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            54   0.001   0.405  Reset_IBUF (Reset_IBUF)
-     LUT2:I1->O            1   0.097   0.693  index[7]_sizeOfDataInByte[7]_LessThan_51_o21_SW2 (N95)
-     LUT6:I0->O           10   0.097   0.321  _n0319_inv1 (_n0319_inv1)
-     RAMB18E1:ENBWREN          0.348          Mram_userData
+     IBUF:I->O            50   0.001   0.793  Reset_IBUF (Reset_IBUF)
+     LUT6:I1->O            4   0.097   0.293  write_ctrl1 (write_ctrl1)
+     RAM64M:WE                 0.408          Mram_userData14
     ----------------------------------------
-    Total                      1.962ns (0.543ns logic, 1.419ns route)
-                                       (27.7% logic, 72.3% route)
+    Total                      1.592ns (0.506ns logic, 1.086ns route)
+                                       (31.8% logic, 68.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'Clk_100M'
-  Total number of paths / destination ports: 97 / 17
+  Total number of paths / destination ports: 49 / 9
 -------------------------------------------------------------------------
 Offset:              2.125ns (Levels of Logic = 2)
-  Source:            Mram_result2 (RAM)
-  Destination:       LEDs<13> (PAD)
+  Source:            Mram_userData12 (RAM)
+  Destination:       LEDs<5> (PAD)
   Source Clock:      Clk_100M rising
 
-  Data Path: Mram_result2 to LEDs<13>
+  Data Path: Mram_userData12 to LEDs<5>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     RAM64M:WCLK->DOC      1   1.369   0.379  Mram_result2 (N49)
-     LUT3:I1->O            1   0.097   0.279  inst_LPM_MUX1311 (LEDs_13_OBUF)
-     OBUF:I->O                 0.000          LEDs_13_OBUF (LEDs<13>)
+     RAM64M:WCLK->DOC      1   1.369   0.379  Mram_userData12 (N15)
+     LUT3:I1->O            1   0.097   0.279  inst_LPM_MUX511 (LEDs_5_OBUF)
+     OBUF:I->O                 0.000          LEDs_5_OBUF (LEDs<5>)
     ----------------------------------------
     Total                      2.125ns (1.466ns logic, 0.659ns route)
                                        (69.0% logic, 31.0% route)
@@ -697,19 +697,19 @@ Clock to Setup on destination clock Clk_100M
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-Clk_100M       |    3.320|         |         |         |
+Clk_100M       |    3.297|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
 Total REAL time to Xst completion: 9.00 secs
-Total CPU time to Xst completion: 9.16 secs
+Total CPU time to Xst completion: 8.92 secs
  
 --> 
 
 
-Total memory usage is 507984 kilobytes
+Total memory usage is 507992 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    8 (   0 filtered)
