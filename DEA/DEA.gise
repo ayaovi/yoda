@@ -181,7 +181,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1463609878" xil_pn:in_ck="-8263628302457156341" xil_pn:name="TRANEXT_xstsynthesize_virtex6" xil_pn:prop_ck="1515858447741334180" xil_pn:start_ts="1463609866">
+    <transform xil_pn:end_ts="1463644209" xil_pn:in_ck="-8263628302457156341" xil_pn:name="TRANEXT_xstsynthesize_virtex6" xil_pn:prop_ck="1515858447741334180" xil_pn:start_ts="1463644198">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
@@ -203,7 +203,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1463609885" xil_pn:in_ck="5819880670869115942" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="3965086017069360280" xil_pn:start_ts="1463609878">
+    <transform xil_pn:end_ts="1463644215" xil_pn:in_ck="5819880670869115942" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="3965086017069360280" xil_pn:start_ts="1463644209">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="DEA.bld"/>
@@ -212,7 +212,7 @@
       <outfile xil_pn:name="_ngo"/>
       <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
     </transform>
-    <transform xil_pn:end_ts="1463609921" xil_pn:in_ck="5819880713487558919" xil_pn:name="TRANEXT_map_virtex7" xil_pn:prop_ck="2100985583056581773" xil_pn:start_ts="1463609885">
+    <transform xil_pn:end_ts="1463644249" xil_pn:in_ck="5819880713487558919" xil_pn:name="TRANEXT_map_virtex7" xil_pn:prop_ck="2100985583056581773" xil_pn:start_ts="1463644215">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
@@ -227,7 +227,7 @@
       <outfile xil_pn:name="DEA_usage.xml"/>
       <outfile xil_pn:name="_xmsgs/map.xmsgs"/>
     </transform>
-    <transform xil_pn:end_ts="1463609955" xil_pn:in_ck="5450589866856780800" xil_pn:name="TRANEXT_par_virtex5" xil_pn:prop_ck="-2283627392121029586" xil_pn:start_ts="1463609921">
+    <transform xil_pn:end_ts="1463644282" xil_pn:in_ck="5450589866856780800" xil_pn:name="TRANEXT_par_virtex5" xil_pn:prop_ck="-2283627392121029586" xil_pn:start_ts="1463644249">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
@@ -242,7 +242,7 @@
       <outfile xil_pn:name="DEA_par.xrpt"/>
       <outfile xil_pn:name="_xmsgs/par.xmsgs"/>
     </transform>
-    <transform xil_pn:end_ts="1463609983" xil_pn:in_ck="90599025133" xil_pn:name="TRANEXT_bitFile_virtex7" xil_pn:prop_ck="306664139534459597" xil_pn:start_ts="1463609955">
+    <transform xil_pn:end_ts="1463644309" xil_pn:in_ck="90599025133" xil_pn:name="TRANEXT_bitFile_virtex7" xil_pn:prop_ck="306664139534459597" xil_pn:start_ts="1463644282">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
@@ -255,11 +255,13 @@
       <outfile xil_pn:name="webtalk.log"/>
       <outfile xil_pn:name="webtalk_pn.xml"/>
     </transform>
-    <transform xil_pn:end_ts="1463610095" xil_pn:in_ck="90599012279" xil_pn:name="TRAN_configureTargetDevice" xil_pn:prop_ck="-6383737364629502382" xil_pn:start_ts="1463610094">
+    <transform xil_pn:end_ts="1463643510" xil_pn:in_ck="90599012279" xil_pn:name="TRAN_configureTargetDevice" xil_pn:prop_ck="-6383737364629502382" xil_pn:start_ts="1463643508">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="InputChanged"/>
     </transform>
-    <transform xil_pn:end_ts="1463609955" xil_pn:in_ck="5819875087853085955" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416185" xil_pn:start_ts="1463609942">
+    <transform xil_pn:end_ts="1463644282" xil_pn:in_ck="5819875087853085955" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416185" xil_pn:start_ts="1463644269">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="DEA.twr"/>

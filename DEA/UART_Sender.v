@@ -96,6 +96,7 @@ always @(posedge Clk) begin
 				Done: begin
 					if(~tSend) begin
 						Busy  <= 1'b0;
+						Count <= 0;
 						State <= Idle;
 					end
 				end

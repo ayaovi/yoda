@@ -206,21 +206,21 @@ always @(posedge Clk_100M) begin
 //************************************************************************
 				// send this to PC. we first want to send the # of byte of the result.
 				// the the result it self.
-//				if (~Tx_Busy) begin
+				if (~Tx_Busy) begin
 //					if (~sentSizeOfDataInByte) begin			// the following should only happen once.
 //						Tx_Data 	<= sizeOfDataInByte;
 //						sentSizeOfDataInByte <= 1'b1;
 //					end
 //					else
-//						Tx_Data 	<= encrypt_Data;
-//						
-//					Tx_Send 		<= 1'b1;
+						Tx_Data 	<= encrypt_Data;
+						
+					Tx_Send 		<= 1'b1;
 //					Tx_Reset	 	<= 1'b1;
-//				end
-//				else begin
-//					Tx_Send 		<= 1'b0;
+				end
+				else begin
+					Tx_Send 		<= 1'b0;
 //					Tx_Reset	 	<= 1'b0;
-//				end
+				end
 //************************************************************************
 
 			end
@@ -245,36 +245,36 @@ always @(posedge Clk_100M) begin
 			end
 		end
 		
-		else begin		// we finished encryption so we send it back to PC.
+//		else begin		// we finished encryption so we send it back to PC.
 			//reset Tx_Reset to low.
 			//Wait for Tx_Busy to go high.
 			//load new byte the data.
 			//Make Tx_Reset high.
 			//Wait for Tx_Busy to go low.
 			//Make Tx_Reset low.
-			
+
 //***********************************************************************************************
-			if (~Tx_Busy) begin
-				if (~sentSizeOfDataInByte) begin			// the following should only happen once.
-					Tx_Data 	<= sizeOfDataInByte;
-					sentSizeOfDataInByte <= 1'b1;
-				end
-				else
-					Tx_Data 	<= result[Tx_DataIndex];
-				
-				Tx_Send 		<= 1'b1;
-				Tx_Reset	 	<= 1'b1;
-			end
-			else begin
-				if (sentSizeOfDataInByte & ~Tx_DataIndexLocked) begin
-					Tx_DataIndex 			<= Tx_DataIndex + 1'b1;
-					Tx_DataIndexLocked	<= 1'b1;
-				end
-				Tx_Send 		<= 1'b0;
-				Tx_Reset	 	<= 1'b0;
-			end
+//			if (~Tx_Busy) begin
+//				if (~sentSizeOfDataInByte) begin			// the following should only happen once.
+//					Tx_Data 	<= sizeOfDataInByte;
+//					sentSizeOfDataInByte <= 1'b1;
+//				end
+//				else
+//					Tx_Data 	<= result[Tx_DataIndex];
+//				
+//				Tx_Send 		<= 1'b1;
+//				//Tx_Reset	 	<= 1'b1;
+//			end
+//			else begin
+//				if (sentSizeOfDataInByte & ~Tx_DataIndexLocked) begin
+//					Tx_DataIndex 			<= Tx_DataIndex + 1'b1;
+//					Tx_DataIndexLocked	<= 1'b1;
+//				end
+//				Tx_Send 		<= 1'b0;
+//				//Tx_Reset	 	<= 1'b0;
+//			end
 //***********************************************************************************************
-		end
+//		end
 	end
 end
 
