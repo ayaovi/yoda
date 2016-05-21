@@ -700,3 +700,9 @@ map -intstyle ise -p xc7a100t-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -re
 par -w -intstyle ise -ol high -mt off DEA_map.ncd DEA.ncd DEA.pcf 
 trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml DEA.twx DEA.ncd -o DEA.twr DEA.pcf -ucf DEA.ucf 
 bitgen -intstyle ise -f DEA.ut DEA.ncd 
+xst -intstyle ise -ifn "/home/bluelabuser/temp/project/yoda/DEA/DEA.xst" -ofn "/home/bluelabuser/temp/project/yoda/DEA/DEA.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc DEA.ucf -p xc7a100t-csg324-3 DEA.ngc DEA.ngd  
+map -intstyle ise -p xc7a100t-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -mt off -ir off -pr off -lc off -power off -o DEA_map.ncd DEA.ngd DEA.pcf 
+par -w -intstyle ise -ol high -mt off DEA_map.ncd DEA.ncd DEA.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml DEA.twx DEA.ncd -o DEA.twr DEA.pcf -ucf DEA.ucf 
+bitgen -intstyle ise -f DEA.ut DEA.ncd 

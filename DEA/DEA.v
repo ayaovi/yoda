@@ -207,11 +207,6 @@ always @(posedge Clk_100M) begin
 				// send this to PC. we first want to send the # of byte of the result.
 				// the the result it self.
 				if (~Tx_Busy) begin
-//					if (~sentSizeOfDataInByte) begin			// the following should only happen once.
-//						Tx_Data 	<= sizeOfDataInByte;
-//						sentSizeOfDataInByte <= 1'b1;
-//					end
-//					else
 					Tx_Data 	<= result[Tx_DataIndex];
 					Tx_DataIndexLocked	<= 1'b0;
 					Tx_Send 		<= 1'b1;
@@ -284,7 +279,8 @@ end
 
 UART_Sender #(14, 14'd9999) sender(
 	Clk_100M,
-	Tx_Reset,
+	//Tx_Reset,
+	Reset,
 	Tx_Data,
 	Tx_Send,
 	Tx_Busy,

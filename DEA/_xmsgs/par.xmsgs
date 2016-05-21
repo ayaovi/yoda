@@ -8,25 +8,25 @@
 <msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">Mram_userData14_RAMD_O</arg> has no load.  PAR will not attempt to route this signal.
 </msg>
 
+<msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">Mram_result14_RAMD_O</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">Mram_result11_RAMD_O</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">Mram_result15_RAMD_O</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">Mram_result12_RAMD_O</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
 <msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">Mram_userData11_RAMD_O</arg> has no load.  PAR will not attempt to route this signal.
 </msg>
 
-<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">Mram_result12_RAMD_O</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">Mram_result15_RAMD_O</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">Mram_result11_RAMD_O</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">Mram_result14_RAMD_O</arg> has no load.  PAR will not attempt to route this signal.
+<msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">Mram_userData15_RAMD_O</arg> has no load.  PAR will not attempt to route this signal.
 </msg>
 
 <msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">Mram_userData12_RAMD_O</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">Mram_userData15_RAMD_O</arg> has no load.  PAR will not attempt to route this signal.
 </msg>
 
 <msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">Mram_keys1_RAMD_D1_O</arg> has no load.  PAR will not attempt to route this signal.
