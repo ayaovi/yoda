@@ -1,0 +1,26 @@
+# Design constrains intended for Nexys 4 DDR
+
+net "Clk_100M" loc = E3 | IOSTANDARD = LVCMOS33;
+net "Clk_100M" period = 10 ns high 5 ns;
+
+net "Rx" loc = C4 | IOSTANDARD = LVCMOS33 | TIG;
+net "Tx" loc = D4 | IOSTANDARD = LVCMOS33 | TIG;
+
+net "Reset" loc      	= P18 | IOSTANDARD = LVCMOS33 | TIG;
+
+net "LEDs<15>" loc = V11 | IOSTANDARD = LVCMOS33 | TIG;
+net "LEDs<14>" loc = V12 | IOSTANDARD = LVCMOS33 | TIG;
+net "LEDs<13>" loc = V14 | IOSTANDARD = LVCMOS33 | TIG;
+net "LEDs<12>" loc = V15 | IOSTANDARD = LVCMOS33 | TIG;
+net "LEDs<11>" loc = T16 | IOSTANDARD = LVCMOS33 | TIG;
+net "LEDs<10>" loc = U14 | IOSTANDARD = LVCMOS33 | TIG;
+net "LEDs<9>"  loc = T15 | IOSTANDARD = LVCMOS33 | TIG;
+net "LEDs<8>"  loc = V16 | IOSTANDARD = LVCMOS33 | TIG;
+net "LEDs<7>"  loc = U16 | IOSTANDARD = LVCMOS33 | TIG;
+net "LEDs<6>"  loc = U17 | IOSTANDARD = LVCMOS33 | TIG;
+net "LEDs<5>"  loc = V17 | IOSTANDARD = LVCMOS33 | TIG;
+net "LEDs<4>"  loc = R18 | IOSTANDARD = LVCMOS33 | TIG;
+net "LEDs<3>"  loc = N14 | IOSTANDARD = LVCMOS33 | TIG;
+net "LEDs<2>"  loc = J13 | IOSTANDARD = LVCMOS33 | TIG;
+net "LEDs<1>"  loc = K15 | IOSTANDARD = LVCMOS33 | TIG;
+net "LEDs<0>"  loc = H17 | IOSTANDARD = LVCMOS33 | TIG;

@@ -1,0 +1,28 @@
+Command line:
+   UART_Sender_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  37499
+
+Sat May 21 17:55:46 2016
+
+
+ Elaboration Time: 0.03 sec
+
+ Current Memory Usage: 239.26 Meg
+
+ Total Signals          : 17
+ Total Nets             : 26
+ Total Signal Drivers   : 7
+ Total Blocks           : 2
+ Total Primitive Blocks : 2
+ Total Processes        : 9
+ Total Traceable Variables  : 32
+ Total Scalar Nets and Variables : 173
+
+ Total Simulation Time: 123.89 sec
+
+ Current Memory Usage: 314.761 Meg
+
+Sat May 21 18:26:22 2016
+

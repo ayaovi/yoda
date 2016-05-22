@@ -1,11 +1,10 @@
-
 module Transmit(
-		input Clk_100M,
-		input start,
-		output reg busy,
-		input [7:0]data,
-	   output reg UART_Tx = 'b1
-    );
+	input Clk_100M,
+	input start,
+	output reg busy,
+	input [7:0]data,
+	output reg UART_Tx
+);
 
 	reg [15:0] PRSCL;
 	reg [3:0]INDEX;

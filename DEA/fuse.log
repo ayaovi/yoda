@@ -1,20 +1,20 @@
-Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o /home/bluelabuser/temp/yoda/DEA/UART_Receiver_isim_beh.exe -prj /home/bluelabuser/temp/yoda/DEA/UART_Receiver_beh.prj work.UART_Receiver work.glbl 
+Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -relaunch -intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "/home/bluelabuser/temp/project/yoda/DEA/UART_Sender_isim_beh.exe" -prj "/home/bluelabuser/temp/project/yoda/DEA/UART_Sender_beh.prj" "UART_Sender" "work.glbl" 
 ISim P.20131013 (signature 0xfbc00daa)
 Number of CPUs detected in this system: 4
 Turning on mult-threading, number of parallel sub-compilation jobs: 8 
 Determining compilation order of HDL files
-Analyzing Verilog file "/home/bluelabuser/temp/yoda/DEA/UART_Receiver.v" into library work
+Analyzing Verilog file "/home/bluelabuser/temp/project/yoda/DEA/UART_Sender.v" into library work
 Analyzing Verilog file "/opt/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
 Completed static elaboration
-Fuse Memory Usage: 95692 KB
-Fuse CPU Usage: 940 ms
-Compiling module UART_Receiver
+Fuse Memory Usage: 95684 KB
+Fuse CPU Usage: 950 ms
+Compiling module UART_Sender
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 2 sub-compilation(s) to finish...
+Waiting for 1 sub-compilation(s) to finish...
 Compiled 2 Verilog Units
-Built simulation executable /home/bluelabuser/temp/yoda/DEA/UART_Receiver_isim_beh.exe
-Fuse Memory Usage: 655860 KB
-Fuse CPU Usage: 950 ms
-GCC CPU Usage: 200 ms
+Built simulation executable /home/bluelabuser/temp/project/yoda/DEA/UART_Sender_isim_beh.exe
+Fuse Memory Usage: 655848 KB
+Fuse CPU Usage: 960 ms
+GCC CPU Usage: 90 ms

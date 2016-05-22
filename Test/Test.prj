@@ -1,0 +1,3 @@
+verilog work "UART_Sender.v"
+verilog work "UART_Receiver.v"
+verilog work "Test.v"

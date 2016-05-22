@@ -19,7 +19,7 @@ def encryptDecrypt(input):
 
 def main():
 	start_time = time.time()
-	encrypted = encryptDecrypt("craigplaatjes");
+	encrypted = encryptDecrypt("bkzsdfkjb sdvk,bzl");
 	stop_time = time.time()	
 	print("Encrypted: "+encrypted);
 	print("Encryption process took %s us ---" % (stop_time*1000000 - start_time*1000000))

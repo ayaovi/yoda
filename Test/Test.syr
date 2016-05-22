@@ -1,0 +1,558 @@
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.05 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.05 secs
+ 
+--> 
+Reading design: Test.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "Test.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "Test"
+Output Format                      : NGC
+Target Device                      : xc7a100t-3-csg324
+
+---- Source Options
+Top Module Name                    : Test
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Analyzing Verilog file "/home/bluelabuser/temp/project/Test/UART_Sender.v" into library work
+Parsing module <UART_Sender>.
+Analyzing Verilog file "/home/bluelabuser/temp/project/Test/UART_Receiver.v" into library work
+Parsing module <UART_Receiver>.
+Analyzing Verilog file "/home/bluelabuser/temp/project/Test/Test.v" into library work
+Parsing module <Test>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating module <Test>.
+WARNING:HDLCompiler:1127 - "/home/bluelabuser/temp/project/Test/Test.v" Line 93: Assignment to Tx_Reset ignored, since the identifier is never used
+
+Elaborating module <UART_Sender(N=14,Full=14'b10011100001111)>.
+
+Elaborating module <UART_Receiver(N=14,Full=14'b10011100001111)>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <Test>.
+    Related source file is "/home/bluelabuser/temp/project/Test/Test.v".
+    Found 8-bit register for signal <charCount>.
+    Found 1-bit register for signal <doneReceiving>.
+    Found 8-bit register for signal <sizeOfDataInByte>.
+    Found 1-bit register for signal <receivingData>.
+    Found 800-bit register for signal <n0266[799:0]>.
+    Found 1-bit register for signal <prevBusyState>.
+    Found 8-bit register for signal <Tx_Data>.
+    Found 1-bit register for signal <Tx_Send>.
+    Found 8-bit register for signal <Tx_DataIndex>.
+    Found 1-bit register for signal <Tx_DataIndexLocked>.
+    Found 1-bit register for signal <Rx_Ack>.
+    Found 9-bit subtractor for signal <GND_1_o_GND_1_o_sub_106_OUT> created at line 76.
+    Found 8-bit adder for signal <charCount[7]_GND_1_o_add_104_OUT> created at line 73.
+    Found 8-bit adder for signal <Tx_DataIndex[7]_GND_1_o_add_125_OUT> created at line 111.
+    Found 8-bit 100-to-1 multiplexer for signal <Tx_DataIndex[6]_X_1_o_wide_mux_124_OUT> created at line 105.
+    Found 8-bit comparator lessequal for signal <n0002> created at line 72
+    Found 32-bit comparator equal for signal <GND_1_o_GND_1_o_equal_107_o> created at line 76
+    Found 8-bit comparator greater for signal <Tx_DataIndex[7]_sizeOfDataInByte[7]_LessThan_124_o> created at line 104
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+	inferred 838 D-type flip-flop(s).
+	inferred   3 Comparator(s).
+	inferred 101 Multiplexer(s).
+Unit <Test> synthesized.
+
+Synthesizing Unit <UART_Sender>.
+    Related source file is "/home/bluelabuser/temp/project/Test/UART_Sender.v".
+        N = 14
+        Full = 14'b10011100001111
+    Found 1-bit register for signal <Busy>.
+    Found 1-bit register for signal <Tx>.
+    Found 1-bit register for signal <tSend>.
+    Found 14-bit register for signal <Count>.
+    Found 3-bit register for signal <BitCount>.
+    Found 2-bit register for signal <State>.
+    Found 8-bit register for signal <Temp>.
+    Found 1-bit register for signal <tReset>.
+    Found finite state machine <FSM_0> for signal <State>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 11                                             |
+    | Inputs             | 3                                              |
+    | Outputs            | 3                                              |
+    | Clock              | Clk (rising_edge)                              |
+    | Reset              | tReset (positive)                              |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 00                                             |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 3-bit subtractor for signal <BitCount[2]_GND_2_o_sub_9_OUT> created at line 85.
+    Found 14-bit subtractor for signal <Count[13]_GND_2_o_sub_18_OUT> created at line 108.
+    Found 14-bit 4-to-1 multiplexer for signal <State[1]_PWR_4_o_wide_mux_12_OUT> created at line 68.
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred  29 D-type flip-flop(s).
+	inferred   8 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <UART_Sender> synthesized.
+
+Synthesizing Unit <UART_Receiver>.
+    Related source file is "/home/bluelabuser/temp/project/Test/UART_Receiver.v".
+        N = 14
+        Full = 14'b10011100001111
+    Found 1-bit register for signal <tAck>.
+    Found 1-bit register for signal <tReset>.
+    Found 8-bit register for signal <Data>.
+    Found 1-bit register for signal <Ready>.
+    Found 1-bit register for signal <NewData>.
+    Found 14-bit register for signal <Count>.
+    Found 2-bit register for signal <State>.
+    Found 3-bit register for signal <BitCount>.
+    Found 8-bit register for signal <Temp>.
+    Found 1-bit register for signal <tRx>.
+    Found finite state machine <FSM_1> for signal <State>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 14                                             |
+    | Inputs             | 6                                              |
+    | Outputs            | 4                                              |
+    | Clock              | Clk (rising_edge)                              |
+    | Reset              | tReset_tAck_OR_47_o (positive)                 |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 00                                             |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 14-bit subtractor for signal <Count[13]_GND_3_o_sub_27_OUT> created at line 128.
+    Found 3-bit adder for signal <BitCount[2]_GND_3_o_add_18_OUT> created at line 122.
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred  38 D-type flip-flop(s).
+	inferred   6 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <UART_Receiver> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 7
+ 14-bit subtractor                                     : 2
+ 3-bit adder                                           : 1
+ 3-bit subtractor                                      : 1
+ 8-bit adder                                           : 2
+ 9-bit subtractor                                      : 1
+# Registers                                            : 27
+ 1-bit register                                        : 15
+ 14-bit register                                       : 2
+ 3-bit register                                        : 2
+ 8-bit register                                        : 7
+ 800-bit register                                      : 1
+# Comparators                                          : 3
+ 32-bit comparator equal                               : 1
+ 8-bit comparator greater                              : 1
+ 8-bit comparator lessequal                            : 1
+# Multiplexers                                         : 115
+ 1-bit 2-to-1 multiplexer                              : 2
+ 14-bit 2-to-1 multiplexer                             : 8
+ 14-bit 4-to-1 multiplexer                             : 1
+ 3-bit 2-to-1 multiplexer                              : 2
+ 8-bit 100-to-1 multiplexer                            : 1
+ 8-bit 2-to-1 multiplexer                              : 101
+# FSMs                                                 : 2
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+Synthesizing (advanced) Unit <Test>.
+The following registers are absorbed into counter <charCount>: 1 register on signal <charCount>.
+The following registers are absorbed into counter <Tx_DataIndex>: 1 register on signal <Tx_DataIndex>.
+Unit <Test> synthesized (advanced).
+
+Synthesizing (advanced) Unit <UART_Receiver>.
+The following registers are absorbed into counter <Count>: 1 register on signal <Count>.
+Unit <UART_Receiver> synthesized (advanced).
+
+Synthesizing (advanced) Unit <UART_Sender>.
+The following registers are absorbed into counter <Count>: 1 register on signal <Count>.
+The following registers are absorbed into counter <BitCount>: 1 register on signal <BitCount>.
+Unit <UART_Sender> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 2
+ 3-bit adder                                           : 1
+ 9-bit subtractor                                      : 1
+# Counters                                             : 5
+ 14-bit down counter                                   : 2
+ 3-bit down counter                                    : 1
+ 8-bit up counter                                      : 2
+# Registers                                            : 858
+ Flip-Flops                                            : 858
+# Comparators                                          : 3
+ 32-bit comparator equal                               : 1
+ 8-bit comparator greater                              : 1
+ 8-bit comparator lessequal                            : 1
+# Multiplexers                                         : 812
+ 1-bit 100-to-1 multiplexer                            : 8
+ 1-bit 2-to-1 multiplexer                              : 794
+ 14-bit 2-to-1 multiplexer                             : 6
+ 14-bit 4-to-1 multiplexer                             : 1
+ 3-bit 2-to-1 multiplexer                              : 1
+ 8-bit 2-to-1 multiplexer                              : 2
+# FSMs                                                 : 2
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <sender/FSM_0> on signal <State[1:2]> with user encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00    | 00
+ 01    | 01
+ 11    | 11
+ 10    | 10
+-------------------
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <receiver/FSM_1> on signal <State[1:2]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00    | 00
+ 10    | 01
+ 01    | 11
+ 11    | 10
+-------------------
+
+Optimizing unit <Test> ...
+
+Optimizing unit <UART_Sender> ...
+
+Optimizing unit <UART_Receiver> ...
+INFO:Xst:2261 - The FF/Latch <sender/tReset> in Unit <Test> is equivalent to the following FF/Latch, which will be removed : <receiver/tReset> 
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block Test, actual ratio is 2.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 908
+ Flip-Flops                                            : 908
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : Test.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 1333
+#      GND                         : 1
+#      INV                         : 28
+#      LUT1                        : 16
+#      LUT2                        : 4
+#      LUT3                        : 51
+#      LUT4                        : 13
+#      LUT5                        : 39
+#      LUT6                        : 1088
+#      MUXCY                       : 40
+#      MUXF7                       : 8
+#      VCC                         : 1
+#      XORCY                       : 44
+# FlipFlops/Latches                : 908
+#      FD                          : 6
+#      FDE                         : 827
+#      FDR                         : 38
+#      FDRE                        : 35
+#      FDS                         : 2
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 19
+#      IBUF                        : 2
+#      OBUF                        : 17
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 7a100tcsg324-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:             908  out of  126800     0%  
+ Number of Slice LUTs:                 1239  out of  63400     1%  
+    Number used as Logic:              1239  out of  63400     1%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:   1266
+   Number with an unused Flip Flop:     358  out of   1266    28%  
+   Number with an unused LUT:            27  out of   1266     2%  
+   Number of fully used LUT-FF pairs:   881  out of   1266    69%  
+   Number of unique control sets:        14
+
+IO Utilization: 
+ Number of IOs:                          20
+ Number of bonded IOBs:                  20  out of    210     9%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     32     3%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+Clk_100M                           | BUFGP                  | 908   |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 2.747ns (Maximum Frequency: 364.020MHz)
+   Minimum input arrival time before clock: 1.591ns
+   Maximum output required time after clock: 0.773ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'Clk_100M'
+  Clock period: 2.747ns (frequency: 364.020MHz)
+  Total number of paths / destination ports: 20483 / 1816
+-------------------------------------------------------------------------
+Delay:               2.747ns (Levels of Logic = 4)
+  Source:            userData_99_472 (FF)
+  Destination:       Tx_Data_0 (FF)
+  Source Clock:      Clk_100M rising
+  Destination Clock: Clk_100M rising
+
+  Data Path: userData_99_472 to Tx_Data_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              2   0.361   0.697  userData_99_472 (userData_99_472)
+     LUT6:I0->O            1   0.097   0.556  mux792_145 (mux792_145)
+     LUT6:I2->O            1   0.097   0.556  mux792_91 (mux792_91)
+     LUT6:I2->O            1   0.097   0.000  mux792_4 (mux792_4)
+     MUXF7:I0->O           1   0.277   0.000  mux792_2_f7 (Tx_DataIndex[6]_X_1_o_wide_mux_124_OUT<0>)
+     FDRE:D                    0.008          Tx_Data_0
+    ----------------------------------------
+    Total                      2.747ns (0.937ns logic, 1.810ns route)
+                                       (34.1% logic, 65.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'Clk_100M'
+  Total number of paths / destination ports: 860 / 858
+-------------------------------------------------------------------------
+Offset:              1.591ns (Levels of Logic = 4)
+  Source:            Reset (PAD)
+  Destination:       receivingData (FF)
+  Destination Clock: Clk_100M rising
+
+  Data Path: Reset to receivingData
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            35   0.001   0.403  Reset_IBUF (Reset_IBUF)
+     LUT3:I2->O            1   0.097   0.295  GND_1_o_GND_1_o_equal_2_o<7>_SW1 (N16)
+     LUT6:I5->O            9   0.097   0.593  _n04341 (_n0434)
+     LUT6:I2->O            1   0.097   0.000  receivingData_rstpot (receivingData_rstpot)
+     FD:D                      0.008          receivingData
+    ----------------------------------------
+    Total                      1.591ns (0.300ns logic, 1.291ns route)
+                                       (18.9% logic, 81.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'Clk_100M'
+  Total number of paths / destination ports: 17 / 17
+-------------------------------------------------------------------------
+Offset:              0.773ns (Levels of Logic = 1)
+  Source:            Tx_DataIndex_1 (FF)
+  Destination:       LEDs<9> (PAD)
+  Source Clock:      Clk_100M rising
+
+  Data Path: Tx_DataIndex_1 to LEDs<9>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q           204   0.361   0.412  Tx_DataIndex_1 (Tx_DataIndex_1)
+     OBUF:I->O                 0.000          LEDs_9_OBUF (LEDs<9>)
+    ----------------------------------------
+    Total                      0.773ns (0.361ns logic, 0.412ns route)
+                                       (46.7% logic, 53.3% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock Clk_100M
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+Clk_100M       |    2.747|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 13.00 secs
+Total CPU time to Xst completion: 13.04 secs
+ 
+--> 
+
+
+Total memory usage is 510464 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    1 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
+

@@ -1,0 +1,8 @@
+INTSTYLE=impact
+INFILE=/home/bluelabuser/temp/project/yoda/DEA/impact.xsl
+OUTFILE=/home/bluelabuser/temp/project/yoda/DEA/impact.xsl
+FAMILY=Single
+PART=Single
+WORKINGDIR=/home/bluelabuser/temp/project/yoda/DEA
+LICENSE=iMPACT
+USER_INFO=iMPACT

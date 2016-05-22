@@ -1,4 +1,4 @@
-// `timescale 1ns / 1ps
+`timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -30,7 +30,7 @@ module DEA(
 	output reg [15:0]LEDs
 	);
 
-reg 		  	prevBusyState;
+reg			prevBusyState;
 wire       	Rx_Ready;
 reg        	Rx_Ack;
 wire  [7:0]	Rx_Data;
@@ -39,8 +39,8 @@ reg   [7:0]	Tx_Data;
 reg        	Tx_Send;
 wire       	Tx_Busy;
 reg        	Tx_Reset;
-reg 	[7:0]	Tx_DataIndex;
-reg 			Tx_DataIndexLocked;
+reg   [7:0] Tx_DataIndex;
+reg			Tx_DataIndexLocked;
 
 reg        	encrypt_Ack;
 reg        	encrypt_Ready;
@@ -49,40 +49,35 @@ wire  [7:0]	encrypt_Data;
 
 reg   [7:0]	sizeOfDataInByte;
 reg   [7:0]	currentCharIndex;
-reg   [7:0]	userData[0:99];
-reg   [7:0]	result	 [0:99];
+reg   [7:0]	userData	[0:99];
+reg   [7:0]	result	[0:99];
 reg   [7:0]	charCount;
 
 reg   [7:0]	sizeOfKeyInByte;
 reg   [7:0]	keys[0:2];
 reg   [7:0]	keyCount;
 
-reg 		  	prevCharBtnPreviousState;
-reg 		  	nextCharBtnPreviousState;
-wire 		  	prevCharBtnNextState;
-wire 		  	nextCharBtnNextState;
+reg			prevCharBtnPreviousState;
+reg			nextCharBtnPreviousState;
+wire			prevCharBtnNextState;
+wire			nextCharBtnNextState;
 
 initial    	prevBusyState    = 1'b0;
-reg 		  	receivingData;
-reg 		  	receivingKeys;
+reg			receivingData;
+reg			receivingKeys;
 
-reg 	[7:0]	index;
-reg 	[1:0]	keyIndex;
+reg	[7:0]	index;
+reg	[1:0]	keyIndex;
 reg	[7:0]	byteOfUserData;
 reg	[7:0]	byteOfKey;
 
-//wire 			startEncryption;
-//initial 		startEncryption = 1'b0;
-
-//assign byteOfUserData = userData[index];
-//assign byteOfKey		 = keys[keyIndex];
 assign 		encrypt_Data 	 		= byteOfUserData ^ byteOfKey;
 
-initial 		sizeOfDataInByte		= 1'b0;
-initial 		sizeOfKeyInByte		= 1'b0;
+initial		sizeOfDataInByte		= 1'b0;
+initial		sizeOfKeyInByte		= 1'b0;
 
 reg			sentSizeOfDataInByte;
-//initial 		sentSizeOfDataInByte = 1'b0;
+reg			doneEncrypting;
 
 always @(posedge Clk_100M) begin
 	if(Reset) begin
@@ -93,11 +88,6 @@ always @(posedge Clk_100M) begin
 		//encrypt_Ack  <= 1'b0;
 		receivingData		<= 1'b0;
 		receivingKeys		<= 1'b0;
-		//sizeOfDataInByte <= 1'b0;
-		//sizeOfKeyInByte  <= 1'b0;
-		//Tx_Data 				<= 1'b0;
-		//Tx_Send 				<= 1'b0;
-		//Tx_Reset 			<= 1'b0;
 	end 
 	
 	else begin
@@ -110,7 +100,6 @@ always @(posedge Clk_100M) begin
 			
 			// actual data starts from byte 2.
 			else if (receivingData) begin
-				//userData[99 - charCount]  <= Rx_Data;		// actual data.
 				userData[charCount]  <= Rx_Data;		// actual data.
 				charCount <= charCount + 1'b1;
 				
@@ -175,8 +164,6 @@ end
 //------------------------------------------------------------------------------
 
 always @(posedge Clk_100M) begin
-	//for (index = 0; index < sizeOfDataInByte; index = index + 1) begin
-	
 	// pull encrypt_Ack low.
 	//	Wait for encrypt_Ready to go high.
 	//	Read the data.
@@ -188,43 +175,20 @@ always @(posedge Clk_100M) begin
 		encrypt_Ack    		<= 1'b0;
 		index 					<= 1'b0;			// reset index
 		keyIndex					<= 1'b0;
-		Tx_Data 					<= 1'b0;
-		Tx_Send 					<= 1'b0;
-		Tx_Reset 				<= 1'b0;
-		sentSizeOfDataInByte <= 1'b0;
-		Tx_DataIndex			<= 1'b0;
-		Tx_DataIndexLocked	<= 1'b0;			// used to lock Tx_DataIndex to prevent uncontrolled increments.
+		doneEncrypting			<= 1'b0;
 	end
-	//else if (startEncryption) begin
 	else begin
 		if (index < sizeOfDataInByte) begin
 			if (encrypt_Ready & encrypt_Ack) begin
 				result[index]	<= encrypt_Data;
 				encrypt_Ack		<= 1'b1;							// reset encryption engine.
 				encrypt_Ready 	<= 1'b0;
-
-//************************************************************************
-				// send this to PC. we first want to send the # of byte of the result.
-				// the the result it self.
-				if (~Tx_Busy) begin
-					Tx_Data 	<= result[Tx_DataIndex];
-					Tx_DataIndexLocked	<= 1'b0;
-					Tx_Send 		<= 1'b1;
-				end
-				else begin
-					if (~Tx_DataIndexLocked) begin
-						Tx_DataIndex 			<= Tx_DataIndex + 1'b1;
-						Tx_DataIndexLocked	<= 1'b1;
-					end
-					Tx_Send 		<= 1'b0;
-				end
-//************************************************************************
-
+				
+				if (index == sizeOfDataInByte - 1)
+					doneEncrypting <= 1;
 			end
 			else if (~encrypt_Ready & encrypt_Ack) begin
-				
-				if (index < (sizeOfDataInByte - 1))
-					index			<= index + 1'b1;
+				index				<= index + 1'b1;
 				
 				if (keyIndex < (sizeOfKeyInByte - 1))
 					keyIndex		<= keyIndex + 1'b1;
@@ -241,39 +205,31 @@ always @(posedge Clk_100M) begin
 				encrypt_Ready 	<= 1'b1;
 			end
 		end
-		
-//		else begin		// we finished encryption so we send it back to PC.
-			//reset Tx_Reset to low.
-			//Wait for Tx_Busy to go high.
-			//load new byte the data.
-			//Make Tx_Reset high.
-			//Wait for Tx_Busy to go low.
-			//Make Tx_Reset low.
+	end
+end
 
-//***********************************************************************************************
-//			if (~Tx_Busy) begin
-//				if (~sentSizeOfDataInByte) begin			// the following should only happen once.
-//					Tx_Data 	<= sizeOfDataInByte;
-//					sentSizeOfDataInByte <= 1'b1;
-//				end
-//				else
-//					Tx_Data 	<= result[Tx_DataIndex];
-//				
-//				Tx_Send 		<= 1'b1;
-//				Tx_DataIndexLocked	<= 1'b0;
-				//Tx_Reset	 	<= 1'b1;
-//			end
-//			else begin
-//				if (sentSizeOfDataInByte & ~Tx_DataIndexLocked) begin
-//				if (~Tx_DataIndexLocked) begin
-//					Tx_DataIndex 			<= Tx_DataIndex + 1'b1;
-//					Tx_DataIndexLocked	<= 1'b1;
-//				end
-//				Tx_Send 		<= 1'b0;
-				//Tx_Reset	 	<= 1'b0;
-//			end
-//***********************************************************************************************
-//		end
+// SENDING
+always @(posedge Clk_100M) begin
+	if (Reset) begin
+		Tx_Data 					<= 1'b0;
+		Tx_Send 					<= 1'b0;
+		Tx_Reset 				<= 1'b0;
+		Tx_DataIndex			<= 1'b0;
+		Tx_DataIndexLocked	<= 1'b1;			// used to lock Tx_DataIndex to prevent uncontrolled increments.
+	end
+	else if (doneEncrypting) begin
+		if (Tx_Busy == 0 && Tx_DataIndex < sizeOfDataInByte) begin
+			Tx_Data 					<= result[Tx_DataIndex];
+			Tx_Send 					<= 1'b1;
+			Tx_DataIndexLocked	<= 1'b0;
+		end
+		else begin
+			if (~Tx_DataIndexLocked) begin
+				Tx_DataIndex 			<= Tx_DataIndex + 1'b1;
+				Tx_DataIndexLocked	<= 1'b1;
+			end
+			Tx_Send 		<= 1'b0;
+		end
 	end
 end
 
@@ -312,7 +268,7 @@ always @(*) begin
 	// displays characters on the LEDs. Characters are shifted using btn P17 and M17
 	// going from left to right and right to left respectively.
 	
-	//LEDs[15:8] <= sizeOfDataInByte;				// check
+	//LEDs[15:8] <= Tx_DataIndex;				// check
 	LEDs[15:8] <= result[currentCharIndex];
 	//LEDs[15:8] <= encrypt_Data;
 	//LEDs[15:8] <= byteOfUserData;
